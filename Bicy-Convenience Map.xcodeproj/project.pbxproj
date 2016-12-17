@@ -10,10 +10,13 @@
 		6A1DAEE2978C6BF51F156B47 /* libPods-Bicy-Convenience Map.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB7FDB9298BA8C8DF991882 /* libPods-Bicy-Convenience Map.a */; };
 		8958FDAA1DFF8B9800CBAB84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDA91DFF8B9800CBAB84 /* main.m */; };
 		8958FDAD1DFF8B9800CBAB84 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDAC1DFF8B9800CBAB84 /* AppDelegate.mm */; };
-		8958FDB01DFF8B9800CBAB84 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDAF1DFF8B9800CBAB84 /* ViewController.m */; };
+		8958FDB01DFF8B9800CBAB84 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDAF1DFF8B9800CBAB84 /* ViewController.mm */; };
 		8958FDB31DFF8B9800CBAB84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8958FDB11DFF8B9800CBAB84 /* Main.storyboard */; };
 		8958FDB51DFF8B9800CBAB84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8958FDB41DFF8B9800CBAB84 /* Assets.xcassets */; };
 		8958FDB81DFF8B9800CBAB84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8958FDB61DFF8B9800CBAB84 /* LaunchScreen.storyboard */; };
+		8958FDC21E03959A00CBAB84 /* BaiduLocationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDC11E03959A00CBAB84 /* BaiduLocationTool.m */; };
+		8958FDC61E03C2F400CBAB84 /* BaiduMapTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDC51E03C2F400CBAB84 /* BaiduMapTool.m */; };
+		8958FDC91E03C97600CBAB84 /* BaiduDistrictTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDC81E03C97600CBAB84 /* BaiduDistrictTool.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,11 +25,17 @@
 		8958FDAB1DFF8B9800CBAB84 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8958FDAC1DFF8B9800CBAB84 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		8958FDAE1DFF8B9800CBAB84 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8958FDAF1DFF8B9800CBAB84 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8958FDAF1DFF8B9800CBAB84 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		8958FDB21DFF8B9800CBAB84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8958FDB41DFF8B9800CBAB84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8958FDB71DFF8B9800CBAB84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8958FDB91DFF8B9800CBAB84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8958FDC01E03959A00CBAB84 /* BaiduLocationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaiduLocationTool.h; path = BaiduMap_Singleton_Tool/BaiduLocationTool.h; sourceTree = "<group>"; };
+		8958FDC11E03959A00CBAB84 /* BaiduLocationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaiduLocationTool.m; path = BaiduMap_Singleton_Tool/BaiduLocationTool.m; sourceTree = "<group>"; };
+		8958FDC41E03C2F400CBAB84 /* BaiduMapTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaiduMapTool.h; path = BaiduMap_Singleton_Tool/BaiduMapTool.h; sourceTree = "<group>"; };
+		8958FDC51E03C2F400CBAB84 /* BaiduMapTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaiduMapTool.m; path = BaiduMap_Singleton_Tool/BaiduMapTool.m; sourceTree = "<group>"; };
+		8958FDC71E03C97600CBAB84 /* BaiduDistrictTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaiduDistrictTool.h; path = BaiduMap_Singleton_Tool/BaiduDistrictTool.h; sourceTree = "<group>"; };
+		8958FDC81E03C97600CBAB84 /* BaiduDistrictTool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BaiduDistrictTool.mm; path = BaiduMap_Singleton_Tool/BaiduDistrictTool.mm; sourceTree = "<group>"; };
 		DCB7FDB9298BA8C8DF991882 /* libPods-Bicy-Convenience Map.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bicy-Convenience Map.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF827DDC4A88B00C467046DE /* Pods-Bicy-Convenience Map.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bicy-Convenience Map.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bicy-Convenience Map/Pods-Bicy-Convenience Map.debug.xcconfig"; sourceTree = "<group>"; };
 		E5CE48AC9D6BBF1AC33708D9 /* Pods-Bicy-Convenience Map.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bicy-Convenience Map.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bicy-Convenience Map/Pods-Bicy-Convenience Map.release.xcconfig"; sourceTree = "<group>"; };
@@ -85,7 +94,8 @@
 				8958FDAB1DFF8B9800CBAB84 /* AppDelegate.h */,
 				8958FDAC1DFF8B9800CBAB84 /* AppDelegate.mm */,
 				8958FDAE1DFF8B9800CBAB84 /* ViewController.h */,
-				8958FDAF1DFF8B9800CBAB84 /* ViewController.m */,
+				8958FDAF1DFF8B9800CBAB84 /* ViewController.mm */,
+				8958FDC31E03959E00CBAB84 /* 百度地图工具单例 */,
 				8958FDB11DFF8B9800CBAB84 /* Main.storyboard */,
 				8958FDB41DFF8B9800CBAB84 /* Assets.xcassets */,
 				8958FDB61DFF8B9800CBAB84 /* LaunchScreen.storyboard */,
@@ -101,6 +111,19 @@
 				8958FDA91DFF8B9800CBAB84 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8958FDC31E03959E00CBAB84 /* 百度地图工具单例 */ = {
+			isa = PBXGroup;
+			children = (
+				8958FDC41E03C2F400CBAB84 /* BaiduMapTool.h */,
+				8958FDC51E03C2F400CBAB84 /* BaiduMapTool.m */,
+				8958FDC01E03959A00CBAB84 /* BaiduLocationTool.h */,
+				8958FDC11E03959A00CBAB84 /* BaiduLocationTool.m */,
+				8958FDC71E03C97600CBAB84 /* BaiduDistrictTool.h */,
+				8958FDC81E03C97600CBAB84 /* BaiduDistrictTool.mm */,
+			);
+			name = "百度地图工具单例";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,8 +249,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8958FDB01DFF8B9800CBAB84 /* ViewController.m in Sources */,
+				8958FDB01DFF8B9800CBAB84 /* ViewController.mm in Sources */,
+				8958FDC91E03C97600CBAB84 /* BaiduDistrictTool.mm in Sources */,
+				8958FDC61E03C2F400CBAB84 /* BaiduMapTool.m in Sources */,
 				8958FDAD1DFF8B9800CBAB84 /* AppDelegate.mm in Sources */,
+				8958FDC21E03959A00CBAB84 /* BaiduLocationTool.m in Sources */,
 				8958FDAA1DFF8B9800CBAB84 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

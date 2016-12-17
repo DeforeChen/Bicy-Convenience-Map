@@ -10,7 +10,9 @@
 #import <BaiduMapAPI_Base/BMKMapManager.h>
 
 #define BAIDU_KEY @"puAybLNI7odsDotLGGebvoDrvn6I5qQZ"
+typedef void (^BaiduAccessCompleteBlk)(BOOL isAccess);
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,BMKGeneralDelegate>
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) BaiduAccessCompleteBlk accessCompleteBlk;
 @end

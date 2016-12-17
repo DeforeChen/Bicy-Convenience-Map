@@ -3,4 +3,5 @@ platform :ios, '8.0'
 
 target 'Bicy-Convenience Map' do
   pod 'BaiduMapKit' #百度地图SDK
+  pod 'SVProgressHUD'
 end
