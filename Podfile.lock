@@ -3,13 +3,13 @@ PODS:
   - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
-  - BaiduMapKit (~> 3.1.0)
+  - BaiduMapKit
   - SVProgressHUD
 
 SPEC CHECKSUMS:
   BaiduMapKit: 4cfaedb118cff7e157e9771859a4bf65a261b2a1
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: 0f6adb228a0fe43be02bfc6663db85cbbf75c55e
+PODFILE CHECKSUM: fa27ddb8ee5281ba84e7cfe65c58ac1c16a77be9
 
 COCOAPODS: 1.0.0
