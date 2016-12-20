@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="Qwi-OJ-CkV" customClass="BottomDistrictView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8f-tv-syC" userLabel="鼓楼">
+                    <rect key="frame" x="0.0" y="0.0" width="62.5" height="49.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="鼓楼_deselect"/>
+                    <state key="selected" image="鼓楼_select"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S0Z-bE-OBW" userLabel="台江">
+                    <rect key="frame" x="62.5" y="0.0" width="62.5" height="49.5"/>
+                    <state key="normal" title="Button" image="台江_deselect"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s35-Qr-vF7" userLabel="马尾">
+                    <rect key="frame" x="125" y="0.0" width="62.5" height="49.5"/>
+                    <state key="normal" title="Button" image="马尾_deselect"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhk-tc-Ff4" userLabel="晋安">
+                    <rect key="frame" x="187.5" y="0.0" width="62.5" height="49.5"/>
+                    <state key="normal" title="Button" image="晋安_deselect"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48V-WN-MuT" userLabel="全市">
+                    <rect key="frame" x="312.5" y="0.0" width="62.5" height="49.5"/>
+                    <state key="normal" title="Button" image="全市_deselect"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJh-yo-Zoz" userLabel="仓山">
+                    <rect key="frame" x="250" y="0.0" width="62.5" height="49.5"/>
+                    <state key="normal" title="Button" image="仓山_deselect"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.72024005651473999" green="0.91335034370422363" blue="0.52600055932998657" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="GJh-yo-Zoz" firstAttribute="width" secondItem="i8f-tv-syC" secondAttribute="width" id="2E6-wQ-9sJ"/>
+                <constraint firstItem="i8f-tv-syC" firstAttribute="width" secondItem="Qwi-OJ-CkV" secondAttribute="width" multiplier="1/6" id="2pK-Op-an7"/>
+                <constraint firstItem="GJh-yo-Zoz" firstAttribute="top" secondItem="Qwi-OJ-CkV" secondAttribute="top" id="7K7-cU-YoV"/>
+                <constraint firstItem="i8f-tv-syC" firstAttribute="leading" secondItem="Qwi-OJ-CkV" secondAttribute="leading" id="8v9-Sv-aX0"/>
+                <constraint firstAttribute="bottom" secondItem="i8f-tv-syC" secondAttribute="bottom" id="ADx-hL-Uhu"/>
+                <constraint firstItem="s35-Qr-vF7" firstAttribute="leading" secondItem="S0Z-bE-OBW" secondAttribute="trailing" id="EVo-YK-9Eo"/>
+                <constraint firstAttribute="bottom" secondItem="s35-Qr-vF7" secondAttribute="bottom" id="FeW-gf-1Ag"/>
+                <constraint firstItem="zhk-tc-Ff4" firstAttribute="top" secondItem="Qwi-OJ-CkV" secondAttribute="top" id="HP5-xJ-LJK"/>
+                <constraint firstItem="48V-WN-MuT" firstAttribute="width" secondItem="i8f-tv-syC" secondAttribute="width" id="HgW-Ll-FHE"/>
+                <constraint firstAttribute="bottom" secondItem="GJh-yo-Zoz" secondAttribute="bottom" id="Iho-hi-Ns9"/>
+                <constraint firstItem="s35-Qr-vF7" firstAttribute="width" secondItem="i8f-tv-syC" secondAttribute="width" id="J3p-Qe-FAW"/>
+                <constraint firstItem="s35-Qr-vF7" firstAttribute="top" secondItem="Qwi-OJ-CkV" secondAttribute="top" id="JlG-J6-I4V"/>
+                <constraint firstItem="48V-WN-MuT" firstAttribute="top" secondItem="Qwi-OJ-CkV" secondAttribute="top" id="LoZ-jC-ale"/>
+                <constraint firstAttribute="bottom" secondItem="zhk-tc-Ff4" secondAttribute="bottom" id="P95-n6-qZH"/>
+                <constraint firstItem="i8f-tv-syC" firstAttribute="centerY" secondItem="Qwi-OJ-CkV" secondAttribute="centerY" id="PfB-bk-Ry7"/>
+                <constraint firstItem="S0Z-bE-OBW" firstAttribute="width" secondItem="i8f-tv-syC" secondAttribute="width" id="UdO-gU-mti"/>
+                <constraint firstItem="S0Z-bE-OBW" firstAttribute="leading" secondItem="i8f-tv-syC" secondAttribute="trailing" id="d5e-B5-8Iz"/>
+                <constraint firstItem="zhk-tc-Ff4" firstAttribute="leading" secondItem="s35-Qr-vF7" secondAttribute="trailing" id="ePe-bC-7jV"/>
+                <constraint firstItem="i8f-tv-syC" firstAttribute="height" secondItem="Qwi-OJ-CkV" secondAttribute="height" id="eTa-Ua-rEe"/>
+                <constraint firstAttribute="bottom" secondItem="48V-WN-MuT" secondAttribute="bottom" id="fWD-h6-Zuw"/>
+                <constraint firstItem="48V-WN-MuT" firstAttribute="leading" secondItem="GJh-yo-Zoz" secondAttribute="trailing" id="gXm-BJ-bgj"/>
+                <constraint firstItem="S0Z-bE-OBW" firstAttribute="top" secondItem="Qwi-OJ-CkV" secondAttribute="top" id="qKe-rv-ULe"/>
+                <constraint firstItem="zhk-tc-Ff4" firstAttribute="width" secondItem="i8f-tv-syC" secondAttribute="width" id="rLn-zg-s3t"/>
+                <constraint firstAttribute="bottom" secondItem="S0Z-bE-OBW" secondAttribute="bottom" id="sjD-KD-Z7K"/>
+                <constraint firstItem="GJh-yo-Zoz" firstAttribute="leading" secondItem="zhk-tc-Ff4" secondAttribute="trailing" id="vg9-fm-bbT"/>
+                <constraint firstItem="i8f-tv-syC" firstAttribute="top" secondItem="Qwi-OJ-CkV" secondAttribute="top" id="wPe-RQ-yD9"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-86.5" y="-81"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="仓山_deselect" width="107" height="84"/>
+        <image name="全市_deselect" width="107" height="84"/>
+        <image name="台江_deselect" width="107" height="84"/>
+        <image name="晋安_deselect" width="107" height="84"/>
+        <image name="马尾_deselect" width="107" height="84"/>
+        <image name="鼓楼_deselect" width="107" height="84"/>
+        <image name="鼓楼_select" width="107" height="96"/>
+    </resources>
+</document>
