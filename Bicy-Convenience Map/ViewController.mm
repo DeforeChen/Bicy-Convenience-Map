@@ -17,8 +17,10 @@
 #import "BaiduDistrictTool.h"
 #import "AppDelegate.h"
 #import <SVProgressHUD/SVProgressHUD.h>
+#import "BottomDistrictView.h"
+#import "StattionsTableViewCell.h"
 
-@interface ViewController ()<BMKMapViewDelegate>
+@interface ViewController ()<BMKMapViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet BMKMapView *BaseBaiduMapView;
 @property (nonatomic) BOOL isAccess;//百度授权/联网完成与否
 @end
@@ -41,23 +43,28 @@
     
     _BaseBaiduMapView.mapType = BMKMapTypeStandard;
     _BaseBaiduMapView.trafficEnabled = YES;
+
+    //2. 添加底部的显示栏，用于作区域显示
+    BottomDistrictView* vc = [BottomDistrictView initMyViewWithOwner:self];
+    vc.frame = CGRectMake(0, HEIGHT-BTN_HEIGHT, WIDTH, vc.frame.size.height);
+    [self.view addSubview:vc];
     
-    // 添加一个PointAnnotation
-    BMKPointAnnotation* annotationA = [[BMKPointAnnotation alloc]init];
-    CLLocationCoordinate2D coor;
-    coor.latitude = 39.915;
-    coor.longitude = 116.404;
-    annotationA.coordinate = coor;
-    annotationA.title = @"这里是北京";
-    
-    BMKPointAnnotation* annotationB = [[BMKPointAnnotation alloc]init];
-    CLLocationCoordinate2D coorB;
-    coorB.latitude = 39.945;
-    coorB.longitude = 116.444;
-    annotationB.coordinate = coorB;
-    annotationB.title = @"不知在哪里";
-    NSArray *array = [NSArray arrayWithObjects:annotationB,annotationA, nil];
-    [self.BaseBaiduMapView addAnnotations:array];
+//    // 添加一个PointAnnotation
+//    BMKPointAnnotation* annotationA = [[BMKPointAnnotation alloc]init];
+//    CLLocationCoordinate2D coor;
+//    coor.latitude = 39.915;
+//    coor.longitude = 116.404;
+//    annotationA.coordinate = coor;
+//    annotationA.title = @"这里是北京";
+//    
+//    BMKPointAnnotation* annotationB = [[BMKPointAnnotation alloc]init];
+//    CLLocationCoordinate2D coorB;
+//    coorB.latitude = 39.945;
+//    coorB.longitude = 116.444;
+//    annotationB.coordinate = coorB;
+//    annotationB.title = @"不知在哪里";
+//    NSArray *array = [NSArray arrayWithObjects:annotationB,annotationA, nil];
+//    [self.BaseBaiduMapView addAnnotations:array];
 }
 
 
@@ -132,4 +139,46 @@
 -(void)dismiss{
     [SVProgressHUD dismiss];
 }
+
+#pragma mark tableview delegate
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 2;//self.stationInfoArray.count;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 42.0;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static  NSString *const OptionTableReuseID = @"reuseID";        //设立reuse池的标签名（或者说池子的名称）
+    //表示从现有的池子（标签已指定）取出排在队列最前面的那个 cell
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:OptionTableReuseID];
+    NSLog(@"reuseid = %@,RestorationIdentifier = %@",cell.reuseIdentifier,cell.restorationIdentifier);
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:OptionTableReuseID];
+        cell.textLabel.text = @"new";
+        
+        //填一段假数据用来调试
+        StationInfo *infoA = [[StationInfo alloc] init];
+        infoA.stationName = @"象峰一路站";
+        infoA.stationAddress = @"秀峰支路XX号";
+        
+        StationInfo *infoB = [[StationInfo alloc] init];
+        infoB.stationName = @"信和广场站";
+        infoB.stationAddress = @"五四路xx前xx号";
+        
+        NSArray *stationInfoArray = [NSArray arrayWithObjects:infoA,infoB, nil];
+                cell = [StattionsTableViewCell initMyCellWithStationName:[stationInfoArray[indexPath.row] stationName]
+                                                          StationAddress:[stationInfoArray[indexPath.row] stationAddress]];
+        
+    } else{
+        NSLog(@"Reused cell = %@",cell.textLabel.text);//为了调试好看，正常并不需要else
+    }
+    
+    //从数组中取出对应的文本，贴给当前的这个cell，index是随着回滚事件代理调用的对应路径
+    return cell;
+}
+
 @end

@@ -2,6 +2,7 @@ platform :ios, '8.0'
 # inhibit_all_warnings!
 
 target 'Bicy-Convenience Map' do
-  pod 'BaiduMapKit' #百度地图SDK
+  pod 'BaiduMapKit','~>3.1.0' #百度地图SDK
   pod 'SVProgressHUD'
+#   pod 'Reveal-iOS-SDK'
 end

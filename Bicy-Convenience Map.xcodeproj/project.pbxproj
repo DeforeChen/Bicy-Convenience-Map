@@ -17,6 +17,11 @@
 		8958FDC21E03959A00CBAB84 /* BaiduLocationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDC11E03959A00CBAB84 /* BaiduLocationTool.m */; };
 		8958FDC61E03C2F400CBAB84 /* BaiduMapTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDC51E03C2F400CBAB84 /* BaiduMapTool.m */; };
 		8958FDC91E03C97600CBAB84 /* BaiduDistrictTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDC81E03C97600CBAB84 /* BaiduDistrictTool.mm */; };
+		8963F5711E0918EA00EBDA1A /* BottomDistrictView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8963F56F1E0918EA00EBDA1A /* BottomDistrictView.m */; };
+		8963F5721E0918EA00EBDA1A /* BottomDistrictView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8963F5701E0918EA00EBDA1A /* BottomDistrictView.xib */; };
+		89CC884C1E0BA46000FAB40D /* StattionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CC884A1E0BA46000FAB40D /* StattionsTableViewCell.m */; };
+		89CC884D1E0BA46000FAB40D /* StattionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89CC884B1E0BA46000FAB40D /* StattionsTableViewCell.xib */; };
+		89CC88511E0BB9D600FAB40D /* StationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CC88501E0BB9D600FAB40D /* StationInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,16 @@
 		8958FDC51E03C2F400CBAB84 /* BaiduMapTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaiduMapTool.m; path = BaiduMap_Singleton_Tool/BaiduMapTool.m; sourceTree = "<group>"; };
 		8958FDC71E03C97600CBAB84 /* BaiduDistrictTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaiduDistrictTool.h; path = BaiduMap_Singleton_Tool/BaiduDistrictTool.h; sourceTree = "<group>"; };
 		8958FDC81E03C97600CBAB84 /* BaiduDistrictTool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BaiduDistrictTool.mm; path = BaiduMap_Singleton_Tool/BaiduDistrictTool.mm; sourceTree = "<group>"; };
+		8963F56E1E0918EA00EBDA1A /* BottomDistrictView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BottomDistrictView.h; path = Views/BottomDistrictView.h; sourceTree = "<group>"; };
+		8963F56F1E0918EA00EBDA1A /* BottomDistrictView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BottomDistrictView.m; path = Views/BottomDistrictView.m; sourceTree = "<group>"; };
+		8963F5701E0918EA00EBDA1A /* BottomDistrictView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BottomDistrictView.xib; path = Views/BottomDistrictView.xib; sourceTree = "<group>"; };
+		8963F5741E092B0600EBDA1A /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		89CC88491E0BA46000FAB40D /* StattionsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StattionsTableViewCell.h; path = Views/StattionsTableViewCell.h; sourceTree = "<group>"; };
+		89CC884A1E0BA46000FAB40D /* StattionsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StattionsTableViewCell.m; path = Views/StattionsTableViewCell.m; sourceTree = "<group>"; };
+		89CC884B1E0BA46000FAB40D /* StattionsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StattionsTableViewCell.xib; path = Views/StattionsTableViewCell.xib; sourceTree = "<group>"; };
+		89CC884F1E0BB9D600FAB40D /* StationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationInfo.h; path = Models/StationInfo.h; sourceTree = "<group>"; };
+		89CC88501E0BB9D600FAB40D /* StationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationInfo.m; path = Models/StationInfo.m; sourceTree = "<group>"; };
+		89CC88521E0BBEF100FAB40D /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		DCB7FDB9298BA8C8DF991882 /* libPods-Bicy-Convenience Map.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bicy-Convenience Map.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF827DDC4A88B00C467046DE /* Pods-Bicy-Convenience Map.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bicy-Convenience Map.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bicy-Convenience Map/Pods-Bicy-Convenience Map.debug.xcconfig"; sourceTree = "<group>"; };
 		E5CE48AC9D6BBF1AC33708D9 /* Pods-Bicy-Convenience Map.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bicy-Convenience Map.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bicy-Convenience Map/Pods-Bicy-Convenience Map.release.xcconfig"; sourceTree = "<group>"; };
@@ -56,6 +71,7 @@
 		72C2128FE0636EE29B53A0F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8963F5741E092B0600EBDA1A /* Reveal.framework */,
 				DCB7FDB9298BA8C8DF991882 /* libPods-Bicy-Convenience Map.a */,
 			);
 			name = Frameworks;
@@ -95,6 +111,9 @@
 				8958FDAC1DFF8B9800CBAB84 /* AppDelegate.mm */,
 				8958FDAE1DFF8B9800CBAB84 /* ViewController.h */,
 				8958FDAF1DFF8B9800CBAB84 /* ViewController.mm */,
+				89CC88521E0BBEF100FAB40D /* config.h */,
+				89CC884E1E0BB9A600FAB40D /* Model */,
+				8963F5731E0918EF00EBDA1A /* Views */,
 				8958FDC31E03959E00CBAB84 /* 百度地图工具单例 */,
 				8958FDB11DFF8B9800CBAB84 /* Main.storyboard */,
 				8958FDB41DFF8B9800CBAB84 /* Assets.xcassets */,
@@ -126,6 +145,28 @@
 			name = "百度地图工具单例";
 			sourceTree = "<group>";
 		};
+		8963F5731E0918EF00EBDA1A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8963F56E1E0918EA00EBDA1A /* BottomDistrictView.h */,
+				8963F56F1E0918EA00EBDA1A /* BottomDistrictView.m */,
+				8963F5701E0918EA00EBDA1A /* BottomDistrictView.xib */,
+				89CC88491E0BA46000FAB40D /* StattionsTableViewCell.h */,
+				89CC884A1E0BA46000FAB40D /* StattionsTableViewCell.m */,
+				89CC884B1E0BA46000FAB40D /* StattionsTableViewCell.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		89CC884E1E0BB9A600FAB40D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				89CC884F1E0BB9D600FAB40D /* StationInfo.h */,
+				89CC88501E0BB9D600FAB40D /* StationInfo.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -155,7 +196,7 @@
 		8958FD9D1DFF8B9800CBAB84 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Chen Defore";
 				TargetAttributes = {
 					8958FDA41DFF8B9800CBAB84 = {
@@ -189,6 +230,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8958FDB81DFF8B9800CBAB84 /* LaunchScreen.storyboard in Resources */,
+				89CC884D1E0BA46000FAB40D /* StattionsTableViewCell.xib in Resources */,
+				8963F5721E0918EA00EBDA1A /* BottomDistrictView.xib in Resources */,
 				8958FDB51DFF8B9800CBAB84 /* Assets.xcassets in Resources */,
 				8958FDB31DFF8B9800CBAB84 /* Main.storyboard in Resources */,
 			);
@@ -250,11 +293,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8958FDB01DFF8B9800CBAB84 /* ViewController.mm in Sources */,
+				8963F5711E0918EA00EBDA1A /* BottomDistrictView.m in Sources */,
 				8958FDC91E03C97600CBAB84 /* BaiduDistrictTool.mm in Sources */,
 				8958FDC61E03C2F400CBAB84 /* BaiduMapTool.m in Sources */,
+				89CC88511E0BB9D600FAB40D /* StationInfo.m in Sources */,
 				8958FDAD1DFF8B9800CBAB84 /* AppDelegate.mm in Sources */,
 				8958FDC21E03959A00CBAB84 /* BaiduLocationTool.m in Sources */,
 				8958FDAA1DFF8B9800CBAB84 /* main.m in Sources */,
+				89CC884C1E0BA46000FAB40D /* StattionsTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +344,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -345,6 +392,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -374,9 +422,52 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 83SUXEZH4Q;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Bicy-Convenience Map/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"SVProgressHUD\"",
+					"-l\"sqlite3.0\"",
+					"-l\"stdc++.6.0.9\"",
+					"-framework",
+					"\"BaiduMapAPI_Base\"",
+					"-framework",
+					"\"BaiduMapAPI_Cloud\"",
+					"-framework",
+					"\"BaiduMapAPI_Location\"",
+					"-framework",
+					"\"BaiduMapAPI_Map\"",
+					"-framework",
+					"\"BaiduMapAPI_Radar\"",
+					"-framework",
+					"\"BaiduMapAPI_Search\"",
+					"-framework",
+					"\"BaiduMapAPI_Utils\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Newland.Bicy-Convenience-Map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -388,9 +479,52 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 83SUXEZH4Q;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Bicy-Convenience Map/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"SVProgressHUD\"",
+					"-l\"sqlite3.0\"",
+					"-l\"stdc++.6.0.9\"",
+					"-framework",
+					"\"BaiduMapAPI_Base\"",
+					"-framework",
+					"\"BaiduMapAPI_Cloud\"",
+					"-framework",
+					"\"BaiduMapAPI_Location\"",
+					"-framework",
+					"\"BaiduMapAPI_Map\"",
+					"-framework",
+					"\"BaiduMapAPI_Radar\"",
+					"-framework",
+					"\"BaiduMapAPI_Search\"",
+					"-framework",
+					"\"BaiduMapAPI_Utils\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Newland.Bicy-Convenience-Map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

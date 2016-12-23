@@ -6,10 +6,10 @@
 //  Copyright © 2016年 Chen Defore. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <BaiduMapAPI_Base/BMKMapManager.h>
 
-#define BAIDU_KEY @"puAybLNI7odsDotLGGebvoDrvn6I5qQZ"
+#import <BaiduMapAPI_Base/BMKMapManager.h>
+#import "config.h"
+
 typedef void (^BaiduAccessCompleteBlk)(BOOL isAccess);
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,BMKGeneralDelegate>

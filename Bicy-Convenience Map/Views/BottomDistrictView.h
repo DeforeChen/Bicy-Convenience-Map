@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StationInfo.h"
 
 @interface BottomDistrictView : UIView
-
+@property (weak, nonatomic) IBOutlet UITableView *stationList;
++ (instancetype) initMyViewWithOwner:(UIViewController*)viewCtrl;
 @end
