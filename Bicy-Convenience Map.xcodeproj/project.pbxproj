@@ -22,6 +22,7 @@
 		89CC884C1E0BA46000FAB40D /* StattionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CC884A1E0BA46000FAB40D /* StattionsTableViewCell.m */; };
 		89CC884D1E0BA46000FAB40D /* StattionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89CC884B1E0BA46000FAB40D /* StattionsTableViewCell.xib */; };
 		89CC88511E0BB9D600FAB40D /* StationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CC88501E0BB9D600FAB40D /* StationInfo.m */; };
+		89CC88551E0CF7FC00FAB40D /* DistrictButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CC88541E0CF7FC00FAB40D /* DistrictButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,8 @@
 		89CC884F1E0BB9D600FAB40D /* StationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationInfo.h; path = Models/StationInfo.h; sourceTree = "<group>"; };
 		89CC88501E0BB9D600FAB40D /* StationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationInfo.m; path = Models/StationInfo.m; sourceTree = "<group>"; };
 		89CC88521E0BBEF100FAB40D /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		89CC88531E0CF7FC00FAB40D /* DistrictButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistrictButton.h; sourceTree = "<group>"; };
+		89CC88541E0CF7FC00FAB40D /* DistrictButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistrictButton.m; sourceTree = "<group>"; };
 		DCB7FDB9298BA8C8DF991882 /* libPods-Bicy-Convenience Map.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bicy-Convenience Map.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF827DDC4A88B00C467046DE /* Pods-Bicy-Convenience Map.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bicy-Convenience Map.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bicy-Convenience Map/Pods-Bicy-Convenience Map.debug.xcconfig"; sourceTree = "<group>"; };
 		E5CE48AC9D6BBF1AC33708D9 /* Pods-Bicy-Convenience Map.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bicy-Convenience Map.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bicy-Convenience Map/Pods-Bicy-Convenience Map.release.xcconfig"; sourceTree = "<group>"; };
@@ -148,6 +151,8 @@
 		8963F5731E0918EF00EBDA1A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				89CC88531E0CF7FC00FAB40D /* DistrictButton.h */,
+				89CC88541E0CF7FC00FAB40D /* DistrictButton.m */,
 				8963F56E1E0918EA00EBDA1A /* BottomDistrictView.h */,
 				8963F56F1E0918EA00EBDA1A /* BottomDistrictView.m */,
 				8963F5701E0918EA00EBDA1A /* BottomDistrictView.xib */,
@@ -301,6 +306,7 @@
 				8958FDC21E03959A00CBAB84 /* BaiduLocationTool.m in Sources */,
 				8958FDAA1DFF8B9800CBAB84 /* main.m in Sources */,
 				89CC884C1E0BA46000FAB40D /* StattionsTableViewCell.m in Sources */,
+				89CC88551E0CF7FC00FAB40D /* DistrictButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

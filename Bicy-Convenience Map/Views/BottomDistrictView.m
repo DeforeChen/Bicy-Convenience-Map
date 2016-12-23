@@ -8,6 +8,7 @@
 
 #import "BottomDistrictView.h"
 #import "StattionsTableViewCell.h"
+#import "config.h"
 
 @interface BottomDistrictView()
 @property(nonatomic) BOOL isSelected;
@@ -15,27 +16,6 @@
 @end
 
 @implementation BottomDistrictView
-- (IBAction)showDistrictTableview:(UIButton *)sender {
-    if (_isSelected != YES) {
-        sender.frame = CGRectMake(0, -4, sender.bounds.size.width, sender.bounds.size.height+4);
-        [sender setImage:[UIImage imageNamed:@"鼓楼_select"]
-                forState:UIControlStateNormal];
-        _isSelected = YES;
-        
-        //填一段假数据用来调试
-        StationInfo *infoA = [[StationInfo alloc] init];
-        infoA.stationName = @"象峰一路站";
-        infoA.stationAddress = @"秀峰支路XX号";
-        
-        StationInfo *infoB = [[StationInfo alloc] init];
-        infoB.stationName = @"信和广场站";
-        infoB.stationAddress = @"五四路xx前xx号";
-        
-        self.stationInfoArray = [NSArray arrayWithObjects:infoA,infoB, nil];
-        [self.stationList reloadData];
-    }
-}
-
 - (void)setup {
     self.opaque      = NO;//不透明
     self.contentMode = UIViewContentModeRedraw;//如果bounds变化了，就要重新绘制它
@@ -44,6 +24,20 @@
     [super awakeFromNib];
     [self setup];
 }
+
+- (IBAction)selectRelatedDistrict:(DistrictButton *)sender {
+    if (sender.isSelected == NO) {
+        [sender switchToSelectedState];
+        sender.isSelected = YES;
+        
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:DISTRICT_BTN_SEL_RADIO
+                                                            object:[sender restorationIdentifier]];
+    }
+}
+
+
+
 
 + (instancetype) initMyViewWithOwner:(UIViewController*)viewCtrl {
     BottomDistrictView *view = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class])

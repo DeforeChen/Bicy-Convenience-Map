@@ -46,7 +46,7 @@
 
     //2. 添加底部的显示栏，用于作区域显示
     BottomDistrictView* vc = [BottomDistrictView initMyViewWithOwner:self];
-    vc.frame = CGRectMake(0, HEIGHT-BTN_HEIGHT, WIDTH, vc.frame.size.height);
+    vc.frame = CGRectMake(0, HEIGHT-BOTTOM_OPTION_HEIGHT, WIDTH, vc.frame.size.height);
     [self.view addSubview:vc];
     
 //    // 添加一个PointAnnotation

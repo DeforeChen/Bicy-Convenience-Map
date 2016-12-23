@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "StationInfo.h"
+#import "DistrictButton.h"
 
 @interface BottomDistrictView : UIView
 @property (weak, nonatomic) IBOutlet UITableView *stationList;

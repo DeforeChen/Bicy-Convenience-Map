@@ -8,9 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
-#define BAIDU_DELEGATE_CTRL_RADIO @"BaiduDelegateCtrl"
-#define DELEGATE_ON  @"on"
-#define DELEGATE_OFF @"off"
+#import "config.h"
 
 @interface BaiduMapTool : NSObject
 @property (nonatomic,strong) BMKMapView* mapView;
