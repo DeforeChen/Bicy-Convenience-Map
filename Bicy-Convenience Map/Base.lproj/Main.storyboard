@@ -21,18 +21,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHI-b8-WvN" customClass="BMKMapView">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NHI-b8-WvN" customClass="BMKMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="NHI-b8-WvN" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Jrt-uA-lLu"/>
-                            <constraint firstItem="NHI-b8-WvN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Vji-X5-n7i"/>
-                            <constraint firstItem="NHI-b8-WvN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Z6j-7X-ej9"/>
-                            <constraint firstAttribute="trailing" secondItem="NHI-b8-WvN" secondAttribute="trailing" id="kRK-CT-J1t"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="BaseBaiduMapView" destination="NHI-b8-WvN" id="aa2-iG-Exz"/>

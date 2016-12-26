@@ -7,10 +7,33 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 #import "StationInfo.h"
 #import "DistrictButton.h"
+typedef void (^selStationInImageBlk)(NSUInteger* imgIndex);
+@protocol stationInteractionDelegate <NSObject>
+/**
+ 发送列表中选中的站点索引
 
+ @param listIndex 列表中的站点索引
+ @param blk 图中的站点索引信息通知回列表
+ */
+-(void)selStationWithListIndex:(NSUInteger*)listIndex
+                  selMyCellBlk:(selStationInImageBlk)blk;
+/**
+ 通知主页开始上拉底栏，同时缩小mapview
+ */
+-(void)startMapviewTransform;
+
+/**
+ 通知主页停止上拉底栏，同时恢复mapview
+ */
+-(void)stopMapviewTransform;
+@end
+
+//==========================================================================================
 @interface BottomDistrictView : UIView
 @property (weak, nonatomic) IBOutlet UITableView *stationList;
-+ (instancetype) initMyViewWithOwner:(UIViewController*)viewCtrl;
+@property (strong,nonatomic) id<stationInteractionDelegate> delegate;
++ (instancetype) initMyView;
 @end

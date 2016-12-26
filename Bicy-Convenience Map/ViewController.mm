@@ -20,9 +20,10 @@
 #import "BottomDistrictView.h"
 #import "StattionsTableViewCell.h"
 
-@interface ViewController ()<BMKMapViewDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface ViewController ()<BMKMapViewDelegate,stationInteractionDelegate>
 @property (weak, nonatomic) IBOutlet BMKMapView *BaseBaiduMapView;
 @property (nonatomic) BOOL isAccess;//百度授权/联网完成与否
+@property (strong,nonatomic) BottomDistrictView* bottomView;
 @end
 
 @implementation ViewController
@@ -45,9 +46,10 @@
     _BaseBaiduMapView.trafficEnabled = YES;
 
     //2. 添加底部的显示栏，用于作区域显示
-    BottomDistrictView* vc = [BottomDistrictView initMyViewWithOwner:self];
-    vc.frame = CGRectMake(0, HEIGHT-BOTTOM_OPTION_HEIGHT, WIDTH, vc.frame.size.height);
-    [self.view addSubview:vc];
+    self.bottomView = [BottomDistrictView initMyView];
+    self.bottomView.frame = SHOW_BOTTOM_ONLY_OPTION_RECT;
+    self.bottomView.delegate = self;
+    [self.view addSubview:self.bottomView];
     
 //    // 添加一个PointAnnotation
 //    BMKPointAnnotation* annotationA = [[BMKPointAnnotation alloc]init];
@@ -140,45 +142,30 @@
     [SVProgressHUD dismiss];
 }
 
-#pragma mark tableview delegate
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;//self.stationInfoArray.count;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 42.0;
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static  NSString *const OptionTableReuseID = @"reuseID";        //设立reuse池的标签名（或者说池子的名称）
-    //表示从现有的池子（标签已指定）取出排在队列最前面的那个 cell
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:OptionTableReuseID];
-    NSLog(@"reuseid = %@,RestorationIdentifier = %@",cell.reuseIdentifier,cell.restorationIdentifier);
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier:OptionTableReuseID];
-        cell.textLabel.text = @"new";
-        
-        //填一段假数据用来调试
-        StationInfo *infoA = [[StationInfo alloc] init];
-        infoA.stationName = @"象峰一路站";
-        infoA.stationAddress = @"秀峰支路XX号";
-        
-        StationInfo *infoB = [[StationInfo alloc] init];
-        infoB.stationName = @"信和广场站";
-        infoB.stationAddress = @"五四路xx前xx号";
-        
-        NSArray *stationInfoArray = [NSArray arrayWithObjects:infoA,infoB, nil];
-                cell = [StattionsTableViewCell initMyCellWithStationName:[stationInfoArray[indexPath.row] stationName]
-                                                          StationAddress:[stationInfoArray[indexPath.row] stationAddress]];
-        
-    } else{
-        NSLog(@"Reused cell = %@",cell.textLabel.text);//为了调试好看，正常并不需要else
+#pragma mark stationInteractionDelegate
+-(void)startMapviewTransform {
+    if (self.bottomView.frame.origin.y == HEIGHT-BTN_TOP_HEIGHT) {
+        [UIView animateWithDuration:ANIMATION_TIME
+                         animations:^{
+                             self.bottomView.frame       = SHOW_BOTTOM_RECT;
+                             self.BaseBaiduMapView.frame = SHOW_SHORT_MAPVIEW;
+//                             [self.BaseBaiduMapView mapForceRefresh];
+//                             [self.BaseBaiduMapView regionThatFits:self.BaseBaiduMapView.region];
+                         }
+                         completion:nil];
     }
-    
-    //从数组中取出对应的文本，贴给当前的这个cell，index是随着回滚事件代理调用的对应路径
-    return cell;
 }
 
+-(void)stopMapviewTransform {
+    if (self.bottomView.frame.origin.y == HEIGHT-BOTTOM_RECT_HEIGHT) {
+        [UIView animateWithDuration:ANIMATION_TIME
+                         animations:^{
+                             self.bottomView.frame       = SHOW_BOTTOM_ONLY_OPTION_RECT;
+                             self.BaseBaiduMapView.frame = SCREEN_RECT;
+                             [self.BaseBaiduMapView mapForceRefresh];
+//                             [self.BaseBaiduMapView regionThatFits:self.BaseBaiduMapView.region];
+                         }
+                         completion:nil];
+    }
+}
 @end
