@@ -13,7 +13,7 @@
 // 百度密钥
 #define BAIDU_KEY @"puAybLNI7odsDotLGGebvoDrvn6I5qQZ"
 // 七牛提供的站点URL数据
-#define STATION_INFO_MODEL @"http://ois7g1xk4.bkt.clouddn.com/test.json"
+#define STATION_INFO_URL @"http://ois7g1xk4.bkt.clouddn.com/test.json"
 
 /**
  屏幕尺寸相关

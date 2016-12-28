@@ -9,10 +9,11 @@
 #import "BottomDistrictView.h"
 #import "StattionsTableViewCell.h"
 #import "config.h"
+#import "StationInfo.h"
 
 @interface BottomDistrictView()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic) BOOL isSelected;
-@property (nonatomic,strong) NSArray<StationInfo*>* stationInfoArray;
+@property (nonatomic,strong) NSArray<id<stationProtocol>>* stationInfoArray;
 @end
 
 @implementation BottomDistrictView
@@ -23,13 +24,21 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self setup];
+    // 启动页面的时候去更新一次站点信息数据
+    [[StationInfo shareInstance]updateAllStationsInfoWithSuccessBlk:^{
+        
+    } FailBlk:^(NSError *err) {
+        NSLog(@"错误信息 = %@",err.description);
+    }];
 }
 
 - (IBAction)selectRelatedDistrict:(DistrictButton *)sender {
     if (sender.isSelected == NO) {
         [sender switchToSelectedState];
         sender.isSelected = YES;
-        
+
+        self.stationInfoArray = [[StationInfo shareInstance] fetchDistrictStationsInfoWithName:[sender restorationIdentifier]];
+        [self.stationList reloadData];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:DISTRICT_BTN_SEL_RADIO
                                                             object:[sender restorationIdentifier]];
@@ -51,36 +60,24 @@
 
 #pragma mark tableview delegate
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;//self.stationInfoArray.count;
+    return self.stationInfoArray.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 42.0;
+    return BTN_HEIGHT;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static  NSString *const OptionTableReuseID = @"reuseID";        //设立reuse池的标签名（或者说池子的名称）
     //表示从现有的池子（标签已指定）取出排在队列最前面的那个 cell
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:OptionTableReuseID];
-    NSLog(@"reuseid = %@,RestorationIdentifier = %@",cell.reuseIdentifier,cell.restorationIdentifier);
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:OptionTableReuseID];
         cell.textLabel.text = @"new";
-        
-        //填一段假数据用来调试
-        StationInfo *infoA = [[StationInfo alloc] init];
-        infoA.stationName = @"象峰一路站";
-        infoA.stationAddress = @"秀峰支路XX号";
-        
-        StationInfo *infoB = [[StationInfo alloc] init];
-        infoB.stationName = @"东街口站";
-        infoB.stationAddress = @"八一七北路78号闽辉大厦东门";
-        
-        NSArray *stationInfoArray = [NSArray arrayWithObjects:infoA,infoB, nil];
-        cell = [StattionsTableViewCell initMyCellWithStationName:[stationInfoArray[indexPath.row] stationName]
-                                                  StationAddress:[stationInfoArray[indexPath.row] stationAddress]];
+        cell = [StattionsTableViewCell initMyCellWithStationName:[self.stationInfoArray[indexPath.row] stationName]
+                                                  StationAddress:[self.stationInfoArray[indexPath.row] stationAddress]];
         
     } else{
         NSLog(@"Reused cell = %@",cell.textLabel.text);//为了调试好看，正常并不需要else
