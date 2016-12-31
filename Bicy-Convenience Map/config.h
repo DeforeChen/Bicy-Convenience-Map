@@ -46,5 +46,20 @@
  */
 #define DISTRICT_BTN_SEL_RADIO @"districtSelectCtrl"
 
-#define ANIMATION_TIME 0.5
+
+/**
+ 行政区域名
+ */
+#define GULOU    @"鼓楼区"
+#define TAIJIANG @"台江区"
+#define JINAN    @"晋安区"
+#define MAWEI    @"马尾区"
+#define CANGSHAN @"仓山区"
+#define ALL_CITY @"全市"
+#define DISTRICT_NUM 5
+
+//保存行政区域边界的plist文件名
+#define PLIST_NAME @"districtOutlineInfo.plist"
+
+#define ANIMATION_TIME 0.4
 #endif /* config_h */

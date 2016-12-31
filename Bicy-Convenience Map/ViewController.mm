@@ -19,6 +19,7 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "BottomDistrictView.h"
 #import "StattionsTableViewCell.h"
+#import "plistManager.h"
 
 @interface ViewController ()<BMKMapViewDelegate,stationInteractionDelegate>
 @property (weak, nonatomic) IBOutlet BMKMapView *BaseBaiduMapView;
@@ -37,6 +38,23 @@
         self.isAccess = result;
         if (result == YES) {
             [self setBaiduRelatedDelegate];
+            //3.从沙盒中取出行政区域边界信息plist用于绘制。如果plist不存在，就创建一个
+            plistManager *manager = [[plistManager alloc] initWithPlistName:PLIST_NAME];
+            
+            if ([manager ifPlistExist] == NO) {
+                if ([manager createPlist]) {
+                    [[BaiduDistrictTool shareInstance] updateDistrictOutlineInfoWithSuccessBlk:^{
+                        //读plist
+                        NSDictionary *dict = [manager readPlist];
+                        NSLog(@"读到的plist = %@",dict);
+                    } FailBlk:^(NSError *err) {
+                        NSLog(@"错误信息 = %@",err.domain);
+                    }];
+                }
+            } else {
+                NSDictionary *dict = [manager readPlist];
+                NSLog(@"读到的plist = %@",dict);
+            }
         } else {
             [self showTip];
         }
@@ -44,29 +62,30 @@
     
     _BaseBaiduMapView.mapType = BMKMapTypeStandard;
     _BaseBaiduMapView.trafficEnabled = YES;
-
+    
     //2. 添加底部的显示栏，用于作区域显示
     self.bottomView = [BottomDistrictView initMyView];
     self.bottomView.frame = SHOW_BOTTOM_ONLY_OPTION_RECT;
     self.bottomView.delegate = self;
     [self.view addSubview:self.bottomView];
     
-//    // 添加一个PointAnnotation
-//    BMKPointAnnotation* annotationA = [[BMKPointAnnotation alloc]init];
-//    CLLocationCoordinate2D coor;
-//    coor.latitude = 39.915;
-//    coor.longitude = 116.404;
-//    annotationA.coordinate = coor;
-//    annotationA.title = @"这里是北京";
-//    
-//    BMKPointAnnotation* annotationB = [[BMKPointAnnotation alloc]init];
-//    CLLocationCoordinate2D coorB;
-//    coorB.latitude = 39.945;
-//    coorB.longitude = 116.444;
-//    annotationB.coordinate = coorB;
-//    annotationB.title = @"不知在哪里";
-//    NSArray *array = [NSArray arrayWithObjects:annotationB,annotationA, nil];
-//    [self.BaseBaiduMapView addAnnotations:array];
+    
+    //    // 添加一个PointAnnotation
+    //    BMKPointAnnotation* annotationA = [[BMKPointAnnotation alloc]init];
+    //    CLLocationCoordinate2D coor;
+    //    coor.latitude = 39.915;
+    //    coor.longitude = 116.404;
+    //    annotationA.coordinate = coor;
+    //    annotationA.title = @"这里是北京";
+    //
+    //    BMKPointAnnotation* annotationB = [[BMKPointAnnotation alloc]init];
+    //    CLLocationCoordinate2D coorB;
+    //    coorB.latitude = 39.945;
+    //    coorB.longitude = 116.444;
+    //    annotationB.coordinate = coorB;
+    //    annotationB.title = @"不知在哪里";
+    //    NSArray *array = [NSArray arrayWithObjects:annotationB,annotationA, nil];
+    //    [self.BaseBaiduMapView addAnnotations:array];
 }
 
 
@@ -85,10 +104,12 @@
 -(void)setBaiduRelatedDelegate {
     self.BaseBaiduMapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
     // 开启罗盘自动定位，设置loacation对应的delegate
-    [[BaiduLocationTool shareInstanceWithMapView:self.BaseBaiduMapView] startLocation];
+    [[BaiduLocationTool initInstanceWithMapView:self.BaseBaiduMapView] startLocation];
+    
+    
     // 默认画出鼓楼区的边界，设置district对应的delegate
-    [[BaiduDistrictTool shareInstanceWithMapView:self.BaseBaiduMapView] searchDistrictWithName:@"鼓楼"];
-
+    [BaiduDistrictTool initInstanceWithMapView:self.BaseBaiduMapView];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:BAIDU_DELEGATE_CTRL_RADIO
                                                         object:DELEGATE_ON];
 }
@@ -146,11 +167,13 @@
 -(void)startMapviewTransform {
     if (self.bottomView.frame.origin.y == HEIGHT-BTN_TOP_HEIGHT) {
         [UIView animateWithDuration:ANIMATION_TIME
+                              delay:0.0
+             usingSpringWithDamping:0.5
+              initialSpringVelocity:15.0
+                            options:UIViewAnimationOptionBeginFromCurrentState
                          animations:^{
                              self.bottomView.frame       = SHOW_BOTTOM_RECT;
                              self.BaseBaiduMapView.frame = SHOW_SHORT_MAPVIEW;
-//                             [self.BaseBaiduMapView mapForceRefresh];
-//                             [self.BaseBaiduMapView regionThatFits:self.BaseBaiduMapView.region];
                          }
                          completion:nil];
     }
@@ -159,13 +182,21 @@
 -(void)stopMapviewTransform {
     if (self.bottomView.frame.origin.y == HEIGHT-BOTTOM_RECT_HEIGHT) {
         [UIView animateWithDuration:ANIMATION_TIME
+                              delay:0.0
+             usingSpringWithDamping:0.5
+              initialSpringVelocity:15.0
+                            options:UIViewAnimationOptionBeginFromCurrentState
                          animations:^{
                              self.bottomView.frame       = SHOW_BOTTOM_ONLY_OPTION_RECT;
                              self.BaseBaiduMapView.frame = SCREEN_RECT;
                              [self.BaseBaiduMapView mapForceRefresh];
-//                             [self.BaseBaiduMapView regionThatFits:self.BaseBaiduMapView.region];
                          }
                          completion:nil];
     }
+}
+
+-(void)selDistrictWithName:(NSString *)districtName {
+    [[BaiduDistrictTool shareInstance] showDistrictWithName:districtName];
+    //    [[BaiduDistrictTool shareInstance] searchDistrictWithName:districtName];
 }
 @end

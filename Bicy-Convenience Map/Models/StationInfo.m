@@ -55,8 +55,8 @@ static StationInfo *center = nil;//定义一个全局的静态变量，满足静
         return nil;
 }
 
-- (void)updateAllStationsInfoWithSuccessBlk:(SuccessBlock)sucBlk
-                                    FailBlk:(FailBlock)failblk {
+- (void)updateAllStationsInfoWithSuccessBlk:(stationSucBlk)sucBlk
+                                    FailBlk:(stationFailBlk)failblk {
     [_manager GET:STATION_INFO_URL
        parameters:nil
           success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
@@ -71,15 +71,15 @@ static StationInfo *center = nil;//定义一个全局的静态变量，满足静
 }
 
 - (NSArray<id<stationProtocol>>*)fetchDistrictStationsInfoWithName:(NSString*)districtName {
-    if ([districtName isEqualToString:@"鼓楼"]) {
+    if ([districtName isEqualToString:GULOU]) {
         return self.districtInfo.gulou;
-    } else if ([districtName isEqualToString:@"台江"]) {
+    } else if ([districtName isEqualToString:TAIJIANG]) {
         return self.districtInfo.taijiang;
-    } else if ([districtName isEqualToString:@"晋安"]) {
+    } else if ([districtName isEqualToString:JINAN]) {
         return self.districtInfo.jinan;
-    } else if ([districtName isEqualToString:@"马尾"]) {
+    } else if ([districtName isEqualToString:MAWEI]) {
         return self.districtInfo.mawei;
-    }else if ([districtName isEqualToString:@"仓山"]) {
+    }else if ([districtName isEqualToString:CANGSHAN]) {
         return self.districtInfo.cangshan;
     } else {//全市
         NSMutableArray *allcityStations = [NSMutableArray arrayWithArray:self.districtInfo.gulou];

@@ -23,45 +23,45 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="鼓楼" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTu-Eg-hi8" userLabel="鼓楼" customClass="DistrictButton">
+                        <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="鼓楼区" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTu-Eg-hi8" userLabel="鼓楼" customClass="DistrictButton">
                             <rect key="frame" x="0.0" y="0.0" width="53.5" height="42"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <state key="normal" title="Button" image="鼓楼_deselect"/>
+                            <state key="normal" title="Button" image="鼓楼区_deselect"/>
                             <connections>
                                 <action selector="selectRelatedDistrict:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="X4H-A8-VUy"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="马尾" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JI9-sd-9CR" userLabel="马尾" customClass="DistrictButton">
+                        <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="马尾区" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JI9-sd-9CR" userLabel="马尾" customClass="DistrictButton">
                             <rect key="frame" x="53.5" y="0.0" width="53.5" height="42"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="53.5" id="Ly3-O9-Yhi"/>
                             </constraints>
-                            <state key="normal" title="Button" image="马尾_deselect"/>
+                            <state key="normal" title="Button" image="马尾区_deselect"/>
                             <connections>
                                 <action selector="selectRelatedDistrict:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="n4D-yZ-rR8"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="台江" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dca-jD-kWs" userLabel="台江" customClass="DistrictButton">
+                        <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="台江区" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dca-jD-kWs" userLabel="台江" customClass="DistrictButton">
                             <rect key="frame" x="107" y="0.0" width="53.5" height="42"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="53.5" id="d9G-QG-k6k"/>
                                 <constraint firstAttribute="height" constant="42" id="yIJ-OQ-Hw5"/>
                             </constraints>
-                            <state key="normal" title="Button" image="台江_deselect"/>
+                            <state key="normal" title="Button" image="台江区_deselect"/>
                             <connections>
                                 <action selector="selectRelatedDistrict:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="Mn1-Zi-d5J"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="晋安" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99o-pU-hp2" userLabel="晋安" customClass="DistrictButton">
+                        <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="晋安区" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99o-pU-hp2" userLabel="晋安" customClass="DistrictButton">
                             <rect key="frame" x="160.5" y="0.0" width="53.5" height="42"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="53.5" id="6eS-11-Z3K"/>
                                 <constraint firstAttribute="height" constant="42" id="fIN-UD-7TG"/>
                             </constraints>
-                            <state key="normal" title="Button" image="晋安_deselect"/>
+                            <state key="normal" title="Button" image="晋安区_deselect"/>
                             <connections>
                                 <action selector="selectRelatedDistrict:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="G9f-UA-Zcc"/>
                             </connections>
@@ -77,7 +77,7 @@
                                 <action selector="selectRelatedDistrict:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="dEr-dw-UR8"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="仓山" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5e1-jd-5E2" userLabel="仓山" customClass="DistrictButton">
+                        <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="仓山区" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5e1-jd-5E2" userLabel="仓山" customClass="DistrictButton">
                             <rect key="frame" x="213" y="0.0" width="53.5" height="42"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -86,7 +86,7 @@
                                 <constraint firstAttribute="width" constant="53.5" id="PoR-fn-amb"/>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="42" id="ZX1-Jy-vq8"/>
                             </constraints>
-                            <state key="normal" title="Button" image="仓山_deselect"/>
+                            <state key="normal" title="Button" image="仓山区_deselect"/>
                             <connections>
                                 <action selector="selectRelatedDistrict:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="bGs-Q8-f7A"/>
                             </connections>
@@ -164,12 +164,12 @@
         </view>
     </objects>
     <resources>
-        <image name="仓山_deselect" width="107" height="84"/>
+        <image name="仓山区_deselect" width="107" height="84"/>
         <image name="全市_deselect" width="107" height="84"/>
-        <image name="台江_deselect" width="107" height="84"/>
+        <image name="台江区_deselect" width="107" height="84"/>
         <image name="底栏背景" width="639" height="83"/>
-        <image name="晋安_deselect" width="107" height="84"/>
-        <image name="马尾_deselect" width="107" height="84"/>
-        <image name="鼓楼_deselect" width="107" height="84"/>
+        <image name="晋安区_deselect" width="107" height="84"/>
+        <image name="马尾区_deselect" width="107" height="84"/>
+        <image name="鼓楼区_deselect" width="107" height="84"/>
     </resources>
 </document>

@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "StationInfo.h"
 #import "DistrictButton.h"
-typedef void (^selStationInImageBlk)(NSUInteger* imgIndex);
+typedef void (^selStationInImageBlk)(NSUInteger imgIndex);
 @protocol stationInteractionDelegate <NSObject>
 /**
  发送列表中选中的站点索引
@@ -18,8 +18,16 @@ typedef void (^selStationInImageBlk)(NSUInteger* imgIndex);
  @param listIndex 列表中的站点索引
  @param blk 图中的站点索引信息通知回列表
  */
--(void)selStationWithListIndex:(NSUInteger*)listIndex
+-(void)selStationWithListIndex:(NSInteger)listIndex
                   selMyCellBlk:(selStationInImageBlk)blk;
+
+
+/**
+ 通知当前选中的行政区域
+ @param districtName 行政区域名称
+ */
+-(void)selDistrictWithName:(NSString*)districtName;
+
 /**
  通知主页开始上拉底栏，同时缩小mapview
  */
@@ -30,6 +38,9 @@ typedef void (^selStationInImageBlk)(NSUInteger* imgIndex);
  */
 -(void)stopMapviewTransform;
 @end
+
+
+
 
 //==========================================================================================
 @interface BottomDistrictView : UIView

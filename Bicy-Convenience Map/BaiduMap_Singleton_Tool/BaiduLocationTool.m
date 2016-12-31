@@ -18,7 +18,7 @@ static BaiduLocationTool *center = nil;//定义一个全局的静态变量，满
 
 @implementation BaiduLocationTool
 #pragma mark 单例初始化
-+ (instancetype)shareInstanceWithMapView:(BMKMapView*)mapView {
++ (instancetype)initInstanceWithMapView:(BMKMapView*)mapView {
     static dispatch_once_t predicate;
     //线程安全
     dispatch_once(&predicate, ^{
@@ -37,6 +37,10 @@ static BaiduLocationTool *center = nil;//定义一个全局的静态变量，满
     NSString *classString = NSStringFromClass([self class]);
     if ([classString isEqualToString:SELFCLASS_NAME_STR] == NO)
         NSParameterAssert(nil);
+    return center;
+}
+
++(instancetype)shareInstance {
     return center;
 }
 

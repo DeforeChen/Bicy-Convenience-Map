@@ -11,6 +11,8 @@
 @interface StattionsTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *stationName;
 @property (weak, nonatomic) IBOutlet UILabel *stationAddress;
+@property (weak, nonatomic) IBOutlet UIImageView *stationBgImage;
+@property (weak, nonatomic) IBOutlet UIButton *gotoBtn;
 
 + (instancetype)initMyCellWithStationName:(NSString*)name
                            StationAddress:(NSString*)address;

@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
-typedef void(^SuccessBlock)();
-typedef void(^FailBlock)(NSError *err);
+typedef void(^stationSucBlk)();
+typedef void(^stationFailBlk)(NSError *err);
 
 @protocol stationProtocol<NSObject>
 @required
@@ -88,8 +88,8 @@ typedef void(^FailBlock)(NSError *err);
  @param sucBlk 成功时回调
  @param failblk 失败时回调
  */
-- (void)updateAllStationsInfoWithSuccessBlk:(SuccessBlock)sucBlk
-                                    FailBlk:(FailBlock)failblk;
+- (void)updateAllStationsInfoWithSuccessBlk:(stationSucBlk)sucBlk
+                                    FailBlk:(stationFailBlk)failblk;
 /**
  传入行政区域的名字，返回对应行政区域站点信息的model
 

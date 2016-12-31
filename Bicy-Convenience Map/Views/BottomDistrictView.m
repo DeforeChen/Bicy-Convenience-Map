@@ -43,6 +43,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:DISTRICT_BTN_SEL_RADIO
                                                             object:[sender restorationIdentifier]];
         [self.delegate startMapviewTransform];
+        [self.delegate selDistrictWithName:[sender restorationIdentifier]];
     }
 }
 
@@ -85,5 +86,24 @@
     
     //从数组中取出对应的文本，贴给当前的这个cell，index是随着回滚事件代理调用的对应路径
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    StattionsTableViewCell *cell = (StattionsTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+    cell.stationBgImage.image = [UIImage imageNamed:@"站点单元栏_selected"];
+    [cell.gotoBtn setHidden:NO];
+//    [self.delegate selStationWithListIndex:indexPath.row
+//                              selMyCellBlk:^(NSUInteger imgIndex) {
+//                                  NSIndexPath *indexpath = [NSIndexPath indexPathForRow:imgIndex
+//                                                                              inSection:0];
+//                                  
+//                                  [self.stationList scrollToRowAtIndexPath:indexpath
+//                                                        atScrollPosition:UITableViewScrollPositionMiddle
+//                                                                animated:YES];  //滚动到第5行
+//                                  
+//                                  [self.stationList selectRowAtIndexPath:indexpath
+//                                                              animated:YES
+//                                                        scrollPosition:UITableViewScrollPositionMiddle];  //选中第5行
+//                              }];
 }
 @end
