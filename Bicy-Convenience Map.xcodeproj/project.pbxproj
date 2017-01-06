@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6A1DAEE2978C6BF51F156B47 /* libPods-Bicy-Convenience Map.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB7FDB9298BA8C8DF991882 /* libPods-Bicy-Convenience Map.a */; };
+		89586C681E1F367800122F52 /* plistManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89586C671E1F367800122F52 /* plistManager.m */; };
 		8958FDAA1DFF8B9800CBAB84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDA91DFF8B9800CBAB84 /* main.m */; };
 		8958FDAD1DFF8B9800CBAB84 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDAC1DFF8B9800CBAB84 /* AppDelegate.mm */; };
 		8958FDB01DFF8B9800CBAB84 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDAF1DFF8B9800CBAB84 /* ViewController.mm */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		89586C661E1F367800122F52 /* plistManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = plistManager.h; path = Models/plistManager.h; sourceTree = "<group>"; };
+		89586C671E1F367800122F52 /* plistManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = plistManager.m; path = Models/plistManager.m; sourceTree = "<group>"; };
 		8958FDA51DFF8B9800CBAB84 /* Bicy-Convenience Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bicy-Convenience Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8958FDA91DFF8B9800CBAB84 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8958FDAB1DFF8B9800CBAB84 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -166,6 +169,8 @@
 		89CC884E1E0BB9A600FAB40D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				89586C661E1F367800122F52 /* plistManager.h */,
+				89586C671E1F367800122F52 /* plistManager.m */,
 				89CC884F1E0BB9D600FAB40D /* StationInfo.h */,
 				89CC88501E0BB9D600FAB40D /* StationInfo.m */,
 			);
@@ -179,12 +184,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8958FDBC1DFF8B9800CBAB84 /* Build configuration list for PBXNativeTarget "Bicy-Convenience Map" */;
 			buildPhases = (
-				8252F19CBD912B5B627797CE /* 📦 Check Pods Manifest.lock */,
+				8252F19CBD912B5B627797CE /* [CP] Check Pods Manifest.lock */,
 				8958FDA11DFF8B9800CBAB84 /* Sources */,
 				8958FDA21DFF8B9800CBAB84 /* Frameworks */,
 				8958FDA31DFF8B9800CBAB84 /* Resources */,
-				41B021073BD67E97A245B619 /* 📦 Embed Pods Frameworks */,
-				A3817C6DBBFBC8376F4BBEE0 /* 📦 Copy Pods Resources */,
+				41B021073BD67E97A245B619 /* [CP] Embed Pods Frameworks */,
+				A3817C6DBBFBC8376F4BBEE0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -245,14 +250,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		41B021073BD67E97A245B619 /* 📦 Embed Pods Frameworks */ = {
+		41B021073BD67E97A245B619 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,29 +265,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bicy-Convenience Map/Pods-Bicy-Convenience Map-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8252F19CBD912B5B627797CE /* 📦 Check Pods Manifest.lock */ = {
+		8252F19CBD912B5B627797CE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		A3817C6DBBFBC8376F4BBEE0 /* 📦 Copy Pods Resources */ = {
+		A3817C6DBBFBC8376F4BBEE0 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8958FDB01DFF8B9800CBAB84 /* ViewController.mm in Sources */,
+				89586C681E1F367800122F52 /* plistManager.m in Sources */,
 				8963F5711E0918EA00EBDA1A /* BottomDistrictView.m in Sources */,
 				8958FDC91E03C97600CBAB84 /* BaiduDistrictTool.mm in Sources */,
 				8958FDC61E03C2F400CBAB84 /* BaiduMapTool.m in Sources */,

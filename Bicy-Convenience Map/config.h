@@ -56,6 +56,7 @@
 #define MAWEI    @"马尾区"
 #define CANGSHAN @"仓山区"
 #define ALL_CITY @"全市"
+#define ALL_CITY_POLYGAN_FIT @"全市屏幕适配" //全市显示时候的屏幕适配
 #define DISTRICT_NUM 5
 
 //保存行政区域边界的plist文件名

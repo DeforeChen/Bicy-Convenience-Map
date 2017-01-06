@@ -38,23 +38,28 @@
         self.isAccess = result;
         if (result == YES) {
             [self setBaiduRelatedDelegate];
-            //3.从沙盒中取出行政区域边界信息plist用于绘制。如果plist不存在，就创建一个
             plistManager *manager = [[plistManager alloc] initWithPlistName:PLIST_NAME];
+            //1.1.从沙盒中取出行政区域边界信息plist用于绘制。如果plist不存在，就创建一个
+            if ([manager ifPlistExist] == NO)
+                [manager createPlist];
             
-            if ([manager ifPlistExist] == NO) {
-                if ([manager createPlist]) {
-                    [[BaiduDistrictTool shareInstance] updateDistrictOutlineInfoWithSuccessBlk:^{
-                        //读plist
-                        NSDictionary *dict = [manager readPlist];
-                        NSLog(@"读到的plist = %@",dict);
-                    } FailBlk:^(NSError *err) {
-                        NSLog(@"错误信息 = %@",err.domain);
-                    }];
-                }
+            //1.2读取这个plist文件
+            NSDictionary *dict = [manager readPlist];
+            if (dict.count == 0) {
+                [[BaiduDistrictTool shareInstance] updateDistrictPlistWithSuccessBlk:^{
+                    //调试用,读plist
+                    NSDictionary *dict = [manager readPlist];
+                    NSLog(@"空的plist重新获取数据后，读到的plist = %@",dict);
+                    
+                    [[BaiduDistrictTool shareInstance] generateOverlaysFromPlist];
+                } FailBlk:^(NSError *err) {
+                    NSLog(@"空的plist重新获取数据后，错误信息 = %@",err.domain);
+                }];
+                // 3.2 已经读到正确的信息，就将这组数据转换为覆盖物
             } else {
-                NSDictionary *dict = [manager readPlist];
-                NSLog(@"读到的plist = %@",dict);
+                [[BaiduDistrictTool shareInstance] generateOverlaysFromPlist];
             }
+                
         } else {
             [self showTip];
         }

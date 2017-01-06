@@ -37,6 +37,11 @@ typedef void(^districtFailBlk)(NSError *err);
  @param sucBlk 区域更新成功时回调
  @param failBlk 区域更新失败时回调
  */
-- (void)updateDistrictOutlineInfoWithSuccessBlk:(districtSucBlk)sucBlk
-                                        FailBlk:(districtFailBlk)failBlk;
+- (void)updateDistrictPlistWithSuccessBlk:(districtSucBlk)sucBlk
+                                  FailBlk:(districtFailBlk)failBlk;
+
+/**
+ 根据plist信息产生覆盖物，存放在本类的私有字典变量中供按键选取区域时调用
+ */
+- (void)generateOverlaysFromPlist;
 @end

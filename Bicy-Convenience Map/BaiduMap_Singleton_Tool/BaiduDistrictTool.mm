@@ -17,7 +17,7 @@ static BaiduDistrictTool *center = nil;//定义一个全局的静态变量，满
 @property (nonatomic,strong) BMKDistrictSearch *districtSearch;
 @property (nonatomic,strong) NSMutableDictionary *districtOutlineInfoDict;
 @property (nonatomic,strong) NSMutableArray *districtNameArray;
-@property (nonatomic,strong) NSMutableArray *districtPolyganArray;
+@property (nonatomic,strong) NSMutableDictionary *districtPolyganDict;
 //更新行政区域边界时用。比如发起5次搜索，在代理回调中判断写入的次数是否和他对等。如果不对等或有其他错误，那么block返回失败
 @property (nonatomic) int searchDistrictTimes;
 @property (nonatomic,strong) districtSucBlk successBlk;
@@ -81,48 +81,29 @@ static BaiduDistrictTool *center = nil;//定义一个全局的静态变量，满
     return _districtNameArray;
 }
 
--(NSMutableArray *)districtPolyganArray {
-    if (_districtPolyganArray == nil) {
-        _districtPolyganArray = [[NSMutableArray alloc] init];
+-(NSMutableDictionary *)districtPolyganDict {
+    if (_districtPolyganDict == nil) {
+        _districtPolyganDict = [[NSMutableDictionary alloc] init];
     }
-    return _districtPolyganArray;
+    return _districtPolyganDict;
 }
 
 #pragma mark 实例化方法
 -(void)showDistrictWithName:(NSString*)districtName {
-    plistManager *manager = [[plistManager alloc] initWithPlistName:PLIST_NAME];
-    NSDictionary *districtOutlineDict = [manager readPlist];
-    //1.初始化保存行政区域多边形的数组
-    if (self.districtPolyganArray.count == 0) {
-//        NSDictionary *districtOutlineDict = [manager readPlist];
-        NSArray *keysArray = [districtOutlineDict allKeys];
-        for (NSString* key in keysArray) {
-            [self.districtPolyganArray addObject:[self transferPathStringToPolygon:districtOutlineDict[key]]];
-        }
-    }
-    
+    //先清空所有的覆盖物
+    [self.mapView removeOverlays:self.mapView.overlays];
+    // 根据对应的需求，添加覆盖物
     if ([districtName isEqualToString:ALL_CITY]) {
-        [self.mapView removeOverlays:self.mapView.overlays];
-        [self.mapView addOverlays:self.districtPolyganArray];
+        [self.mapView addOverlays:self.districtPolyganDict[ALL_CITY]];
+        [self mapViewFitPolygon:self.districtPolyganDict[ALL_CITY_POLYGAN_FIT]];
     } else {
-        [self.mapView removeOverlays:self.mapView.overlays];
-        [self.mapView addOverlay:[self transferPathStringToPolygon:districtOutlineDict[districtName]]];
-        [self mapViewFitPolygon:[self transferPathStringToPolygon:districtOutlineDict[districtName]]];
+        [self.mapView addOverlay:self.districtPolyganDict[districtName]];
+        [self mapViewFitPolygon:self.districtPolyganDict[districtName]];
     }
-        
-//        BMKPolygon* polygon = [self transferPathStringToPolygon:path];
-//        if (polygon) {
-//            [self.mapView addOverlay:polygon]; // 添加overlay
-//            if (flag) {
-//                [self mapViewFitPolygon:polygon];
-//                flag = NO;
-//            }
-//        }
-    
 }
 
-- (void)updateDistrictOutlineInfoWithSuccessBlk:(districtSucBlk)sucBlk
-                                        FailBlk:(districtFailBlk)failBlk {
+- (void)updateDistrictPlistWithSuccessBlk:(districtSucBlk)sucBlk
+                                  FailBlk:(districtFailBlk)failBlk {
     [self resetDistrictParams];
     //放入通知
     self.successBlk = sucBlk;
@@ -131,13 +112,46 @@ static BaiduDistrictTool *center = nil;//定义一个全局的静态变量，满
     [self searchDistrictOuntlineWithName:GULOU];
 }
 
+/**
+ 将plist中读出的区域边界坐标信息，转换为一个字典，保存每个区域的多边形覆盖物数据
+ */
+-(void)generateOverlaysFromPlist {
+    // 1. 读出plist数据
+    plistManager *manager = [[plistManager alloc] initWithPlistName:PLIST_NAME];
+    NSDictionary *districtOutlineDict = [manager readPlist];
+    if (districtOutlineDict == nil) {
+        NSLog(@"读取到了错误的plist信息错误");
+    } else {
+        NSArray *districtNameArray           = [districtOutlineDict allKeys];
+        NSMutableArray *districtPolyganArray = [NSMutableArray new];
+        // 2.1字典中，除了前五个value是NSString，最后一个ALL_CITY的value是一个NSArray
+        for (NSString *name in districtNameArray) {
+            BMKPolygon *polygan = [self transferPathStringToPolygon:districtOutlineDict[name]];
+            [self.districtPolyganDict setValue:polygan forKey:name];
+            [districtPolyganArray addObject:polygan];
+        }
+        
+        // 2.2将所有的边界坐标拼成一个长的字符串，并转换成多边形，用于“全市显示”时的屏幕适配
+        NSMutableString *polyganStr = [NSMutableString new];
+        for (int i; i<DISTRICT_NUM; i++) {
+            NSString *str = [NSString stringWithFormat:@"%@,",[[districtOutlineDict allValues] objectAtIndex:i]];
+            [polyganStr appendString:str];
+        }
+        [polyganStr deleteCharactersInRange:NSMakeRange(polyganStr.length-1, 1)];//去掉最后一个逗号
+        
+        [self.districtPolyganDict setValue:districtPolyganArray forKey:ALL_CITY];
+        [self.districtPolyganDict setValue:[self transferPathStringToPolygon:polyganStr] forKey:ALL_CITY_POLYGAN_FIT];
+        NSLog(@"转换后的字典 = %@",self.districtPolyganDict);
+    }
+}
+
 -(void)resetDistrictParams {
     //更新之前先将字典和计数器置空
     self.districtOutlineInfoDict = nil;
     self.searchDistrictTimes     = 0;
     NSMutableArray *array        = [NSMutableArray arrayWithObjects:GULOU,TAIJIANG,JINAN,CANGSHAN,MAWEI, nil];
     self.districtNameArray       = array;
-    [self.districtPolyganArray removeAllObjects];
+    [self.districtPolyganDict removeAllObjects];
 }
 
 -(void)searchDistrictOuntlineWithName:(NSString*)districtName {
