@@ -36,14 +36,17 @@
     if (sender.isSelected == NO) {
         [sender switchToSelectedState];
         sender.isSelected = YES;
+        NSString *districtName = [sender restorationIdentifier];
 
-        self.stationInfoArray = [[StationInfo shareInstance] fetchDistrictStationsInfoWithName:[sender restorationIdentifier]];
+        self.stationInfoArray    = [[StationInfo shareInstance] fetchDistrictStationsInfoWithName:districtName];
+        NSArray *annotationArray = [[StationInfo shareInstance] fetchDistrictStationAnnotationWithArray:self.stationInfoArray];
         [self.stationList reloadData];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:DISTRICT_BTN_SEL_RADIO
-                                                            object:[sender restorationIdentifier]];
+                                                            object:districtName];
         [self.delegate startMapviewTransform];
-        [self.delegate selDistrictWithName:[sender restorationIdentifier]];
+        [self.delegate addOverlaysToDistrictWithName:districtName];
+        [self.delegate addAnnotationPointInDistrict:annotationArray];
     }
 }
 

@@ -17,7 +17,6 @@ static BaiduDistrictTool *center = nil;//定义一个全局的静态变量，满
 @property (nonatomic,strong) BMKDistrictSearch *districtSearch;
 @property (nonatomic,strong) NSMutableDictionary *districtOutlineInfoDict;
 @property (nonatomic,strong) NSMutableArray *districtNameArray;
-@property (nonatomic,strong) NSMutableDictionary *districtPolyganDict;
 //更新行政区域边界时用。比如发起5次搜索，在代理回调中判断写入的次数是否和他对等。如果不对等或有其他错误，那么block返回失败
 @property (nonatomic) int searchDistrictTimes;
 @property (nonatomic,strong) districtSucBlk successBlk;
@@ -276,4 +275,5 @@ static BaiduDistrictTool *center = nil;//定义一个全局的静态变量，满
         self.districtSearch.delegate = nil;
     }
 }
+
 @end

@@ -55,11 +55,9 @@
                 } FailBlk:^(NSError *err) {
                     NSLog(@"空的plist重新获取数据后，错误信息 = %@",err.domain);
                 }];
-                // 3.2 已经读到正确的信息，就将这组数据转换为覆盖物
-            } else {
+            } else {// 3.2 已经读到正确的信息，就将这组数据转换为覆盖物
                 [[BaiduDistrictTool shareInstance] generateOverlaysFromPlist];
             }
-                
         } else {
             [self showTip];
         }
@@ -73,24 +71,6 @@
     self.bottomView.frame = SHOW_BOTTOM_ONLY_OPTION_RECT;
     self.bottomView.delegate = self;
     [self.view addSubview:self.bottomView];
-    
-    
-    //    // 添加一个PointAnnotation
-    //    BMKPointAnnotation* annotationA = [[BMKPointAnnotation alloc]init];
-    //    CLLocationCoordinate2D coor;
-    //    coor.latitude = 39.915;
-    //    coor.longitude = 116.404;
-    //    annotationA.coordinate = coor;
-    //    annotationA.title = @"这里是北京";
-    //
-    //    BMKPointAnnotation* annotationB = [[BMKPointAnnotation alloc]init];
-    //    CLLocationCoordinate2D coorB;
-    //    coorB.latitude = 39.945;
-    //    coorB.longitude = 116.444;
-    //    annotationB.coordinate = coorB;
-    //    annotationB.title = @"不知在哪里";
-    //    NSArray *array = [NSArray arrayWithObjects:annotationB,annotationA, nil];
-    //    [self.BaseBaiduMapView addAnnotations:array];
 }
 
 
@@ -128,32 +108,52 @@
 
 #pragma mark BMKMapViewDelegate
 -(BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id<BMKAnnotation>)annotation {
-    NSLog(@"标记名 = %@",annotation.title);
-    if ([annotation isKindOfClass:[BMKPointAnnotation class]] && [annotation.title isEqualToString:@"这里是北京"]) {
-        BMKPinAnnotationView *newAnnotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
-        newAnnotationView.pinColor = BMKPinAnnotationColorPurple;
-        newAnnotationView.animatesDrop = YES;// 设置该标注点动画显示
+//    NSLog(@"标记名 = %@",annotation.title);
+    if ([annotation isKindOfClass:[BMKPointAnnotation class]]){
+        MyPinAnnotation *myAnnotation = (MyPinAnnotation*)annotation;
+        MyPinAnnotationView *newAnnotationView = [[MyPinAnnotationView alloc] initWithDistrictName:myAnnotation.districtName annotation:myAnnotation isAnimation:NO];
+        NSLog(@"width = %f, height = %f",newAnnotationView.frame.size.width,newAnnotationView.frame.size.height);
         return newAnnotationView;
-    } else if([annotation isKindOfClass:[BMKPointAnnotation class]]){
-        BMKPinAnnotationView *newAnnotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"newAnnotation"];
-        newAnnotationView.pinColor = BMKPinAnnotationColorRed;
-        newAnnotationView.animatesDrop = YES;// 设置该标注点动画显示
-        return newAnnotationView;
-    }
+    } else
+        NSLog(@"???????????");
     return nil;
 }
 
 // 根据overlay生成对应的View
 - (BMKOverlayView*)mapView:(BMKMapView *)map viewForOverlay:(id<BMKOverlay>)overlay {
     if ([overlay isKindOfClass:[BMKPolygon class]]) {
+        NSDictionary *dict = [BaiduDistrictTool shareInstance].districtPolyganDict;
+        NSArray *districtNameArray = [dict allKeys];
+        UIColor *fillcolor;
+        for (NSString *name in districtNameArray) {
+            if (overlay == dict[name]) {
+                fillcolor = [self fetchDistrictOverlayColorWithName:name];
+            }
+        }
+        
         BMKPolygonView *polygonView = [[BMKPolygonView alloc] initWithOverlay:overlay];
         polygonView.strokeColor     = [UIColor colorWithRed:1 green:0 blue:0 alpha:0.6];
-        polygonView.fillColor       = [UIColor colorWithRed:1 green:1 blue:0 alpha:0.4];
+        polygonView.fillColor       = fillcolor;
         polygonView.lineWidth       = 1;
         polygonView.lineDash        = YES;
         return polygonView;
     }
     return nil;
+}
+
+-(UIColor*)fetchDistrictOverlayColorWithName:(NSString*)name {
+    if ([name isEqualToString:GULOU]) {
+        return [UIColor colorWithRed:252/255.0 green:243/255.0 blue:149/255.0 alpha:0.4];
+    } else if([name isEqualToString:TAIJIANG]) {
+        return [UIColor colorWithRed:245/255.0 green:166/255.0 blue:35/255.0 alpha:0.4];
+    } else if([name isEqualToString:JINAN]) {
+        return [UIColor colorWithRed:126/255.0 green:211/255.0 blue:33/255.0 alpha:0.4];
+    } else if([name isEqualToString:CANGSHAN]) {
+        return [UIColor colorWithRed:80/255.0 green:227/255.0 blue:194/255.0 alpha:0.4];
+    } else if([name isEqualToString:MAWEI]) {
+        return [UIColor colorWithRed:242/255.0 green:69/255.0 blue:61/255.0 alpha:0.4];
+    } else
+        return nil;
 }
 
 #pragma mark SVProgressHUD
@@ -200,8 +200,22 @@
     }
 }
 
--(void)selDistrictWithName:(NSString *)districtName {
+-(void)addOverlaysToDistrictWithName:(NSString *)districtName {
     [[BaiduDistrictTool shareInstance] showDistrictWithName:districtName];
-    //    [[BaiduDistrictTool shareInstance] searchDistrictWithName:districtName];
 }
+
+-(void)addAnnotationPointInDistrict:(NSArray<BMKPointAnnotation *> *)annotationArray {
+    [self.BaseBaiduMapView removeAnnotations:self.BaseBaiduMapView.annotations];
+    NSLog(@"每次传进来的数组 = %@",annotationArray);
+    [self.BaseBaiduMapView addAnnotations:annotationArray];
+    // 按键那边传过来当前区域，我们从字典中取出相应的annotation数组，添加到当前的页面上。
+}
+
+#pragma mark 点击获取坐标信息
+- (IBAction)fetchPoitCoordiate:(UITapGestureRecognizer *)sender {
+    CGPoint point = [sender locationInView:self.BaseBaiduMapView];
+    CLLocationCoordinate2D coo = [self.BaseBaiduMapView convertPoint:point toCoordinateFromView:self.BaseBaiduMapView];
+    NSLog(@"经纬度:%lf, %lf", coo.longitude,  coo.latitude);
+}
+
 @end

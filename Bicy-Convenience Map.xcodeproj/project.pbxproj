@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6A1DAEE2978C6BF51F156B47 /* libPods-Bicy-Convenience Map.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB7FDB9298BA8C8DF991882 /* libPods-Bicy-Convenience Map.a */; };
+		89446B001E237D5C00962BEE /* MyPinAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89446AFF1E237D5C00962BEE /* MyPinAnnotationView.m */; };
 		89586C681E1F367800122F52 /* plistManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89586C671E1F367800122F52 /* plistManager.m */; };
 		8958FDAA1DFF8B9800CBAB84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDA91DFF8B9800CBAB84 /* main.m */; };
 		8958FDAD1DFF8B9800CBAB84 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDAC1DFF8B9800CBAB84 /* AppDelegate.mm */; };
@@ -27,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		89446AFE1E237D5C00962BEE /* MyPinAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyPinAnnotationView.h; path = Views/MyPinAnnotationView.h; sourceTree = "<group>"; };
+		89446AFF1E237D5C00962BEE /* MyPinAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyPinAnnotationView.m; path = Views/MyPinAnnotationView.m; sourceTree = "<group>"; };
 		89586C661E1F367800122F52 /* plistManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = plistManager.h; path = Models/plistManager.h; sourceTree = "<group>"; };
 		89586C671E1F367800122F52 /* plistManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = plistManager.m; path = Models/plistManager.m; sourceTree = "<group>"; };
 		8958FDA51DFF8B9800CBAB84 /* Bicy-Convenience Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bicy-Convenience Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +157,8 @@
 		8963F5731E0918EF00EBDA1A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				89446AFE1E237D5C00962BEE /* MyPinAnnotationView.h */,
+				89446AFF1E237D5C00962BEE /* MyPinAnnotationView.m */,
 				89CC88531E0CF7FC00FAB40D /* DistrictButton.h */,
 				89CC88541E0CF7FC00FAB40D /* DistrictButton.m */,
 				8963F56E1E0918EA00EBDA1A /* BottomDistrictView.h */,
@@ -305,6 +310,7 @@
 				8958FDB01DFF8B9800CBAB84 /* ViewController.mm in Sources */,
 				89586C681E1F367800122F52 /* plistManager.m in Sources */,
 				8963F5711E0918EA00EBDA1A /* BottomDistrictView.m in Sources */,
+				89446B001E237D5C00962BEE /* MyPinAnnotationView.m in Sources */,
 				8958FDC91E03C97600CBAB84 /* BaiduDistrictTool.mm in Sources */,
 				8958FDC61E03C2F400CBAB84 /* BaiduMapTool.m in Sources */,
 				89CC88511E0BB9D600FAB40D /* StationInfo.m in Sources */,

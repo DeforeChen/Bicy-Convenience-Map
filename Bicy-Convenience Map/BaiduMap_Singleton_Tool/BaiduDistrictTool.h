@@ -7,7 +7,6 @@
 //
 
 #import "BaiduMapTool.h"
-#import <BaiduMapAPI_Map/BMKMapComponent.h>
 #import <BaiduMapAPI_Search/BMKSearchComponent.h>
 #import <BaiduMapAPI_Utils/BMKUtilsComponent.h>
 
@@ -15,6 +14,8 @@ typedef void(^districtSucBlk)();
 typedef void(^districtFailBlk)(NSError *err);
 
 @interface BaiduDistrictTool : BaiduMapTool<BMKMapViewDelegate>
+@property (nonatomic,strong) NSMutableDictionary *districtPolyganDict; //存放区域overlay的字典
+
 /**
  单例的初始化，将mapview放入自己的类中，便于代理的指定和释放控制
  @param mapView 主页的mapview

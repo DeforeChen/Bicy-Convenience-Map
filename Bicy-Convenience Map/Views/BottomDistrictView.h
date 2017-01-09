@@ -26,7 +26,7 @@ typedef void (^selStationInImageBlk)(NSUInteger imgIndex);
  通知当前选中的行政区域
  @param districtName 行政区域名称
  */
--(void)selDistrictWithName:(NSString*)districtName;
+-(void)addOverlaysToDistrictWithName:(NSString*)districtName;
 
 /**
  通知主页开始上拉底栏，同时缩小mapview
@@ -37,6 +37,12 @@ typedef void (^selStationInImageBlk)(NSUInteger imgIndex);
  通知主页停止上拉底栏，同时恢复mapview
  */
 -(void)stopMapviewTransform;
+
+/**
+ 通知主页在当前区域内添加标注点信息
+ @param annotationArray 标注点数组
+ */
+-(void)addAnnotationPointInDistrict:(NSArray<BMKPointAnnotation*>*)annotationArray;
 @end
 
 

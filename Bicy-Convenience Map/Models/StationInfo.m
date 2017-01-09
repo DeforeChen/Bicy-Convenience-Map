@@ -18,6 +18,7 @@ static StationInfo *center = nil;//定义一个全局的静态变量，满足静
 @interface StationInfo()
 @property(nonatomic,strong) DistrictsInfo* districtInfo;
 @property(nonatomic,strong) AFHTTPRequestOperationManager *manager;
+
 @end
 
 @implementation StationInfo
@@ -89,6 +90,40 @@ static StationInfo *center = nil;//定义一个全局的静态变量，满足静
         [allcityStations addObjectsFromArray:self.districtInfo.cangshan];
         return allcityStations;
     }
+}
+
+- (NSArray<MyPinAnnotation*>*)fetchDistrictStationAnnotationWithArray:(NSArray<id<stationProtocol>>*)districtStationArray {
+    NSMutableArray *stationAnnotationArray = [NSMutableArray new];
+    // 从站点信息中将经纬度取出，转化为浮点型，并添加到一个标注类中。完成后，将标注类对象放入数组并返回
+    for (id<stationProtocol> station in districtStationArray) {
+        MyPinAnnotation* annotation = [[MyPinAnnotation alloc]init];
+        CLLocationCoordinate2D coor;
+        NSLog(@"json站点经纬度 = %@,%@",station.latitude,station.longtitude);
+        coor.latitude = [station.latitude floatValue];
+        coor.longitude = [station.longtitude floatValue];
+        NSLog(@"float转化后站点经纬度 = %f,%f",coor.latitude,coor.longitude);
+        annotation.coordinate   = coor;
+        annotation.title        = @"TEST";
+        annotation.districtName = station.district;
+        [stationAnnotationArray addObject:annotation];
+    }
+    return stationAnnotationArray;
+}
+@end
+
+@implementation BaseInfo
+-(id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property {
+    if ([property.name isEqualToString:@"latitude"]) {
+        NSNumber *latitudeNum = [NSNumber numberWithFloat:[oldValue floatValue]];
+        return latitudeNum;
+    }
+    
+    if ([property.name isEqualToString:@"longtitude"]) {
+        NSNumber *longtitudeNum = [NSNumber numberWithFloat:[oldValue floatValue]];
+        return longtitudeNum;
+    }
+    
+    return oldValue;
 }
 @end
 
