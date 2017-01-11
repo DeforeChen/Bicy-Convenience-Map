@@ -9,6 +9,7 @@
 #import "StationInfo.h"
 #import "MJExtension.h"
 #import "config.h"
+#import "AFNetworking.h"
 
 #define SELFCLASS_NAME StationInfo
 #define SELFCLASS_NAME_STR @"StationInfo"
@@ -92,19 +93,19 @@ static StationInfo *center = nil;//定义一个全局的静态变量，满足静
     }
 }
 
-- (NSArray<MyPinAnnotation*>*)fetchDistrictStationAnnotationWithArray:(NSArray<id<stationProtocol>>*)districtStationArray {
+- (NSArray<BMKPointAnnotation*>*)fetchDistrictStationAnnotationWithArray:(NSArray<id<stationProtocol>>*)districtStationArray {
     NSMutableArray *stationAnnotationArray = [NSMutableArray new];
     // 从站点信息中将经纬度取出，转化为浮点型，并添加到一个标注类中。完成后，将标注类对象放入数组并返回
     for (id<stationProtocol> station in districtStationArray) {
-        MyPinAnnotation* annotation = [[MyPinAnnotation alloc]init];
+        BMKPointAnnotation* annotation = [[BMKPointAnnotation alloc]init];
         CLLocationCoordinate2D coor;
         NSLog(@"json站点经纬度 = %@,%@",station.latitude,station.longtitude);
         coor.latitude = [station.latitude floatValue];
         coor.longitude = [station.longtitude floatValue];
         NSLog(@"float转化后站点经纬度 = %f,%f",coor.latitude,coor.longitude);
         annotation.coordinate   = coor;
-        annotation.title        = @"TEST";
-        annotation.districtName = station.district;
+        annotation.title        = station.stationName;
+        annotation.subtitle     = station.district;
         [stationAnnotationArray addObject:annotation];
     }
     return stationAnnotationArray;

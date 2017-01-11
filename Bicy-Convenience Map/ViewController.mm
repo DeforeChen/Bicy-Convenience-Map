@@ -25,13 +25,23 @@
 @property (weak, nonatomic) IBOutlet BMKMapView *BaseBaiduMapView;
 @property (nonatomic) BOOL isAccess;//百度授权/联网完成与否
 @property (strong,nonatomic) BottomDistrictView* bottomView;
+
+//防止底栏的列表被二次选中造成死循环
+/*
+ 本类中选中annotation时，会在annotation didselect代理中去选中底栏list中对应的cell.
+ 也需要在 BottomDistrictView中加一个标志位，防止死循环发生
+ 
+ 底栏通过代理将索引传给本类，本类选中annotation，在annotaion didselect代理中会再去回选底栏的列表，造成死循环。
+ 这里通过一个标志位，如果是底栏发起的选中annotation，那么在annotation didselect代理中就不再去选中底栏。
+ */
+@property (nonatomic) BOOL noNeedToSelectStationList;
 @end
 
 @implementation ViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.isAccess = NO;
+    self.isAccess                  = NO;
+    self.noNeedToSelectStationList = NO;
     //1. 初次启动，等待百度的授权和联网完成，否则在viewdidappear中持续放HUD
     AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
     app.accessCompleteBlk = ^(BOOL result){
@@ -110,13 +120,24 @@
 -(BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id<BMKAnnotation>)annotation {
 //    NSLog(@"标记名 = %@",annotation.title);
     if ([annotation isKindOfClass:[BMKPointAnnotation class]]){
-        MyPinAnnotation *myAnnotation = (MyPinAnnotation*)annotation;
-        MyPinAnnotationView *newAnnotationView = [[MyPinAnnotationView alloc] initWithDistrictName:myAnnotation.districtName annotation:myAnnotation isAnimation:NO];
+        MyPinAnnotationView *newAnnotationView = [[MyPinAnnotationView alloc] initWithCustomAnotation:annotation
+                                                                                          isAnimation:YES];
         NSLog(@"width = %f, height = %f",newAnnotationView.frame.size.width,newAnnotationView.frame.size.height);
         return newAnnotationView;
     } else
         NSLog(@"???????????");
     return nil;
+}
+
+//选中对应的标注时的回调
+-(void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view {
+    NSString *imgName = [NSString stringWithFormat:@"%@_select",view.annotation.subtitle];
+    view.image = [UIImage imageNamed:imgName];
+    NSUInteger index = [self.BaseBaiduMapView.annotations indexOfObject:view.annotation];
+    if (self.noNeedToSelectStationList == YES) {
+        self.noNeedToSelectStationList = NO;
+    } else
+        [self.bottomView selectCorrespondingCellInStationList:index];
 }
 
 // 根据overlay生成对应的View
@@ -134,7 +155,7 @@
         BMKPolygonView *polygonView = [[BMKPolygonView alloc] initWithOverlay:overlay];
         polygonView.strokeColor     = [UIColor colorWithRed:1 green:0 blue:0 alpha:0.6];
         polygonView.fillColor       = fillcolor;
-        polygonView.lineWidth       = 1;
+        polygonView.lineWidth       = 2;
         polygonView.lineDash        = YES;
         return polygonView;
     }
@@ -168,7 +189,7 @@
     [SVProgressHUD dismiss];
 }
 
-#pragma mark stationInteractionDelegate
+#pragma mark stationInteractionDelegate 主页和底栏View的交互代理
 -(void)startMapviewTransform {
     if (self.bottomView.frame.origin.y == HEIGHT-BTN_TOP_HEIGHT) {
         [UIView animateWithDuration:ANIMATION_TIME
@@ -204,9 +225,16 @@
     [[BaiduDistrictTool shareInstance] showDistrictWithName:districtName];
 }
 
--(void)addAnnotationPointInDistrict:(NSArray<BMKPointAnnotation *> *)annotationArray {
+-(void)selectCorrespondingAnnotation:(NSInteger)listIndex {
+    self.noNeedToSelectStationList = YES;
+    [self.BaseBaiduMapView selectAnnotation:self.BaseBaiduMapView.annotations[listIndex] animated:YES];
+}
+
+-(void)addAnnotationPointInDistrict:(NSArray<BMKPointAnnotation*>*)annotationArray {
+    
     [self.BaseBaiduMapView removeAnnotations:self.BaseBaiduMapView.annotations];
-    NSLog(@"每次传进来的数组 = %@",annotationArray);
+    
+    NSLog(@"移走标注否 = %@",self.BaseBaiduMapView.annotations);
     [self.BaseBaiduMapView addAnnotations:annotationArray];
     // 按键那边传过来当前区域，我们从字典中取出相应的annotation数组，添加到当前的页面上。
 }

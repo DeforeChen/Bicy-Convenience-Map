@@ -21,13 +21,10 @@
     // Configure the view for the selected state
 }
 
-+ (instancetype)initMyCellWithStationName:(NSString*)name
-                           StationAddress:(NSString*)address{
++ (instancetype)initMyCell {
     StattionsTableViewCell *cell = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class])
-                                                                 owner:nil
+                                                                 owner:self
                                                                options:nil].lastObject;
-    cell.stationName.text = name;
-    cell.stationAddress.text = address;
     return cell;
 }
 @end

@@ -13,14 +13,10 @@
 typedef void (^selStationInImageBlk)(NSUInteger imgIndex);
 @protocol stationInteractionDelegate <NSObject>
 /**
- 发送列表中选中的站点索引
-
+ 选中主页上对应的站点标注
  @param listIndex 列表中的站点索引
- @param blk 图中的站点索引信息通知回列表
  */
--(void)selStationWithListIndex:(NSInteger)listIndex
-                  selMyCellBlk:(selStationInImageBlk)blk;
-
+-(void)selectCorrespondingAnnotation:(NSInteger)listIndex;
 
 /**
  通知当前选中的行政区域
@@ -53,4 +49,10 @@ typedef void (^selStationInImageBlk)(NSUInteger imgIndex);
 @property (weak, nonatomic) IBOutlet UITableView *stationList;
 @property (strong,nonatomic) id<stationInteractionDelegate> delegate;
 + (instancetype) initMyView;
+
+/**
+ 选中底部栏中对应列表中的站点元素
+ @param listIndex 索引值
+ */
+-(void)selectCorrespondingCellInStationList:(NSInteger)listIndex;
 @end

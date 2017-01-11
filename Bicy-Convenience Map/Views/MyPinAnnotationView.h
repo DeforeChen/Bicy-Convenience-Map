@@ -7,12 +7,8 @@
 //
 
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
-
-@interface MyPinAnnotation : BMKPointAnnotation
-@property (nonatomic,strong) NSString *districtName;
-@end
+#import "StationProtocol.h"
 
 @interface MyPinAnnotationView : BMKPinAnnotationView
-
--(instancetype)initWithDistrictName:(NSString*)name annotation:(MyPinAnnotation*)annotation isAnimation:(BOOL)isAnimationn;
+-(instancetype)initWithCustomAnotation:(BMKPointAnnotation*)annotation isAnimation:(BOOL)isAnimationn;
 @end

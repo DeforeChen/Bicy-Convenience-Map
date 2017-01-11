@@ -14,6 +14,7 @@ static BaiduLocationTool *center = nil;//定义一个全局的静态变量，满
 
 @interface BaiduLocationTool()<BMKLocationServiceDelegate>
 @property (nonatomic,strong) BMKLocationService* locService;
+@property (nonatomic) BOOL setCurrentLocCenter;//开启定位时这个值置TRUE一次，让当前位置居中
 @end
 
 @implementation BaiduLocationTool
@@ -62,9 +63,10 @@ static BaiduLocationTool *center = nil;//定义一个全局的静态变量，满
 -(void)startLocation {
     NSLog(@"进入罗盘定位状态");
     [self.locService startUserLocationService];
-    self.mapView.showsUserLocation = NO;//先关闭显示的定位图层
-    self.mapView.userTrackingMode = BMKUserTrackingModeFollowWithHeading;//设置定位的状态
-    self.mapView.showsUserLocation = YES;//显示定位图层
+    self.mapView.showsUserLocation  = NO;//先关闭显示的定位图层
+    self.mapView.userTrackingMode   = BMKUserTrackingModeNone;//BMKUserTrackingModeFollowWithHeading;//设置定位的状态
+    self.mapView.showsUserLocation  = YES;//显示定位图层
+    self.setCurrentLocCenter        = YES;
 }
 
 #pragma mark 代理实现
@@ -89,8 +91,14 @@ static BaiduLocationTool *center = nil;//定义一个全局的静态变量，满
  *@param userLocation 新的用户位置
  */
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation {
-    //    NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+        NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
     [self.mapView updateLocationData:userLocation];
+    if (self.setCurrentLocCenter == YES) {
+        self.mapView.centerCoordinate = userLocation.location.coordinate;
+        self.setCurrentLocCenter = NO;
+    }
+    
+    
 }
 
 /**

@@ -14,6 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *stationBgImage;
 @property (weak, nonatomic) IBOutlet UIButton *gotoBtn;
 
-+ (instancetype)initMyCellWithStationName:(NSString*)name
-                           StationAddress:(NSString*)address;
++ (instancetype)initMyCell;
+
 @end

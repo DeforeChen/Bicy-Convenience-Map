@@ -7,21 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AFNetworking.h"
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
+#import "MyPinAnnotationView.h"
+#import "StationProtocol.h"
 #import "MyPinAnnotationView.h"
 
 typedef void(^stationSucBlk)();
 typedef void(^stationFailBlk)(NSError *err);
-
-@protocol stationProtocol<NSObject>
-@required
-@property (nonatomic , copy)   NSString *district;
-@property (nonatomic , strong) NSNumber *latitude;
-@property (nonatomic , strong) NSNumber *longtitude;
-@property (nonatomic , copy)  NSString  *stationAddress;
-@property (nonatomic , copy)  NSString  *stationName;
-@end
 
 #pragma mark models
 @interface BaseInfo :NSObject<stationProtocol>
@@ -91,5 +83,5 @@ typedef void(^stationFailBlk)(NSError *err);
  @param districtStationArray 站点信息数组
  @return 标注类数组
  */
-- (NSArray<MyPinAnnotation*>*)fetchDistrictStationAnnotationWithArray:(NSArray<id<stationProtocol>>*)districtStationArray;
+- (NSArray<BMKPointAnnotation*>*)fetchDistrictStationAnnotationWithArray:(NSArray<id<stationProtocol>>*)districtStationArray;
 @end

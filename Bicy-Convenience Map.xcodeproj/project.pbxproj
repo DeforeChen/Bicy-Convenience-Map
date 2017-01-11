@@ -30,6 +30,7 @@
 /* Begin PBXFileReference section */
 		89446AFE1E237D5C00962BEE /* MyPinAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyPinAnnotationView.h; path = Views/MyPinAnnotationView.h; sourceTree = "<group>"; };
 		89446AFF1E237D5C00962BEE /* MyPinAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyPinAnnotationView.m; path = Views/MyPinAnnotationView.m; sourceTree = "<group>"; };
+		89446B011E24CDD100962BEE /* StationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationProtocol.h; path = Models/StationProtocol.h; sourceTree = "<group>"; };
 		89586C661E1F367800122F52 /* plistManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = plistManager.h; path = Models/plistManager.h; sourceTree = "<group>"; };
 		89586C671E1F367800122F52 /* plistManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = plistManager.m; path = Models/plistManager.m; sourceTree = "<group>"; };
 		8958FDA51DFF8B9800CBAB84 /* Bicy-Convenience Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bicy-Convenience Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +177,7 @@
 			children = (
 				89586C661E1F367800122F52 /* plistManager.h */,
 				89586C671E1F367800122F52 /* plistManager.m */,
+				89446B011E24CDD100962BEE /* StationProtocol.h */,
 				89CC884F1E0BB9D600FAB40D /* StationInfo.h */,
 				89CC88501E0BB9D600FAB40D /* StationInfo.m */,
 			);
