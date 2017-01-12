@@ -13,7 +13,7 @@
 // 百度密钥
 #define BAIDU_KEY @"puAybLNI7odsDotLGGebvoDrvn6I5qQZ"
 // 七牛提供的站点URL数据
-#define STATION_INFO_URL @"http://ois7g1xk4.bkt.clouddn.com/StationsInfo.json"
+#define STATION_INFO_URL @"http://ois7g1xk4.bkt.clouddn.com/stations.json"
 
 /**
  屏幕尺寸相关
@@ -35,6 +35,7 @@
 #define SHOW_SHORT_MAPVIEW            CGRectMake(0, 0, WIDTH, HEIGHT-BOTTOM_RECT_HEIGHT+BTN_TOP_HEIGHT)
 #define SCREEN_RECT                   [UIScreen mainScreen].bounds
 
+#define UNREACHABLE_INDEX   10000
 // 标注背景图片的大小
 #define ANNOTATION_RECT CGRectMake(0, 0, 30, 30);
 #define ANNOTATION_REUSEID @"newAnnotation"

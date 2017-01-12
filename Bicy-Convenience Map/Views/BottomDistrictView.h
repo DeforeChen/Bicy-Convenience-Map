@@ -55,4 +55,10 @@ typedef void (^selStationInImageBlk)(NSUInteger imgIndex);
  @param listIndex 索引值
  */
 -(void)selectCorrespondingCellInStationList:(NSInteger)listIndex;
+
+/**
+ 不选中底部栏中对应列表中的站点元素
+ @param listIndex 索引值
+ */
+-(void)deselectCorrespondingCellInStationList:(NSInteger)listIndex;
 @end

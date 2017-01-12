@@ -14,7 +14,9 @@
 @interface BottomDistrictView()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic) BOOL isSelected;
 @property (nonatomic,strong) NSArray<id<stationProtocol>>* stationInfoArray;
-@property (nonatomic) BOOL needReload;
+@property (nonatomic,strong) UIImage *cellSelectImg;
+@property (nonatomic,strong) UIImage *cellDeselectImg;
+@property (nonatomic) NSInteger previousSelIndex;
 //防止底栏的列表被二次选中造成死循环
 /*
  本类中选中annotation时，会在annotation didselect代理中去选中底栏list中对应的cell.
@@ -29,7 +31,9 @@
 @implementation BottomDistrictView
 - (void)setup {
     self.noNeedToSelectAnnotation = NO;
-    self.needReload               = NO;
+    self.cellSelectImg   =  [UIImage imageNamed:@"站点单元栏_selected"];
+    self.cellDeselectImg =  [UIImage imageNamed:@"站点单元栏_deselected"];
+    
     self.opaque      = NO;//不透明
     self.contentMode = UIViewContentModeRedraw;//如果bounds变化了，就要重新绘制它
 } //通常是里面放的是当前UIView是否要透明，透明度多少等等的optimize选项
@@ -49,10 +53,11 @@
         [sender switchToSelectedState];
         sender.isSelected = YES;
         NSString *districtName = [sender restorationIdentifier];
-
+        
         self.stationInfoArray    = [[StationInfo shareInstance] fetchDistrictStationsInfoWithName:districtName];
+        NSLog(@"%@ 的数组 %@",districtName,self.stationInfoArray);
         NSArray *annotationArray = [[StationInfo shareInstance] fetchDistrictStationAnnotationWithArray:self.stationInfoArray];
-        self.needReload = YES;
+        self.previousSelIndex    = UNREACHABLE_INDEX;
         [self.stationList reloadData];
 
         [[NSNotificationCenter defaultCenter] postNotificationName:DISTRICT_BTN_SEL_RADIO
@@ -88,6 +93,12 @@
     [self tableView:self.stationList didSelectRowAtIndexPath:indexpath];
 }
 
+-(void)deselectCorrespondingCellInStationList:(NSInteger)listIndex {
+    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:listIndex
+                                                inSection:0];
+    [self tableView:self.stationList didDeselectRowAtIndexPath:indexpath];
+}
+
 #pragma mark tableview delegate
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.stationInfoArray.count;
@@ -103,20 +114,23 @@
     StattionsTableViewCell* cell = (StattionsTableViewCell*)[tableView dequeueReusableCellWithIdentifier:OptionTableReuseID];
     if (cell == nil) {
         cell = [StattionsTableViewCell initMyCell];
-    } else{
-        
+    } else {
+        if (indexPath.row == self.previousSelIndex) {
+            NSLog(@"索引值 = %@",indexPath);
+            [self makeCellUnderSelectionMode:cell];
+        } else
+            [self makeCellUnderDeselectionMode:cell];
     }
+    
     cell.stationAddress.text = [self.stationInfoArray[indexPath.row] stationAddress];
     cell.stationName.text    = [self.stationInfoArray[indexPath.row] stationName];
-    //从数组中取出对应的文本，贴给当前的这个cell，index是随着回滚事件代理调用的对应路径
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"XUANZHONG");
-    StattionsTableViewCell *cell = (StattionsTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
-    cell.stationBgImage.image = [UIImage imageNamed:@"站点单元栏_selected"];
-    [cell.gotoBtn setHidden:NO];
+    self.previousSelIndex = indexPath.row;
+    StattionsTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [self makeCellUnderSelectionMode:cell];
     if (self.noNeedToSelectAnnotation == YES) {
         self.noNeedToSelectAnnotation = NO;
     } else {
@@ -125,6 +139,21 @@
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"FEI____XUANZHONG");
+    StattionsTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [self makeCellUnderDeselectionMode:cell];
 }
+
+/**
+ 让cell的UI处于选中状态
+ */
+-(void)makeCellUnderSelectionMode:(StattionsTableViewCell*)cell {
+    cell.stationBgImage.image = self.cellSelectImg;
+    [cell.gotoBtn setHidden:NO];
+}
+
+-(void)makeCellUnderDeselectionMode:(StattionsTableViewCell*)cell {
+    cell.stationBgImage.image = self.cellDeselectImg;
+    [cell.gotoBtn setHidden:YES];
+}
+
 @end

@@ -16,14 +16,9 @@
         self = [[MyPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:ANNOTATION_REUSEID];
         self.frame = ANNOTATION_RECT;
         self.animatesDrop = isAnimationn;
-        self.image = [self fectchBGImageWithDistrictName:annotation.subtitle];
-        
+        self.image = [UIImage imageNamed:@"站点_deselected"];
     }
     return self;
 }
 
--(UIImage*)fectchBGImageWithDistrictName:(NSString*)name {
-    NSString *imageName = [NSString stringWithFormat:@"%@_deselect",name];
-    return [UIImage imageNamed:imageName];
-}
 @end

@@ -131,13 +131,18 @@
 
 //选中对应的标注时的回调
 -(void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view {
-    NSString *imgName = [NSString stringWithFormat:@"%@_select",view.annotation.subtitle];
-    view.image = [UIImage imageNamed:imgName];
+    view.image = [UIImage imageNamed:@"站点_selected"];
     NSUInteger index = [self.BaseBaiduMapView.annotations indexOfObject:view.annotation];
     if (self.noNeedToSelectStationList == YES) {
         self.noNeedToSelectStationList = NO;
     } else
         [self.bottomView selectCorrespondingCellInStationList:index];
+}
+
+-(void)mapView:(BMKMapView *)mapView didDeselectAnnotationView:(BMKAnnotationView *)view {
+    view.image = [UIImage imageNamed:@"站点_deselected"];
+    NSUInteger index = [self.BaseBaiduMapView.annotations indexOfObject:view.annotation];
+    [self.bottomView deselectCorrespondingCellInStationList:index];
 }
 
 // 根据overlay生成对应的View
