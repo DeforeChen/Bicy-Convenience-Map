@@ -7,9 +7,12 @@
 //
 
 #import "StattionsTableViewCell.h"
+#import "config.h"
+@interface StattionsTableViewCell()
+
+@end
 
 @implementation StattionsTableViewCell
-
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
@@ -26,5 +29,13 @@
                                                                  owner:self
                                                                options:nil].lastObject;
     return cell;
+}
+
+-(void)makeCellUnderSelectionMode {
+    self.contentView.backgroundColor = CELL_SEL_COLOR;
+}
+
+-(void)makeCellUnderDeselectionMode {
+    self.contentView.backgroundColor = CELL_DESEL_COLOR;
 }
 @end

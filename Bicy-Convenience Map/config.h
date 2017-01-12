@@ -54,6 +54,13 @@
 
 
 /**
+ 自定义CELL相关
+ */
+#define CELL_HEIGHT 52
+#define CELL_SEL_COLOR   [UIColor colorWithRed:255/255.0 green:249/255.0 blue:214/255.0 alpha:1.0]
+#define CELL_DESEL_COLOR [UIColor colorWithRed:184/255.0 green:233/255.0 blue:134/255.0 alpha:1.0]
+
+/**
  行政区域名
  */
 #define GULOU    @"鼓楼区"
@@ -65,8 +72,16 @@
 #define ALL_CITY_POLYGAN_FIT @"全市屏幕适配" //全市显示时候的屏幕适配
 #define DISTRICT_NUM 5
 
+#define GULOU_OVERLAY_COLOR     [UIColor colorWithRed:248/255.0 green:238/255.0 blue:28/255.0 alpha:0.4]
+#define TAIJIANG_OVERLAY_COLOR  [UIColor colorWithRed:245/255.0 green:166/255.0 blue:35/255.0 alpha:0.4]
+#define JINAN_OVERLAY_COLOR     [UIColor colorWithRed:126/255.0 green:211/255.0 blue:33/255.0 alpha:0.4]
+#define CANGSHAN_OVERLAY_COLOR  [UIColor colorWithRed:80/255.0 green:227/255.0 blue:194/255.0 alpha:0.4]
+#define MAWEI_OVERLAY_COLOR     [UIColor colorWithRed:242/255.0 green:69/255.0 blue:61/255.0 alpha:0.4]
+
 //保存行政区域边界的plist文件名
 #define PLIST_NAME @"districtOutlineInfo.plist"
 
 #define ANIMATION_TIME 0.4
+#define ZOOM_LEVEL 16.5 // 选中一个站点时的放大等级
+
 #endif /* config_h */

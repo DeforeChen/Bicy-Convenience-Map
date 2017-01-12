@@ -11,9 +11,18 @@
 @interface StattionsTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *stationName;
 @property (weak, nonatomic) IBOutlet UILabel *stationAddress;
-@property (weak, nonatomic) IBOutlet UIImageView *stationBgImage;
-@property (weak, nonatomic) IBOutlet UIButton *gotoBtn;
+@property (weak, nonatomic) IBOutlet UILabel *districtName;
+@property (weak, nonatomic) IBOutlet UIImageView *districtImage;
 
 + (instancetype)initMyCell;
 
+/**
+ 设置cell为选中模式
+ */
+-(void)makeCellUnderSelectionMode;
+
+/**
+ 设置cell为非选中模式
+ */
+-(void)makeCellUnderDeselectionMode;
 @end

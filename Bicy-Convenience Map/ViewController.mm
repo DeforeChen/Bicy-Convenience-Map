@@ -132,6 +132,8 @@
 //选中对应的标注时的回调
 -(void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view {
     view.image = [UIImage imageNamed:@"站点_selected"];
+    self.BaseBaiduMapView.centerCoordinate = view.annotation.coordinate;  //userLocation.location.coordinate;
+    self.BaseBaiduMapView.zoomLevel        = ZOOM_LEVEL;
     NSUInteger index = [self.BaseBaiduMapView.annotations indexOfObject:view.annotation];
     if (self.noNeedToSelectStationList == YES) {
         self.noNeedToSelectStationList = NO;
@@ -169,15 +171,15 @@
 
 -(UIColor*)fetchDistrictOverlayColorWithName:(NSString*)name {
     if ([name isEqualToString:GULOU]) {
-        return [UIColor colorWithRed:252/255.0 green:243/255.0 blue:149/255.0 alpha:0.4];
+        return GULOU_OVERLAY_COLOR;
     } else if([name isEqualToString:TAIJIANG]) {
-        return [UIColor colorWithRed:245/255.0 green:166/255.0 blue:35/255.0 alpha:0.4];
+        return TAIJIANG_OVERLAY_COLOR;
     } else if([name isEqualToString:JINAN]) {
-        return [UIColor colorWithRed:126/255.0 green:211/255.0 blue:33/255.0 alpha:0.4];
+        return JINAN_OVERLAY_COLOR;
     } else if([name isEqualToString:CANGSHAN]) {
-        return [UIColor colorWithRed:80/255.0 green:227/255.0 blue:194/255.0 alpha:0.4];
+        return CANGSHAN_OVERLAY_COLOR;
     } else if([name isEqualToString:MAWEI]) {
-        return [UIColor colorWithRed:242/255.0 green:69/255.0 blue:61/255.0 alpha:0.4];
+        return MAWEI_OVERLAY_COLOR;
     } else
         return nil;
 }

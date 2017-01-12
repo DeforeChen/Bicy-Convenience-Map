@@ -14,8 +14,6 @@
 @interface BottomDistrictView()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic) BOOL isSelected;
 @property (nonatomic,strong) NSArray<id<stationProtocol>>* stationInfoArray;
-@property (nonatomic,strong) UIImage *cellSelectImg;
-@property (nonatomic,strong) UIImage *cellDeselectImg;
 @property (nonatomic) NSInteger previousSelIndex;
 //防止底栏的列表被二次选中造成死循环
 /*
@@ -31,9 +29,6 @@
 @implementation BottomDistrictView
 - (void)setup {
     self.noNeedToSelectAnnotation = NO;
-    self.cellSelectImg   =  [UIImage imageNamed:@"站点单元栏_selected"];
-    self.cellDeselectImg =  [UIImage imageNamed:@"站点单元栏_deselected"];
-    
     self.opaque      = NO;//不透明
     self.contentMode = UIViewContentModeRedraw;//如果bounds变化了，就要重新绘制它
 } //通常是里面放的是当前UIView是否要透明，透明度多少等等的optimize选项
@@ -82,6 +77,8 @@
 
 -(void)selectCorrespondingCellInStationList:(NSInteger)listIndex {
     self.noNeedToSelectAnnotation = YES;
+    self.previousSelIndex         = listIndex;
+    NSLog(@"test 1.图标选中对应的cell索引 = %lu",listIndex);
     NSIndexPath *indexpath = [NSIndexPath indexPathForRow:listIndex
                                                 inSection:0];
     [self.stationList scrollToRowAtIndexPath:indexpath
@@ -105,32 +102,36 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return BTN_HEIGHT;
+    return CELL_HEIGHT;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"创建cell,索引值 = %lu,上一个索引值 = %lu",indexPath.row,self.previousSelIndex);
     static  NSString *const OptionTableReuseID = @"reuseID";        //设立reuse池的标签名（或者说池子的名称）
     //表示从现有的池子（标签已指定）取出排在队列最前面的那个 cell
     StattionsTableViewCell* cell = (StattionsTableViewCell*)[tableView dequeueReusableCellWithIdentifier:OptionTableReuseID];
     if (cell == nil) {
         cell = [StattionsTableViewCell initMyCell];
-    } else {
-        if (indexPath.row == self.previousSelIndex) {
-            NSLog(@"索引值 = %@",indexPath);
-            [self makeCellUnderSelectionMode:cell];
-        } else
-            [self makeCellUnderDeselectionMode:cell];
     }
+    
+    // 如果先选中annotation，跳转到对应的索引，此时cell是第一次创建，他的背景图也要变成选中状态
+    if (indexPath.row == self.previousSelIndex) {
+        [cell makeCellUnderSelectionMode];
+    } else
+        [cell makeCellUnderDeselectionMode];
     
     cell.stationAddress.text = [self.stationInfoArray[indexPath.row] stationAddress];
     cell.stationName.text    = [self.stationInfoArray[indexPath.row] stationName];
+    cell.districtName.text   = [self.stationInfoArray[indexPath.row] district];
+    NSString *imgName = [NSString stringWithFormat:@"%@logo",cell.districtName.text];
+    cell.districtImage.image       = [UIImage imageNamed:imgName];
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.previousSelIndex = indexPath.row;
     StattionsTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    [self makeCellUnderSelectionMode:cell];
+    [cell makeCellUnderSelectionMode];
     if (self.noNeedToSelectAnnotation == YES) {
         self.noNeedToSelectAnnotation = NO;
     } else {
@@ -140,20 +141,7 @@
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     StattionsTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    [self makeCellUnderDeselectionMode:cell];
-}
-
-/**
- 让cell的UI处于选中状态
- */
--(void)makeCellUnderSelectionMode:(StattionsTableViewCell*)cell {
-    cell.stationBgImage.image = self.cellSelectImg;
-    [cell.gotoBtn setHidden:NO];
-}
-
--(void)makeCellUnderDeselectionMode:(StattionsTableViewCell*)cell {
-    cell.stationBgImage.image = self.cellDeselectImg;
-    [cell.gotoBtn setHidden:YES];
+    [cell makeCellUnderDeselectionMode];
 }
 
 @end

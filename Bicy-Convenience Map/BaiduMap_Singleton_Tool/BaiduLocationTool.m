@@ -61,7 +61,6 @@ static BaiduLocationTool *center = nil;//定义一个全局的静态变量，满
 }
 
 -(void)startLocation {
-    NSLog(@"进入罗盘定位状态");
     [self.locService startUserLocationService];
     self.mapView.showsUserLocation  = NO;//先关闭显示的定位图层
     self.mapView.userTrackingMode   = BMKUserTrackingModeNone;//BMKUserTrackingModeFollowWithHeading;//设置定位的状态
@@ -83,7 +82,7 @@ static BaiduLocationTool *center = nil;//定义一个全局的静态变量，满
  */
 - (void)didUpdateUserHeading:(BMKUserLocation *)userLocation {
     [self.mapView updateLocationData:userLocation];
-    NSLog(@"heading is %@",userLocation.heading);
+//    NSLog(@"heading is %@",userLocation.heading);
 }
 
 /**
