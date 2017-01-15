@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GotoView.h"
 
 @interface StattionsTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *stationName;

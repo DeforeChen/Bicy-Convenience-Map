@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,8 +31,38 @@
                                     <outletCollection property="gestureRecognizers" destination="HYk-re-9FH" appends="YES" id="aoK-4B-93D"/>
                                 </connections>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CDz-dd-xuH" userLabel="TopView">
+                                <rect key="frame" x="27" y="16" width="320" height="42"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="顶栏" translatesAutoresizingMaskIntoConstraints="NO" id="n7e-7R-o9n">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="THG-cP-sZ4">
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="定位_deselect"/>
+                                        <state key="highlighted" image="定位_select"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6j-4C-TVe">
+                                        <rect key="frame" x="278" y="0.0" width="42" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="设置_deselect"/>
+                                        <state key="highlighted" image="设置_select"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="6eK-Ha-rae"/>
+                                    <constraint firstAttribute="width" constant="320" id="ak0-6L-aKS"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="CDz-dd-xuH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1DU-bF-Ngk"/>
+                            <constraint firstItem="CDz-dd-xuH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="16" id="6ia-oE-ddC"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="BaseBaiduMapView" destination="NHI-b8-WvN" id="aa2-iG-Exz"/>
@@ -47,4 +78,11 @@
             <point key="canvasLocation" x="116" y="106.59670164917542"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="定位_deselect" width="100" height="100"/>
+        <image name="定位_select" width="100" height="100"/>
+        <image name="设置_deselect" width="100" height="100"/>
+        <image name="设置_select" width="100" height="100"/>
+        <image name="顶栏" width="960" height="126"/>
+    </resources>
 </document>

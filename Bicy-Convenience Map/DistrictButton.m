@@ -15,9 +15,6 @@
 
 -(void)awakeFromNib {
     [super awakeFromNib];
-    
-    
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(heardFromSelection:)
                                                  name:DISTRICT_BTN_SEL_RADIO

@@ -42,6 +42,7 @@
     [super viewDidLoad];
     self.isAccess                  = NO;
     self.noNeedToSelectStationList = NO;
+    self.BaseBaiduMapView.logoPosition = BMKLogoPositionCenterBottom;
     //1. 初次启动，等待百度的授权和联网完成，否则在viewdidappear中持续放HUD
     AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
     app.accessCompleteBlk = ^(BOOL result){
