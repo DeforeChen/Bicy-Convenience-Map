@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *stationAddress;
 @property (weak, nonatomic) IBOutlet UILabel *districtName;
 @property (weak, nonatomic) IBOutlet UIImageView *districtImage;
+@property (weak, nonatomic) IBOutlet UIImageView *bgImg;
 
 + (instancetype)initMyCell;
 

@@ -34,7 +34,7 @@
 }
 
 -(void)makeCellUnderSelectionMode {
-    self.contentView.backgroundColor = CELL_SEL_COLOR;
+    self.bgImg.image = [UIImage imageNamed:@"cell选中背景"];
     NSLog(@"SELECT COLOR = %@",self.contentView.backgroundColor);
     BOOL hasGotoView = NO;
     for (UIView *view in self.subviews) {
@@ -63,7 +63,7 @@
 }
 
 -(void)makeCellUnderDeselectionMode {
-    self.contentView.backgroundColor = CELL_DESEL_COLOR;
+    self.bgImg.image = [UIImage imageNamed:@"cell未选中背景"];
     for (UIView *view in self.subviews) {
         if ([view isKindOfClass:[GotoView class]]) {
             [view removeFromSuperview];

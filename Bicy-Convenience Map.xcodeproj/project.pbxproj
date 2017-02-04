@@ -21,12 +21,19 @@
 		8958FDC21E03959A00CBAB84 /* BaiduLocationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDC11E03959A00CBAB84 /* BaiduLocationTool.m */; };
 		8958FDC61E03C2F400CBAB84 /* BaiduMapTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDC51E03C2F400CBAB84 /* BaiduMapTool.m */; };
 		8958FDC91E03C97600CBAB84 /* BaiduDistrictTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDC81E03C97600CBAB84 /* BaiduDistrictTool.mm */; };
+		896141431E40DD5500A11BC9 /* LeftMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 896141421E40DD5500A11BC9 /* LeftMenuView.xib */; };
+		896141471E418A7100A11BC9 /* LeftMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 896141461E418A7100A11BC9 /* LeftMenuView.m */; };
 		8963F5711E0918EA00EBDA1A /* BottomDistrictView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8963F56F1E0918EA00EBDA1A /* BottomDistrictView.m */; };
 		8963F5721E0918EA00EBDA1A /* BottomDistrictView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8963F5701E0918EA00EBDA1A /* BottomDistrictView.xib */; };
+		89B3E42D1E34463A00AA71DB /* BaiduRouteSearchTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 89B3E42C1E34463A00AA71DB /* BaiduRouteSearchTool.mm */; };
+		89B3E4301E34571700AA71DB /* RouteAnnotation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 89B3E42F1E34571700AA71DB /* RouteAnnotation.mm */; };
+		89B3E4331E345AC400AA71DB /* UIImage+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B3E4321E345AC400AA71DB /* UIImage+Rotate.m */; };
 		89CC884C1E0BA46000FAB40D /* StattionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CC884A1E0BA46000FAB40D /* StattionsTableViewCell.m */; };
 		89CC884D1E0BA46000FAB40D /* StattionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89CC884B1E0BA46000FAB40D /* StattionsTableViewCell.xib */; };
 		89CC88511E0BB9D600FAB40D /* StationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CC88501E0BB9D600FAB40D /* StationInfo.m */; };
 		89CC88551E0CF7FC00FAB40D /* DistrictButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CC88541E0CF7FC00FAB40D /* DistrictButton.m */; };
+		89F0B8A91E2DC34300DFE31B /* TopFunctionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F0B8A81E2DC34300DFE31B /* TopFunctionView.m */; };
+		89F0B8AD1E2DC3EC00DFE31B /* TopFunctionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89F0B8AC1E2DC3EC00DFE31B /* TopFunctionView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,10 +61,19 @@
 		8958FDC51E03C2F400CBAB84 /* BaiduMapTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaiduMapTool.m; path = BaiduMap_Singleton_Tool/BaiduMapTool.m; sourceTree = "<group>"; };
 		8958FDC71E03C97600CBAB84 /* BaiduDistrictTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaiduDistrictTool.h; path = BaiduMap_Singleton_Tool/BaiduDistrictTool.h; sourceTree = "<group>"; };
 		8958FDC81E03C97600CBAB84 /* BaiduDistrictTool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BaiduDistrictTool.mm; path = BaiduMap_Singleton_Tool/BaiduDistrictTool.mm; sourceTree = "<group>"; };
+		896141421E40DD5500A11BC9 /* LeftMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LeftMenuView.xib; path = Views/LeftMenuView.xib; sourceTree = "<group>"; };
+		896141451E418A7100A11BC9 /* LeftMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuView.h; sourceTree = "<group>"; };
+		896141461E418A7100A11BC9 /* LeftMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuView.m; sourceTree = "<group>"; };
 		8963F56E1E0918EA00EBDA1A /* BottomDistrictView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BottomDistrictView.h; path = Views/BottomDistrictView.h; sourceTree = "<group>"; };
 		8963F56F1E0918EA00EBDA1A /* BottomDistrictView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BottomDistrictView.m; path = Views/BottomDistrictView.m; sourceTree = "<group>"; };
 		8963F5701E0918EA00EBDA1A /* BottomDistrictView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BottomDistrictView.xib; path = Views/BottomDistrictView.xib; sourceTree = "<group>"; };
 		8963F5741E092B0600EBDA1A /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		89B3E42B1E34463A00AA71DB /* BaiduRouteSearchTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaiduRouteSearchTool.h; path = BaiduMap_Singleton_Tool/BaiduRouteSearchTool.h; sourceTree = "<group>"; };
+		89B3E42C1E34463A00AA71DB /* BaiduRouteSearchTool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BaiduRouteSearchTool.mm; path = BaiduMap_Singleton_Tool/BaiduRouteSearchTool.mm; sourceTree = "<group>"; };
+		89B3E42E1E34571700AA71DB /* RouteAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteAnnotation.h; sourceTree = "<group>"; };
+		89B3E42F1E34571700AA71DB /* RouteAnnotation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RouteAnnotation.mm; sourceTree = "<group>"; };
+		89B3E4311E345AC400AA71DB /* UIImage+Rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Rotate.h"; sourceTree = "<group>"; };
+		89B3E4321E345AC400AA71DB /* UIImage+Rotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Rotate.m"; sourceTree = "<group>"; };
 		89CC88491E0BA46000FAB40D /* StattionsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StattionsTableViewCell.h; path = Views/StattionsTableViewCell.h; sourceTree = "<group>"; };
 		89CC884A1E0BA46000FAB40D /* StattionsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StattionsTableViewCell.m; path = Views/StattionsTableViewCell.m; sourceTree = "<group>"; };
 		89CC884B1E0BA46000FAB40D /* StattionsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StattionsTableViewCell.xib; path = Views/StattionsTableViewCell.xib; sourceTree = "<group>"; };
@@ -66,6 +82,9 @@
 		89CC88521E0BBEF100FAB40D /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		89CC88531E0CF7FC00FAB40D /* DistrictButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistrictButton.h; sourceTree = "<group>"; };
 		89CC88541E0CF7FC00FAB40D /* DistrictButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistrictButton.m; sourceTree = "<group>"; };
+		89F0B8A71E2DC34300DFE31B /* TopFunctionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopFunctionView.h; path = Views/TopFunctionView.h; sourceTree = "<group>"; };
+		89F0B8A81E2DC34300DFE31B /* TopFunctionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopFunctionView.m; path = Views/TopFunctionView.m; sourceTree = "<group>"; };
+		89F0B8AC1E2DC3EC00DFE31B /* TopFunctionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopFunctionView.xib; path = Views/TopFunctionView.xib; sourceTree = "<group>"; };
 		DCB7FDB9298BA8C8DF991882 /* libPods-Bicy-Convenience Map.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bicy-Convenience Map.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF827DDC4A88B00C467046DE /* Pods-Bicy-Convenience Map.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bicy-Convenience Map.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bicy-Convenience Map/Pods-Bicy-Convenience Map.debug.xcconfig"; sourceTree = "<group>"; };
 		E5CE48AC9D6BBF1AC33708D9 /* Pods-Bicy-Convenience Map.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bicy-Convenience Map.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bicy-Convenience Map/Pods-Bicy-Convenience Map.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +171,8 @@
 			children = (
 				8958FDC41E03C2F400CBAB84 /* BaiduMapTool.h */,
 				8958FDC51E03C2F400CBAB84 /* BaiduMapTool.m */,
+				89B3E42B1E34463A00AA71DB /* BaiduRouteSearchTool.h */,
+				89B3E42C1E34463A00AA71DB /* BaiduRouteSearchTool.mm */,
 				8958FDC01E03959A00CBAB84 /* BaiduLocationTool.h */,
 				8958FDC11E03959A00CBAB84 /* BaiduLocationTool.m */,
 				8958FDC71E03C97600CBAB84 /* BaiduDistrictTool.h */,
@@ -160,22 +181,28 @@
 			name = "百度地图工具单例";
 			sourceTree = "<group>";
 		};
+		896141441E40DD5E00A11BC9 /* LeftMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				896141421E40DD5500A11BC9 /* LeftMenuView.xib */,
+				896141451E418A7100A11BC9 /* LeftMenuView.h */,
+				896141461E418A7100A11BC9 /* LeftMenuView.m */,
+			);
+			name = LeftMenuView;
+			sourceTree = "<group>";
+		};
 		8963F5731E0918EF00EBDA1A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				896141441E40DD5E00A11BC9 /* LeftMenuView */,
 				89446AFE1E237D5C00962BEE /* MyPinAnnotationView.h */,
 				89446AFF1E237D5C00962BEE /* MyPinAnnotationView.m */,
-				89CC88531E0CF7FC00FAB40D /* DistrictButton.h */,
-				89CC88541E0CF7FC00FAB40D /* DistrictButton.m */,
-				8963F56E1E0918EA00EBDA1A /* BottomDistrictView.h */,
-				8963F56F1E0918EA00EBDA1A /* BottomDistrictView.m */,
-				8963F5701E0918EA00EBDA1A /* BottomDistrictView.xib */,
-				89CC88491E0BA46000FAB40D /* StattionsTableViewCell.h */,
-				89CC884A1E0BA46000FAB40D /* StattionsTableViewCell.m */,
-				89CC884B1E0BA46000FAB40D /* StattionsTableViewCell.xib */,
-				89446B2A1E277C7C00962BEE /* GotoView.h */,
-				89446B2B1E277C7C00962BEE /* GotoView.m */,
-				89446B2D1E277EC700962BEE /* GotoView.xib */,
+				89B3E42E1E34571700AA71DB /* RouteAnnotation.h */,
+				89B3E42F1E34571700AA71DB /* RouteAnnotation.mm */,
+				89B3E4311E345AC400AA71DB /* UIImage+Rotate.h */,
+				89B3E4321E345AC400AA71DB /* UIImage+Rotate.m */,
+				89F0B8AB1E2DC36800DFE31B /* TopView */,
+				89F0B8AA1E2DC35100DFE31B /* BottomView */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -190,6 +217,34 @@
 				89CC88501E0BB9D600FAB40D /* StationInfo.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		89F0B8AA1E2DC35100DFE31B /* BottomView */ = {
+			isa = PBXGroup;
+			children = (
+				89CC88531E0CF7FC00FAB40D /* DistrictButton.h */,
+				89CC88541E0CF7FC00FAB40D /* DistrictButton.m */,
+				8963F56E1E0918EA00EBDA1A /* BottomDistrictView.h */,
+				8963F56F1E0918EA00EBDA1A /* BottomDistrictView.m */,
+				8963F5701E0918EA00EBDA1A /* BottomDistrictView.xib */,
+				89CC88491E0BA46000FAB40D /* StattionsTableViewCell.h */,
+				89CC884A1E0BA46000FAB40D /* StattionsTableViewCell.m */,
+				89CC884B1E0BA46000FAB40D /* StattionsTableViewCell.xib */,
+				89446B2A1E277C7C00962BEE /* GotoView.h */,
+				89446B2B1E277C7C00962BEE /* GotoView.m */,
+				89446B2D1E277EC700962BEE /* GotoView.xib */,
+			);
+			name = BottomView;
+			sourceTree = "<group>";
+		};
+		89F0B8AB1E2DC36800DFE31B /* TopView */ = {
+			isa = PBXGroup;
+			children = (
+				89F0B8A71E2DC34300DFE31B /* TopFunctionView.h */,
+				89F0B8A81E2DC34300DFE31B /* TopFunctionView.m */,
+				89F0B8AC1E2DC3EC00DFE31B /* TopFunctionView.xib */,
+			);
+			name = TopView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,7 +281,7 @@
 				TargetAttributes = {
 					8958FDA41DFF8B9800CBAB84 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 83SUXEZH4Q;
+						DevelopmentTeam = C76TLF45XF;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -258,6 +313,8 @@
 				89CC884D1E0BA46000FAB40D /* StattionsTableViewCell.xib in Resources */,
 				8963F5721E0918EA00EBDA1A /* BottomDistrictView.xib in Resources */,
 				89446B2E1E277EC700962BEE /* GotoView.xib in Resources */,
+				896141431E40DD5500A11BC9 /* LeftMenuView.xib in Resources */,
+				89F0B8AD1E2DC3EC00DFE31B /* TopFunctionView.xib in Resources */,
 				8958FDB51DFF8B9800CBAB84 /* Assets.xcassets in Resources */,
 				8958FDB31DFF8B9800CBAB84 /* Main.storyboard in Resources */,
 			);
@@ -318,18 +375,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				896141471E418A7100A11BC9 /* LeftMenuView.m in Sources */,
 				8958FDB01DFF8B9800CBAB84 /* ViewController.mm in Sources */,
 				89586C681E1F367800122F52 /* plistManager.m in Sources */,
 				8963F5711E0918EA00EBDA1A /* BottomDistrictView.m in Sources */,
 				89446B001E237D5C00962BEE /* MyPinAnnotationView.m in Sources */,
+				89B3E4331E345AC400AA71DB /* UIImage+Rotate.m in Sources */,
+				89B3E4301E34571700AA71DB /* RouteAnnotation.mm in Sources */,
 				8958FDC91E03C97600CBAB84 /* BaiduDistrictTool.mm in Sources */,
 				8958FDC61E03C2F400CBAB84 /* BaiduMapTool.m in Sources */,
 				89CC88511E0BB9D600FAB40D /* StationInfo.m in Sources */,
 				8958FDAD1DFF8B9800CBAB84 /* AppDelegate.mm in Sources */,
 				89446B2C1E277C7C00962BEE /* GotoView.m in Sources */,
 				8958FDC21E03959A00CBAB84 /* BaiduLocationTool.m in Sources */,
+				89F0B8A91E2DC34300DFE31B /* TopFunctionView.m in Sources */,
 				8958FDAA1DFF8B9800CBAB84 /* main.m in Sources */,
 				89CC884C1E0BA46000FAB40D /* StattionsTableViewCell.m in Sources */,
+				89B3E42D1E34463A00AA71DB /* BaiduRouteSearchTool.mm in Sources */,
 				89CC88551E0CF7FC00FAB40D /* DistrictButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,7 +513,7 @@
 			baseConfigurationReference = DF827DDC4A88B00C467046DE /* Pods-Bicy-Convenience Map.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 83SUXEZH4Q;
+				DEVELOPMENT_TEAM = C76TLF45XF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -508,7 +570,7 @@
 			baseConfigurationReference = E5CE48AC9D6BBF1AC33708D9 /* Pods-Bicy-Convenience Map.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 83SUXEZH4Q;
+				DEVELOPMENT_TEAM = C76TLF45XF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

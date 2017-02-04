@@ -96,6 +96,10 @@
     [self tableView:self.stationList didDeselectRowAtIndexPath:indexpath];
 }
 
+-(void)hideBottomViewWithAnimation {
+    
+}
+
 #pragma mark tableview delegate
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.stationInfoArray.count;

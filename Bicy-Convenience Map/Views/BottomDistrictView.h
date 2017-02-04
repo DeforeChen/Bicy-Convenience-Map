@@ -11,7 +11,7 @@
 #import "StationInfo.h"
 #import "DistrictButton.h"
 typedef void (^selStationInImageBlk)(NSUInteger imgIndex);
-@protocol stationInteractionDelegate <NSObject>
+@protocol BottomViewInteractionDelegate <NSObject>
 /**
  选中主页上对应的站点标注
  @param listIndex 列表中的站点索引
@@ -41,13 +41,10 @@ typedef void (^selStationInImageBlk)(NSUInteger imgIndex);
 -(void)addAnnotationPointInDistrict:(NSArray<BMKPointAnnotation*>*)annotationArray;
 @end
 
-
-
-
 //==========================================================================================
 @interface BottomDistrictView : UIView
 @property (weak, nonatomic) IBOutlet UITableView *stationList;
-@property (strong,nonatomic) id<stationInteractionDelegate> delegate;
+@property (weak,nonatomic) id<BottomViewInteractionDelegate> delegate;
 + (instancetype) initMyView;
 
 /**

@@ -121,9 +121,9 @@
                         <constraint firstAttribute="bottom" secondItem="99o-pU-hp2" secondAttribute="bottom" id="zIe-Lr-bSA"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" style="plain" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WQS-hD-whF" userLabel="站点列表">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WQS-hD-whF" userLabel="站点列表">
                     <rect key="frame" x="0.0" y="48" width="375" height="189"/>
-                    <color key="backgroundColor" red="0.72078162430000003" green="0.91556394100000005" blue="0.52641648050000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.92023962736129761" green="1" blue="0.84158670902252197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="Qwi-OJ-CkV" id="1HU-lg-q8x"/>
                         <outlet property="delegate" destination="Qwi-OJ-CkV" id="xY5-QR-jEd"/>

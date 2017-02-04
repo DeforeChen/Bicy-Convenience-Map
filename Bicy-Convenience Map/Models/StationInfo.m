@@ -10,6 +10,9 @@
 #import "MJExtension.h"
 #import "config.h"
 #import "AFNetworking.h"
+#import <BaiduMapAPI_Map/BMKMapComponent.h>
+#import <BaiduMapAPI_Utils/BMKGeometry.h>
+#import "BaiduLocationTool.h"
 
 #define SELFCLASS_NAME StationInfo
 #define SELFCLASS_NAME_STR @"StationInfo"
@@ -19,7 +22,8 @@ static StationInfo *center = nil;//定义一个全局的静态变量，满足静
 @interface StationInfo()
 @property(nonatomic,strong) DistrictsInfo* districtInfo;
 @property(nonatomic,strong) AFHTTPRequestOperationManager *manager;
-
+@property(nonatomic) CLLocationCoordinate2D centerLocation;
+@property(nonatomic,strong) NSArray<BMKPointAnnotation*> *nearbyStationAnnotations;
 @end
 
 @implementation StationInfo
@@ -28,9 +32,10 @@ static StationInfo *center = nil;//定义一个全局的静态变量，满足静
     static dispatch_once_t predicate;
     //线程安全
     dispatch_once(&predicate, ^{
-        center = (SELFCLASS_NAME *)SELFCLASS_NAME_STR;
-        center = [[SELFCLASS_NAME alloc] init];
-        center.manager = [AFHTTPRequestOperationManager manager];
+        center                = (SELFCLASS_NAME *)SELFCLASS_NAME_STR;
+        center                = [[SELFCLASS_NAME alloc] init];
+        center.manager        = [AFHTTPRequestOperationManager manager];
+        center.centerLocation = FUZHOU_CENTER_POINT;
     });
     
     // 防止子类使用
@@ -57,6 +62,26 @@ static StationInfo *center = nil;//定义一个全局的静态变量，满足静
         return nil;
 }
 
+-(NSArray<BMKPointAnnotation*>*)nearbyStationAnnotations {
+    if (_nearbyStationAnnotations == nil) {
+        NSMutableArray *nearbyStations = [NSMutableArray new];
+        // 调用本类函数时，默认已经先执行了底下的updateAllStations，保证所有的属性参数都已经赋值
+        NSArray *allStations = [self fetchDistrictStationsInfoWithName:ALL_CITY];
+        for (id<stationProtocol> station in allStations) {
+            CLLocationCoordinate2D stationPoint = CLLocationCoordinate2DMake([[station latitude] floatValue], [[station longtitude] floatValue]);
+            BOOL insideArea = BMKCircleContainsCoordinate(stationPoint, self.centerLocation, NEARBY_RADIUS);
+            if (insideArea == YES)
+                [nearbyStations addObject:station];
+        }
+        
+        NSArray *annotations = [self fetchDistrictStationAnnotationWithArray:nearbyStations];
+        _nearbyStationAnnotations = [NSArray arrayWithArray:annotations];
+        NSLog(@"生成的周围站点的标注数组 = %@",_nearbyStationAnnotations);
+    }
+    return _nearbyStationAnnotations;
+}
+
+#pragma mark 接口函数
 - (void)updateAllStationsInfoWithSuccessBlk:(stationSucBlk)sucBlk
                                     FailBlk:(stationFailBlk)failblk {
     [_manager GET:STATION_INFO_URL
@@ -110,6 +135,30 @@ static StationInfo *center = nil;//定义一个全局的静态变量，满足静
     }
     return stationAnnotationArray;
 }
+
+- (NSArray<BMKPointAnnotation*>*)fetchNearbyStationAnnotationWithPoint:(CLLocationCoordinate2D)currentLocation {
+    /* 因为在点击定位的时候，不论是否大于500m(大于500m只是会再调用一次而已)，都会返回来一个currentLocation
+     因此这里还须再判断一次 */
+    BOOL isFarMovement = BMKCircleContainsCoordinate(currentLocation, self.centerLocation, UPDATAE_DISTANCE);
+
+    if (!isFarMovement) {
+        self.centerLocation            = currentLocation;
+        NSArray *allStations           = [self fetchDistrictStationsInfoWithName:ALL_CITY];
+        NSMutableArray *nearbyStations = [NSMutableArray new];
+        for (id<stationProtocol> station in allStations) {
+            CLLocationCoordinate2D stationPoint = CLLocationCoordinate2DMake([[station latitude] floatValue], [[station longtitude] floatValue]);
+            BOOL insideArea = BMKCircleContainsCoordinate(stationPoint, self.centerLocation, NEARBY_RADIUS);
+            if (insideArea == YES)
+                [nearbyStations addObject:station];
+        }
+        
+        NSArray *annotations = [self fetchDistrictStationAnnotationWithArray:nearbyStations];
+        self.nearbyStationAnnotations = [NSMutableArray arrayWithArray:annotations];
+    }
+    
+    return self.nearbyStationAnnotations;
+}
+
 @end
 
 @implementation BaseInfo

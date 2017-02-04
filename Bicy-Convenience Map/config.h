@@ -13,7 +13,18 @@
 // 百度密钥
 #define BAIDU_KEY @"puAybLNI7odsDotLGGebvoDrvn6I5qQZ"
 // 七牛提供的站点URL数据
-#define STATION_INFO_URL @"http://ois7g1xk4.bkt.clouddn.com/stations.json"
+#define STATION_INFO_URL @"http://ois7g1xk4.bkt.clouddn.com/test1.json"
+
+// 初始化时检查互联网
+#define NETWORK 0//@"联网"
+#define PERMISSION 1//@"鉴权"
+#define NET_SUCCESS @"1"
+#define NET_INIT    @"F"
+#define NET_FAIL    @"0"
+
+#define PERMIT_SUCCESS @"1"
+#define PERMIT_INIT    @"F"
+#define PERMIT_FAIL    @"0"
 
 /**
  屏幕尺寸相关
@@ -40,6 +51,13 @@
 #define ANNOTATION_RECT CGRectMake(0, 0, 30, 30);
 #define ANNOTATION_REUSEID @"newAnnotation"
 
+
+/**
+ 定位相关
+ */
+#define NEARBY_RADIUS 800   //附近站点的半径,单位m
+#define UPDATAE_DISTANCE 100 //位置变动多少后，更新当前位置的缓存值
+#define FUZHOU_CENTER_POINT CLLocationCoordinate2DMake(26.070179, 119.315313) //福州中心
 /**
  百度地图工具单例的广播代理控制
  */
@@ -56,9 +74,9 @@
 /**
  自定义CELL相关
  */
-#define CELL_HEIGHT 52
-#define CELL_SEL_COLOR   [UIColor colorWithRed:255/255.0 green:249/255.0 blue:214/255.0 alpha:1.0]
-#define CELL_DESEL_COLOR [UIColor colorWithRed:184/255.0 green:233/255.0 blue:134/255.0 alpha:1.0]
+#define CELL_HEIGHT 55
+//#define CELL_SEL_COLOR   [UIColor colorWithRed:255/255.0 green:249/255.0 blue:214/255.0 alpha:1.0]
+//#define CELL_DESEL_COLOR [UIColor colorWithRed:184/255.0 green:233/255.0 blue:134/255.0 alpha:1.0]
 
 /**
  行政区域名
@@ -77,6 +95,7 @@
 #define JINAN_OVERLAY_COLOR     [UIColor colorWithRed:126/255.0 green:211/255.0 blue:33/255.0 alpha:0.4]
 #define CANGSHAN_OVERLAY_COLOR  [UIColor colorWithRed:80/255.0 green:227/255.0 blue:194/255.0 alpha:0.4]
 #define MAWEI_OVERLAY_COLOR     [UIColor colorWithRed:242/255.0 green:69/255.0 blue:61/255.0 alpha:0.4]
+#define NEARBY_OVERLAY_COLOR    [UIColor colorWithRed:74/255.0 green:144/255.0 blue:226/255.0 alpha:0.4]
 
 //保存行政区域边界的plist文件名
 #define PLIST_NAME @"districtOutlineInfo.plist"

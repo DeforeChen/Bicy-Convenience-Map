@@ -13,7 +13,7 @@
 typedef void(^districtSucBlk)();
 typedef void(^districtFailBlk)(NSError *err);
 
-@interface BaiduDistrictTool : BaiduMapTool<BMKMapViewDelegate>
+@interface BaiduDistrictTool : BaiduMapTool
 @property (nonatomic,strong) NSMutableDictionary *districtPolyganDict; //存放区域overlay的字典
 
 /**

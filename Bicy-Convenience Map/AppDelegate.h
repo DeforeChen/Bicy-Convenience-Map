@@ -14,5 +14,5 @@ typedef void (^BaiduAccessCompleteBlk)(BOOL isAccess);
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,BMKGeneralDelegate>
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) BaiduAccessCompleteBlk accessCompleteBlk;
+@property (copy, nonatomic) BaiduAccessCompleteBlk accessCompleteBlk;
 @end

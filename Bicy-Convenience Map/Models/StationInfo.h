@@ -84,4 +84,13 @@ typedef void(^stationFailBlk)(NSError *err);
  @return 标注类数组
  */
 - (NSArray<BMKPointAnnotation*>*)fetchDistrictStationAnnotationWithArray:(NSArray<id<stationProtocol>>*)districtStationArray;
+
+/**
+ 根据传入的中心点坐标，获取到一个包含重中点周围所有站点标注的数组
+ 
+ @param currentLocation 中心点坐标
+ @return 标注类数组
+ */
+
+- (NSArray<BMKPointAnnotation*>*)fetchNearbyStationAnnotationWithPoint:(CLLocationCoordinate2D)currentLocation;
 @end

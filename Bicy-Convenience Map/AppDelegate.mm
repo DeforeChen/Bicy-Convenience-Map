@@ -23,7 +23,6 @@
         NSLog(@"manager start failed!");
     }
     // Add the navigation controller's view to the window and display.
-    self.accessFinished = [[NSMutableArray alloc] init];
     [self addObserver:self
            forKeyPath:@"accessFinished"
               options:NSKeyValueObservingOptionNew
@@ -34,15 +33,24 @@
     return YES;
 }
 
+-(NSMutableArray *)accessFinished {
+    if (_accessFinished == nil) {
+        _accessFinished = [NSMutableArray new];
+        _accessFinished[NETWORK]    = NET_INIT;
+        _accessFinished[PERMISSION] = PERMIT_INIT;
+    }
+    return _accessFinished;
+}
+
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"accessFinished"]) {
+    if ([keyPath isEqualToString:@"accessFinished"] && (self.accessFinished != nil)) {
         // 当授权和联网同时完成的情况下，通知根视图，退出HUD并开启百度相关功能操作
-        if ((self.accessFinished.count == 2) && (self.accessCompleteBlk != nil)) {
-            if ([self.accessFinished[0] isEqualToString: @"SUCCESS"] && [self.accessFinished[1] isEqualToString:@"SUCCESS"]) {
-                self.accessCompleteBlk(YES);
-            } else {
-                self.accessCompleteBlk(NO);
-            }
+        if ([self.accessFinished[NETWORK] isEqualToString:NET_SUCCESS] && [self.accessFinished[PERMISSION] isEqualToString:PERMIT_SUCCESS]) {
+            NSLog(@"鉴权 & 联网成功");
+            self.accessCompleteBlk(YES);
+            [self removeObserver:self forKeyPath:@"accessFinished" context:nil];
+        } else if([self.accessFinished[NETWORK] isEqualToString:NET_FAIL] && [self.accessFinished[PERMISSION] isEqualToString:PERMIT_FAIL]){
+            self.accessCompleteBlk(NO);
         }
     }
 }
@@ -75,23 +83,30 @@
 
 #pragma mark 百度地图代理
 - (void)onGetNetworkState:(int)iError {
+    NSLog(@"--------初始化状态下的网络请求--------");
     if (0 == iError){
         NSLog(@"联网成功");
-        [[self mutableArrayValueForKey:@"accessFinished"] addObject:@"SUCCESS"];
+        [[self mutableArrayValueForKey:@"accessFinished"] setObject:NET_SUCCESS atIndexedSubscript:NETWORK];
     } else {
         NSLog(@"onGetNetworkState %d",iError);
-        [[self mutableArrayValueForKey:@"accessFinished"] addObject:@"联网失败"];
+        if ([self.accessFinished[NETWORK] isEqualToString:NET_INIT]) {
+            [[self mutableArrayValueForKey:@"accessFinished"] setObject:NET_FAIL atIndexedSubscript:NETWORK];
+        }
     }
 }
 
 - (void)onGetPermissionState:(int)iError {
+    NSLog(@"--------初始化状态下的鉴权请求--------");
     if (0 == iError){
         NSLog(@"授权成功");
-        [[self mutableArrayValueForKey:@"accessFinished"] addObject:@"SUCCESS"];
+        [[self mutableArrayValueForKey:@"accessFinished"] setObject:@"1" atIndexedSubscript:PERMISSION];
     } else {
         NSLog(@"onGetNetworkState %d",iError);
-        [[self mutableArrayValueForKey:@"accessFinished"] addObject:@"授权失败"];
+        if ([self.accessFinished[PERMISSION] isEqualToString:PERMIT_INIT]) {
+            [[self mutableArrayValueForKey:@"accessFinished"] setObject:PERMIT_FAIL atIndexedSubscript:PERMISSION];
+        }
     }
 }
+
 
 @end
