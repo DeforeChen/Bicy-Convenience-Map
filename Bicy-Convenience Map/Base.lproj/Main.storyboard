@@ -22,94 +22,83 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NHI-b8-WvN" customClass="BMKMapView">
-                                <rect key="frame" x="0.0" y="126" width="375" height="541"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.7202400565" green="0.91335034370000001" blue="0.5260005593" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="HYk-re-9FH" appends="YES" id="aoK-4B-93D"/>
-                                    <outletCollection property="gestureRecognizers" destination="cfZ-eK-SwQ" appends="YES" id="44P-6q-QA6"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WBj-FQ-V18" userLabel="ZoomView">
-                                <rect key="frame" x="6" y="353" width="42" height="83"/>
+                                <rect key="frame" x="6" y="310" width="38" height="98"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="缩放" translatesAutoresizingMaskIntoConstraints="NO" id="Hd9-nU-qU7">
-                                        <rect key="frame" x="0.0" y="0.0" width="42" height="83"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="38" height="98"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="zoomin" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFO-8q-Lgo" userLabel="ZoomIn">
+                                        <rect key="frame" x="0.0" y="0.0" width="38" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="ZoomCtrl:" destination="BYZ-38-t0r" eventType="touchUpInside" id="v4k-BD-KOd"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="zoomout" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kd5-ML-hPM" userLabel="ZoomOut">
-                                        <rect key="frame" x="0.0" y="27.5" width="42" height="27.5"/>
+                                        <rect key="frame" x="0.0" y="33" width="38" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="ZoomCtrl:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8oX-Gi-rZW"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="location" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZR-kV-KFI" userLabel="location">
-                                        <rect key="frame" x="0.0" y="55" width="42" height="27.5"/>
+                                        <rect key="frame" x="0.0" y="66" width="38" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="ZoomCtrl:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Mg-Zh-1ZN"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="zoomin" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFO-8q-Lgo" userLabel="ZoomIn">
-                                        <rect key="frame" x="0.0" y="0.0" width="42" height="27.5"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <connections>
-                                            <action selector="ZoomCtrl:" destination="BYZ-38-t0r" eventType="touchUpInside" id="v4k-BD-KOd"/>
+                                            <action selector="reLocateMyPosition:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qJt-HD-HFf"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="42" id="7nZ-iy-VqC"/>
-                                    <constraint firstAttribute="height" constant="83" id="Mr6-Nn-93V"/>
+                                    <constraint firstAttribute="width" constant="38" id="7nZ-iy-VqC"/>
+                                    <constraint firstAttribute="height" constant="98" id="Mr6-Nn-93V"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="纬度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="twZ-zh-8xq">
-                                <rect key="frame" x="6" y="97" width="300" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFN-Xk-B8i" userLabel="重新规划">
+                                <rect key="frame" x="295" y="97" width="80" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="经度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4M-K3-iIG">
-                                <rect key="frame" x="6" y="78" width="278" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fuw-e4-jot">
-                                <rect key="frame" x="314" y="88" width="61" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="getLoc"/>
+                                <state key="normal" image="路径规划按键"/>
                                 <connections>
-                                    <action selector="showLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Whs-U0-fiA"/>
+                                    <action selector="researchPath:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sOg-dE-HrM"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="siK-bN-8hY">
+                                <rect key="frame" x="6" y="416" width="38" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="周边站点"/>
+                                <connections>
+                                    <action selector="searchNearbyStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hCe-pW-UoT"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="WBj-FQ-V18" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="6" id="Uoa-NS-cZB"/>
-                            <constraint firstItem="WBj-FQ-V18" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="333" id="z2h-VT-HGg"/>
+                            <constraint firstItem="WBj-FQ-V18" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="290" id="z2h-VT-HGg"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="BaseBaiduMapView" destination="NHI-b8-WvN" id="aa2-iG-Exz"/>
-                        <outlet property="curLatitude" destination="twZ-zh-8xq" id="dfV-QQ-BII"/>
-                        <outlet property="curLongtitude" destination="i4M-K3-iIG" id="kci-bN-Yuk"/>
+                        <outlet property="nearbyStationBtn" destination="siK-bN-8hY" id="JFF-4b-UNN"/>
+                        <outlet property="researchPathBtn" destination="xFN-Xk-B8i" id="A76-ex-38W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="HYk-re-9FH">
+                <tapGestureRecognizer enabled="NO" id="HYk-re-9FH">
                     <connections>
                         <action selector="fetchPoitCoordiate:" destination="BYZ-38-t0r" id="5dQ-4U-2pr"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer numberOfTapsRequired="2" id="cfZ-eK-SwQ" userLabel="doubleClick ZoomIn">
-                    <connections>
-                        <action selector="doubleClickZoomIn:" destination="BYZ-38-t0r" id="StH-ty-5ZJ"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -117,6 +106,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="缩放" width="84" height="176"/>
+        <image name="周边站点" width="76" height="76"/>
+        <image name="缩放" width="76" height="196"/>
+        <image name="路径规划按键" width="166" height="166"/>
     </resources>
 </document>

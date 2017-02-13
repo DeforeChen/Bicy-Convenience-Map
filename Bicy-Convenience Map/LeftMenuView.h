@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "BaiduLocationTool.h"
-typedef enum {
-    NEARBY_GUIDE_MODE       = 0,
-    STATION_TO_STATION_MODE = 1,
-}BICYCLE_GUIDE_MODE;
 
 @protocol LeftViewInteractionDelegate <NSObject>
 /**
@@ -19,19 +15,16 @@ typedef enum {
  */
 -(void)finishedRemoveLeftView;
 
-/**
- 找出圆形区域内的所有站点并作为覆盖物添加到主页上
- 
- @param stationAnnotations 满足条件的站点列表
- @param radius 半径，单位m
- @param center 圆心(当前位置)
- */
--(void)addNearbyStationAnnotations:(NSArray<BMKPointAnnotation*>*)stationAnnotations
-                  CircleWithRadius:(NSInteger)radius
-                  CircleWithCenter:(CLLocationCoordinate2D)center;
-
-
--(void)switchToSearchBetweenStationsMode;
+///**
+// 找出圆形区域内的所有站点并作为覆盖物添加到主页上
+// 
+// @param stationAnnotations 满足条件的站点列表
+// @param radius 半径，单位m
+// @param center 圆心(当前位置)
+// */
+//-(void)addNearbyStationAnnotations:(NSArray<BMKPointAnnotation*>*)stationAnnotations
+//                  CircleWithRadius:(NSInteger)radius
+//                  CircleWithCenter:(CLLocationCoordinate2D)center;
 
 @end
 

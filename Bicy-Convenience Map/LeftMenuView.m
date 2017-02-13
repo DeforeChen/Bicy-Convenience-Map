@@ -17,24 +17,15 @@
 @implementation LeftMenuView
 #pragma mark interaction
 - (IBAction)stationToStationSearchMode:(UIButton *)sender {
-    [self.delegate switchToSearchBetweenStationsMode];
+    [[NSNotificationCenter defaultCenter] postNotificationName:GUIDE_MODE_RADIO
+                                                        object:[NSNumber numberWithInt:STATION_TO_STATION_MODE]];
     [self removeCurrentLeftMenu];
 }
 
 
 - (IBAction)nearbySearchMode:(UIButton *)sender {
-//    [self.delegate switchSearchMode:NEARBY_GUIDE_MODE];
-    /*
-     1. 定位到当前位置
-     2. 调用BMKGeometry，组合出所有在圆形区域内的站点数组，通过代理，连同刚刚的圆形区域，这两个覆盖物，传给主页
-     */
-
-    [[BaiduLocationTool shareInstance] startLocateWithBlk:^(CLLocationCoordinate2D myLacation) {
-        NSArray<BMKPointAnnotation*> *nearbyStationAnnotations = [[StationInfo shareInstance] fetchNearbyStationAnnotationWithPoint:myLacation];
-        [self.delegate addNearbyStationAnnotations:nearbyStationAnnotations
-                                  CircleWithRadius:NEARBY_RADIUS
-                                  CircleWithCenter:myLacation];
-    }];
+    [[NSNotificationCenter defaultCenter] postNotificationName:GUIDE_MODE_RADIO
+                                                        object:[NSNumber numberWithInt:NEARBY_GUIDE_MODE]];
     [self removeCurrentLeftMenu];
 }
 

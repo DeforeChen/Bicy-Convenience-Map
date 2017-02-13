@@ -57,10 +57,11 @@
 
         [[NSNotificationCenter defaultCenter] postNotificationName:DISTRICT_BTN_SEL_RADIO
                                                             object:districtName];
-        [self.delegate startMapviewTransform];
         [self.delegate addOverlaysToDistrictWithName:districtName];
         [self.delegate addAnnotationPointInDistrict:annotationArray];
     }
+    // 不论按键是否被选中，都去调用弹框的代理，由代理自行判断状态来决定是否弹出
+    [self.delegate startMapviewTransform];
 }
 
 - (IBAction)startDownAnimation:(UIButton *)sender {

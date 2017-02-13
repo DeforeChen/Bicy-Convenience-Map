@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,49 +16,38 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnu-nV-8F4" userLabel="底部选项栏">
-                    <rect key="frame" x="27" y="6" width="320" height="42"/>
+                    <rect key="frame" x="27" y="0.0" width="320" height="54"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="底栏背景" translatesAutoresizingMaskIntoConstraints="NO" id="hmd-j5-0b6">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="鼓楼区" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTu-Eg-hi8" userLabel="鼓楼" customClass="DistrictButton">
-                            <rect key="frame" x="0.0" y="0.0" width="53.5" height="42"/>
+                            <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="54" id="T2N-WQ-QR8"/>
+                                <constraint firstAttribute="height" constant="54" id="h7h-cN-F9y"/>
+                            </constraints>
                             <state key="normal" title="Button" image="鼓楼区_deselect"/>
                             <connections>
                                 <action selector="selectRelatedDistrict:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="X4H-A8-VUy"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="马尾区" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JI9-sd-9CR" userLabel="马尾" customClass="DistrictButton">
-                            <rect key="frame" x="53.5" y="0.0" width="53.5" height="42"/>
+                            <rect key="frame" x="54" y="0.0" width="54" height="54"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="53.5" id="Ly3-O9-Yhi"/>
+                                <constraint firstAttribute="height" constant="54" id="8QG-4V-W8E"/>
+                                <constraint firstAttribute="width" constant="54" id="KMg-je-DUf"/>
                             </constraints>
                             <state key="normal" title="Button" image="马尾区_deselect"/>
                             <connections>
                                 <action selector="selectRelatedDistrict:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="n4D-yZ-rR8"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="台江区" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dca-jD-kWs" userLabel="台江" customClass="DistrictButton">
-                            <rect key="frame" x="107" y="0.0" width="53.5" height="42"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="53.5" id="d9G-QG-k6k"/>
-                                <constraint firstAttribute="height" constant="42" id="yIJ-OQ-Hw5"/>
-                            </constraints>
-                            <state key="normal" title="Button" image="台江区_deselect"/>
-                            <connections>
-                                <action selector="selectRelatedDistrict:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="Mn1-Zi-d5J"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="晋安区" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99o-pU-hp2" userLabel="晋安" customClass="DistrictButton">
-                            <rect key="frame" x="160.5" y="0.0" width="53.5" height="42"/>
+                            <rect key="frame" x="162" y="0.0" width="53" height="54"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="53.5" id="6eS-11-Z3K"/>
-                                <constraint firstAttribute="height" constant="42" id="fIN-UD-7TG"/>
+                                <constraint firstAttribute="width" constant="53" id="FfX-W1-YVT"/>
+                                <constraint firstAttribute="height" constant="54" id="yWC-mt-1Tx"/>
                             </constraints>
                             <state key="normal" title="Button" image="晋安区_deselect"/>
                             <connections>
@@ -67,10 +55,11 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="全市" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7B7-be-r6P" userLabel="全市" customClass="DistrictButton">
-                            <rect key="frame" x="266.5" y="0.0" width="53.5" height="42"/>
+                            <rect key="frame" x="267" y="0.0" width="53" height="54"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="53.5" id="qrV-cU-zSZ"/>
+                                <constraint firstAttribute="width" constant="53" id="3cL-NC-9nz"/>
+                                <constraint firstAttribute="height" constant="54" id="quG-gU-lvZ"/>
                             </constraints>
                             <state key="normal" title="Button" image="全市_deselect"/>
                             <connections>
@@ -78,51 +67,50 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="仓山区" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5e1-jd-5E2" userLabel="仓山" customClass="DistrictButton">
-                            <rect key="frame" x="213" y="0.0" width="53.5" height="42"/>
+                            <rect key="frame" x="214" y="0.0" width="53" height="54"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="42" id="2XM-Dq-TuC"/>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="53.5" id="MuU-xM-KDE"/>
-                                <constraint firstAttribute="width" constant="53.5" id="PoR-fn-amb"/>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="42" id="ZX1-Jy-vq8"/>
+                                <constraint firstAttribute="width" constant="53" id="MKr-9S-1KE"/>
+                                <constraint firstAttribute="height" constant="54" id="axv-bs-CTc"/>
                             </constraints>
                             <state key="normal" title="Button" image="仓山区_deselect"/>
                             <connections>
                                 <action selector="selectRelatedDistrict:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="bGs-Q8-f7A"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="台江区" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dca-jD-kWs" userLabel="台江" customClass="DistrictButton">
+                            <rect key="frame" x="108" y="0.0" width="54" height="54"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="54" id="FlE-JC-MWf"/>
+                                <constraint firstAttribute="height" constant="54" id="aoJ-35-ryz"/>
+                            </constraints>
+                            <state key="normal" title="Button" image="台江区_deselect"/>
+                            <connections>
+                                <action selector="selectRelatedDistrict:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="Mn1-Zi-d5J"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="7B7-be-r6P" secondAttribute="bottom" id="1kX-J3-Sr2"/>
-                        <constraint firstItem="hmd-j5-0b6" firstAttribute="top" secondItem="fnu-nV-8F4" secondAttribute="top" id="2zj-QH-C03"/>
-                        <constraint firstItem="JI9-sd-9CR" firstAttribute="top" secondItem="fnu-nV-8F4" secondAttribute="top" id="6DM-N8-zMO"/>
-                        <constraint firstAttribute="trailing" secondItem="hmd-j5-0b6" secondAttribute="trailing" id="EiD-St-JTc"/>
-                        <constraint firstAttribute="bottom" secondItem="JI9-sd-9CR" secondAttribute="bottom" id="JYz-e9-2SQ"/>
-                        <constraint firstItem="99o-pU-hp2" firstAttribute="leading" secondItem="dca-jD-kWs" secondAttribute="trailing" id="Mdp-UE-9GB"/>
-                        <constraint firstItem="99o-pU-hp2" firstAttribute="top" secondItem="fnu-nV-8F4" secondAttribute="top" id="Oei-wk-6bG"/>
-                        <constraint firstItem="XTu-Eg-hi8" firstAttribute="top" secondItem="fnu-nV-8F4" secondAttribute="top" id="PNb-Fu-ibQ"/>
-                        <constraint firstItem="XTu-Eg-hi8" firstAttribute="leading" secondItem="fnu-nV-8F4" secondAttribute="leading" id="R62-15-k2l"/>
-                        <constraint firstAttribute="height" constant="42" id="RKg-lP-Ie3"/>
+                        <constraint firstItem="XTu-Eg-hi8" firstAttribute="top" secondItem="fnu-nV-8F4" secondAttribute="top" id="871-pu-yH4"/>
+                        <constraint firstItem="dca-jD-kWs" firstAttribute="leading" secondItem="JI9-sd-9CR" secondAttribute="trailing" id="G2d-Kd-Iob"/>
+                        <constraint firstItem="7B7-be-r6P" firstAttribute="leading" secondItem="5e1-jd-5E2" secondAttribute="trailing" id="HXW-fb-s7U"/>
+                        <constraint firstAttribute="height" constant="53.5" id="RKg-lP-Ie3"/>
                         <constraint firstAttribute="width" constant="320" id="RxA-Uj-H9E"/>
-                        <constraint firstAttribute="bottom" secondItem="XTu-Eg-hi8" secondAttribute="bottom" id="TLT-HD-Lhg"/>
-                        <constraint firstItem="7B7-be-r6P" firstAttribute="top" secondItem="fnu-nV-8F4" secondAttribute="top" id="W7A-7J-j97"/>
-                        <constraint firstAttribute="bottom" secondItem="dca-jD-kWs" secondAttribute="bottom" id="XqD-aa-dGn"/>
-                        <constraint firstItem="dca-jD-kWs" firstAttribute="top" secondItem="fnu-nV-8F4" secondAttribute="top" id="aJl-Gi-yN9"/>
-                        <constraint firstAttribute="trailing" secondItem="5e1-jd-5E2" secondAttribute="trailing" constant="53.5" id="alB-ZP-5d3"/>
-                        <constraint firstAttribute="bottom" secondItem="5e1-jd-5E2" secondAttribute="bottom" id="bg3-oa-NEo"/>
-                        <constraint firstAttribute="bottom" secondItem="hmd-j5-0b6" secondAttribute="bottom" id="cVl-SM-zW5"/>
-                        <constraint firstItem="hmd-j5-0b6" firstAttribute="leading" secondItem="fnu-nV-8F4" secondAttribute="leading" id="jL6-Nb-5mb"/>
-                        <constraint firstItem="5e1-jd-5E2" firstAttribute="top" secondItem="fnu-nV-8F4" secondAttribute="top" id="nEk-fO-57A"/>
-                        <constraint firstItem="XTu-Eg-hi8" firstAttribute="width" secondItem="hmd-j5-0b6" secondAttribute="width" multiplier="1/6" id="sWV-HV-Qf5"/>
-                        <constraint firstAttribute="trailing" secondItem="7B7-be-r6P" secondAttribute="trailing" id="vMZ-lv-0SW"/>
-                        <constraint firstItem="dca-jD-kWs" firstAttribute="leading" secondItem="JI9-sd-9CR" secondAttribute="trailing" id="wg5-qL-8rd"/>
-                        <constraint firstItem="JI9-sd-9CR" firstAttribute="leading" secondItem="XTu-Eg-hi8" secondAttribute="trailing" id="xyz-6K-3zV"/>
-                        <constraint firstAttribute="bottom" secondItem="99o-pU-hp2" secondAttribute="bottom" id="zIe-Lr-bSA"/>
+                        <constraint firstItem="JI9-sd-9CR" firstAttribute="leading" secondItem="XTu-Eg-hi8" secondAttribute="trailing" id="TAO-8m-4lQ"/>
+                        <constraint firstItem="dca-jD-kWs" firstAttribute="top" secondItem="fnu-nV-8F4" secondAttribute="top" id="TOG-o8-120"/>
+                        <constraint firstAttribute="trailing" secondItem="7B7-be-r6P" secondAttribute="trailing" id="UV2-MB-TZA"/>
+                        <constraint firstItem="XTu-Eg-hi8" firstAttribute="leading" secondItem="fnu-nV-8F4" secondAttribute="leading" id="WfX-F1-gGg"/>
+                        <constraint firstItem="5e1-jd-5E2" firstAttribute="top" secondItem="fnu-nV-8F4" secondAttribute="top" id="av9-kk-pZN"/>
+                        <constraint firstItem="99o-pU-hp2" firstAttribute="top" secondItem="fnu-nV-8F4" secondAttribute="top" id="mEG-KY-2VM"/>
+                        <constraint firstItem="99o-pU-hp2" firstAttribute="leading" secondItem="JI9-sd-9CR" secondAttribute="trailing" constant="54" id="prq-8V-zxf"/>
+                        <constraint firstItem="7B7-be-r6P" firstAttribute="top" secondItem="fnu-nV-8F4" secondAttribute="top" id="vys-B0-EfV"/>
+                        <constraint firstItem="JI9-sd-9CR" firstAttribute="top" secondItem="fnu-nV-8F4" secondAttribute="top" id="ydR-qk-fSU"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WQS-hD-whF" userLabel="站点列表">
-                    <rect key="frame" x="0.0" y="48" width="375" height="189"/>
+                    <rect key="frame" x="0.0" y="54" width="375" height="183"/>
                     <color key="backgroundColor" red="0.92023962736129761" green="1" blue="0.84158670902252197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="Qwi-OJ-CkV" id="1HU-lg-q8x"/>
@@ -148,7 +136,7 @@
                 <constraint firstAttribute="bottom" secondItem="N50-ul-9WI" secondAttribute="bottom" id="2NQ-TA-Tm2"/>
                 <constraint firstAttribute="trailing" secondItem="WQS-hD-whF" secondAttribute="trailing" id="657-oX-kDM"/>
                 <constraint firstItem="WQS-hD-whF" firstAttribute="leading" secondItem="Qwi-OJ-CkV" secondAttribute="leading" id="8TT-zl-KHc"/>
-                <constraint firstItem="fnu-nV-8F4" firstAttribute="top" secondItem="Qwi-OJ-CkV" secondAttribute="top" constant="6" id="GXn-Jq-VCg"/>
+                <constraint firstItem="fnu-nV-8F4" firstAttribute="top" secondItem="Qwi-OJ-CkV" secondAttribute="top" id="GXn-Jq-VCg"/>
                 <constraint firstAttribute="bottom" secondItem="WQS-hD-whF" secondAttribute="bottom" constant="24" id="Hxg-9V-vuj"/>
                 <constraint firstItem="fnu-nV-8F4" firstAttribute="centerX" secondItem="Qwi-OJ-CkV" secondAttribute="centerX" id="YL9-l1-JgT"/>
                 <constraint firstAttribute="trailing" secondItem="N50-ul-9WI" secondAttribute="trailing" id="gB5-qa-GgS"/>
@@ -164,12 +152,11 @@
         </view>
     </objects>
     <resources>
-        <image name="仓山区_deselect" width="107" height="84"/>
-        <image name="全市_deselect" width="107" height="84"/>
-        <image name="台江区_deselect" width="107" height="84"/>
-        <image name="底栏背景" width="639" height="83"/>
-        <image name="晋安区_deselect" width="107" height="84"/>
-        <image name="马尾区_deselect" width="107" height="84"/>
-        <image name="鼓楼区_deselect" width="107" height="84"/>
+        <image name="仓山区_deselect" width="107" height="107"/>
+        <image name="全市_deselect" width="107" height="107"/>
+        <image name="台江区_deselect" width="107" height="107"/>
+        <image name="晋安区_deselect" width="107" height="107"/>
+        <image name="马尾区_deselect" width="107" height="107"/>
+        <image name="鼓楼区_deselect" width="107" height="107"/>
     </resources>
 </document>

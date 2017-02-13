@@ -89,9 +89,9 @@
         [[self mutableArrayValueForKey:@"accessFinished"] setObject:NET_SUCCESS atIndexedSubscript:NETWORK];
     } else {
         NSLog(@"onGetNetworkState %d",iError);
-        if ([self.accessFinished[NETWORK] isEqualToString:NET_INIT]) {
+//        if ([self.accessFinished[NETWORK] isEqualToString:NET_INIT]) {
             [[self mutableArrayValueForKey:@"accessFinished"] setObject:NET_FAIL atIndexedSubscript:NETWORK];
-        }
+//        }
     }
 }
 

@@ -37,9 +37,9 @@
 #define BOTTOM_RECT_HEIGHT 261 //底部栏的选项按钮凸起的高度
 #define BTN_WIDTH 53.5
 #define BTN_HEIGHT 42
-#define BTN_TOP_HEIGHT 48
-#define BTN_SEL_RECT   CGRectMake(self.frame.origin.x, -6, BTN_WIDTH, BTN_HEIGHT+6)
-#define BTN_DESEL_RECT CGRectMake(self.frame.origin.x, 0, BTN_WIDTH, BTN_HEIGHT)
+#define BTN_TOP_HEIGHT BTN_WIDTH
+//#define BTN_SEL_RECT   CGRectMake(self.frame.origin.x, -6, BTN_WIDTH, BTN_HEIGHT+6)
+//#define BTN_DESEL_RECT CGRectMake(self.frame.origin.x, 0, BTN_WIDTH, BTN_HEIGHT)
 
 #define SHOW_BOTTOM_RECT              CGRectMake(0, HEIGHT-BOTTOM_RECT_HEIGHT, WIDTH, BOTTOM_RECT_HEIGHT)
 #define SHOW_BOTTOM_ONLY_OPTION_RECT  CGRectMake(0, HEIGHT-BTN_TOP_HEIGHT, WIDTH, BOTTOM_RECT_HEIGHT)
@@ -70,6 +70,14 @@
  */
 #define DISTRICT_BTN_SEL_RADIO @"districtSelectCtrl"
 
+/* 搜索模式 及 广播 */
+#define GUIDE_MODE_RADIO @"searchModeCtrl"
+typedef enum {
+    NON_SELECT_MODE         = 0,//初始化的未选中状态
+    NEARBY_GUIDE_MODE       = 1,// 周边站点搜索
+    STATION_TO_STATION_MODE = 2,// 两个站点之间搜索
+    
+}BICYCLE_GUIDE_MODE;
 
 /**
  自定义CELL相关

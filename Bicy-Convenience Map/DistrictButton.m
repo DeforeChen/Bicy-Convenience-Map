@@ -22,14 +22,12 @@
 }
 
 -(void)switchToSelectedState {
-    self.frame = BTN_SEL_RECT;
     [self setImage:[self getSelectedImgWithID:self.restorationIdentifier]
           forState:UIControlStateNormal];
     self.isSelected = YES;
 }
 
 -(void)switchToDeselectedState {
-    self.frame = BTN_DESEL_RECT;
     [self setImage:[self getDeselectedImgWithID:self.restorationIdentifier]
           forState:UIControlStateNormal];
     self.isSelected = NO;

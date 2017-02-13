@@ -13,10 +13,6 @@
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
 #import <BaiduMapAPI_Search/BMKDistrictSearch.h>
 
-#import "BaiduLocationTool.h"
-#import "BaiduDistrictTool.h"
-#import "BaiduRouteSearchTool.h"
-#import "AppDelegate.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 // 上下左右四个view
 #import "BottomDistrictView.h"
@@ -32,7 +28,6 @@
 @property (nonatomic) BOOL isAccess;//百度授权/联网完成与否
 @property (strong,nonatomic) BottomDistrictView *bottomView;
 @property (strong,nonatomic) TopFunctionView *topView;
-@property (nonatomic) BICYCLE_GUIDE_MODE guideMode; // 导航模式，周边站点导航或
 //防止底栏的列表被二次选中造成死循环
 /*
  本类中选中annotation时，会在annotation didselect代理中去选中底栏list中对应的cell.
@@ -42,9 +37,17 @@
  这里通过一个标志位，如果是底栏发起的选中annotation，那么在annotation didselect代理中就不再去选中底栏。
  */
 @property (nonatomic) BOOL noNeedToSelectStationList;
-// TEST.....
-@property (weak, nonatomic) IBOutlet UILabel *curLongtitude;
-@property (weak, nonatomic) IBOutlet UILabel *curLatitude;
+@property (nonatomic) NSInteger previousAnnotationIndex;
+@property (weak, nonatomic) IBOutlet UIButton *researchPathBtn;
+@property (weak, nonatomic) IBOutlet UIButton *nearbyStationBtn;
+
+@end
+
+@implementation guideStartStationInfo
+
+@end
+
+@implementation guideEndStationInfo
 
 @end
 
@@ -53,9 +56,10 @@
     [super viewDidLoad];
     self.isAccess                          = NO;
     self.noNeedToSelectStationList         = NO;
-    self.BaseBaiduMapView.logoPosition     = BMKLogoPositionCenterBottom;
+    self.BaseBaiduMapView.logoPosition     = BMKLogoPositionLeftTop;
     self.BaseBaiduMapView.centerCoordinate = FUZHOU_CENTER_POINT;
-    self.guideMode                         = NEARBY_GUIDE_MODE;
+    self.guideMode                         = NON_SELECT_MODE;
+    self.previousAnnotationIndex           = UNREACHABLE_INDEX;
 
     BMKLocationViewDisplayParam *displayParam = [[BMKLocationViewDisplayParam alloc]init];
     displayParam.isRotateAngleValid = true;//跟随态旋转角度是否生效
@@ -94,8 +98,8 @@
         }
     };
     
-    _BaseBaiduMapView.mapType = BMKMapTypeStandard;
-    _BaseBaiduMapView.trafficEnabled = YES;
+    _BaseBaiduMapView.mapType            = BMKMapTypeStandard;
+    _BaseBaiduMapView.trafficEnabled     = YES;
     
     //2. 添加底部的显示栏，用于作区域显示
     self.bottomView = [BottomDistrictView initMyView];
@@ -106,11 +110,55 @@
     
     //3. 添加顶部的功能栏，用于定位及搜索提示
     self.topView = [TopFunctionView initMyView];
-    self.topView.frame = CGRectMake(0, 8, self.topView.bounds.size.width, self.topView.bounds.size.height);
+    self.topView.frame = CGRectMake(0, 20, self.topView.bounds.size.width, self.topView.bounds.size.height);
     self.topView.delegate = self;
     [self.view addSubview:self.topView];
+    
+    //4. 添加广播的收听，针对左侧栏选中搜索模式用
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(heardFromGuideMode:)
+                                                 name:GUIDE_MODE_RADIO
+                                               object:nil];
+    
+    //5. 添加站点的观察者。当start和end站点信息都不为空时，弹出路径规划的按钮，否则隐藏该按钮
+    self.researchPathBtn.alpha = 0;
+    self.researchPathBtn.userInteractionEnabled = NO;
+    [self.guideEndStation addObserver:self
+                           forKeyPath:@"name"
+                              options:NSKeyValueObservingOptionNew
+                              context:NULL];
+    [self.guideStartStation addObserver:self
+                             forKeyPath:@"name"
+                                options:NSKeyValueObservingOptionNew
+                                context:NULL];
 }
 
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"name"]) {
+        if (object == self.guideStartStation || object == self.guideEndStation) {
+            if (self.guideEndStation.name != nil && self.guideStartStation.name != nil) {
+                NSLog(@" ---- 触发触发 ----！！！！");
+                [self animationForresearchPathBtn:YES];
+            } else {
+                NSLog(@"移除路线规划按键");
+                [self animationForresearchPathBtn:NO];
+            }
+        }
+    }
+}
+
+-(void)animationForresearchPathBtn:(BOOL)interactionEnabled {
+    [UIView animateWithDuration:2*ANIMATION_TIME
+                     animations:^{
+                         if (interactionEnabled == YES) {
+                             self.researchPathBtn.alpha = 1;
+                         } else
+                             self.researchPathBtn.alpha = 0;
+                     }
+                     completion:^(BOOL finished) {
+                         [self.researchPathBtn setUserInteractionEnabled:interactionEnabled];
+                     }];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -122,6 +170,20 @@
     if (self.isAccess) {
         [self setBaiduRelatedDelegate];
     }
+}
+
+-(guideEndStationInfo *)guideEndStation {
+    if (_guideEndStation == nil) {
+        _guideEndStation = [[guideEndStationInfo alloc] init];
+    }
+    return _guideEndStation;
+}
+
+-(guideStartStationInfo *)guidStartStation {
+    if (_guideStartStation == nil) {
+        _guideStartStation = [[guideStartStationInfo alloc] init];
+    }
+    return _guideStartStation;
 }
 
 -(void)setBaiduRelatedDelegate {
@@ -146,7 +208,6 @@
 
 #pragma mark BMKMapViewDelegate
 -(BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id<BMKAnnotation>)annotation {
-//    NSLog(@"标记名 = %@",annotation.title);
     if ([annotation isKindOfClass:[RouteAnnotation class]]){
         BMKAnnotationView* view = [(RouteAnnotation*)annotation getRouteAnnotationView:mapView];
         return view;
@@ -164,12 +225,13 @@
 -(void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view {
     switch (self.guideMode) {
         case NEARBY_GUIDE_MODE: {
-            // 周边站点模式下，当点击“站点”标注时，直接采用步行导航，从当前位置，导航到这个点。若是普通的方向导航，则不必理会
-            if (![view.annotation isKindOfClass:[RouteAnnotation class]]) {
-                CLLocationCoordinate2D startPoint = [BaiduLocationTool shareInstance].currentLocation;
-                CLLocationCoordinate2D endPoint   = view.annotation.coordinate;
-                [[BaiduRouteSearchTool shareInstance] pathGuideWithStart:startPoint end:endPoint];
+            // 周边站点模式下，点击站点信息标注后，将当前的站点信息传到顶栏去
+            if ([view isKindOfClass:[MyPinAnnotationView class]]) {
                 view.image = [UIImage imageNamed:@"站点_selected"];
+                self.guideEndStation.coordiate = view.annotation.coordinate;
+                self.guideEndStation.name      = view.annotation.title;
+                self.topView.endStation.text   = self.guideEndStation.name;
+                self.previousAnnotationIndex   = [self.BaseBaiduMapView.annotations indexOfObject:view.annotation];
             }
         }
             break;
@@ -177,11 +239,14 @@
             view.image = [UIImage imageNamed:@"站点_selected"];
             self.BaseBaiduMapView.centerCoordinate = view.annotation.coordinate;  //userLocation.location.coordinate;
             self.BaseBaiduMapView.zoomLevel        = ZOOM_LEVEL;
-            NSUInteger index = [self.BaseBaiduMapView.annotations indexOfObject:view.annotation];
+
             if (self.noNeedToSelectStationList == YES) {
                 self.noNeedToSelectStationList = NO;
-            } else
-                [self.bottomView selectCorrespondingCellInStationList:index];
+                
+            } else{
+                self.previousAnnotationIndex   = [self.BaseBaiduMapView.annotations indexOfObject:view.annotation];
+                [self.bottomView selectCorrespondingCellInStationList:self.previousAnnotationIndex];
+            }
         }
             break;
         default:
@@ -193,7 +258,7 @@
     switch (self.guideMode) {
         case NEARBY_GUIDE_MODE: {
             // 未选的标注是站点标注时，才需要去变更背景
-            if (![view.annotation isKindOfClass:[RouteAnnotation class]]) {
+            if ([view isKindOfClass:[MyPinAnnotationView class]]) {
                 view.image = [UIImage imageNamed:@"站点_deselected"];
             }
         }
@@ -206,10 +271,6 @@
         default:
             break;
     }
-    
-    
-
-
 }
 
 // 根据overlay生成对应的View
@@ -246,9 +307,9 @@
     // 添加路径
     if ([overlay isKindOfClass:[BMKPolyline class]]) {
         BMKPolylineView* polylineView = [[BMKPolylineView alloc] initWithOverlay:overlay];
-        polylineView.fillColor = [UIColor redColor];//[[UIColor alloc] initWithRed:0 green:1 blue:1 alpha:1];
-        polylineView.strokeColor = [UIColor yellowColor];//[[UIColor alloc] initWithRed:0 green:0 blue:1 alpha:0.7];
-        polylineView.lineWidth = 3.0;
+        polylineView.fillColor   = [UIColor redColor];//[[UIColor alloc] initWithRed:0 green:1 blue:1 alpha:1];
+        polylineView.strokeColor = [[UIColor alloc] initWithRed:4/255.0 green:51/255.0 blue:255/255.0 alpha:0.7];
+        polylineView.lineWidth   = 8.0;
         return polylineView;
     }
     
@@ -336,7 +397,7 @@
 -(void)addLeftMenuView {
     LeftMenuView *leftView = [[LeftMenuView alloc] initMyView];
     leftView.delegate      = self;
-    leftView.frame = CGRectMake(-WIDTH, 60 , WIDTH, HEIGHT);
+    leftView.frame = CGRectMake(-WIDTH, 72 , WIDTH, HEIGHT);
     [self.view addSubview:leftView];
     [UIView animateWithDuration:0.5
                           delay:0
@@ -344,7 +405,7 @@
           initialSpringVelocity:0.5
                         options:UIViewAnimationOptionOverrideInheritedCurve
                      animations:^{
-                         leftView.frame = CGRectMake(0, 60, WIDTH, HEIGHT);
+                         leftView.frame = CGRectMake(0, 72, WIDTH, HEIGHT);
                      }
                      completion:nil];
 }
@@ -369,25 +430,72 @@
     }
 }
 
+-(void)resetStartStationInfo {
+
+}
+
+-(void)resetEndStationInfo {
+    self.guideEndStation.name = nil;
+    self.guideEndStation.coordiate = FUZHOU_CENTER_POINT;
+    // 清楚annotation的选中状态，如果路径已规划好并显示，也需要一并移除
+    for (id<BMKOverlay> overlay in self.BaseBaiduMapView.overlays) {
+        if ([overlay isKindOfClass:[BMKPolyline class]]) {
+            [self.BaseBaiduMapView removeOverlay:overlay];
+            break;
+        }
+    }
+    // 清楚路线引导类的标注
+    for (id<BMKAnnotation>annotation in self.BaseBaiduMapView.annotations) {
+        if ([annotation isKindOfClass:[RouteAnnotation class]]) {
+            [self.BaseBaiduMapView removeAnnotation:annotation];
+        }
+    }
+
+    [self.BaseBaiduMapView deselectAnnotation:self.BaseBaiduMapView.annotations[self.previousAnnotationIndex] animated:YES];
+    [self reLocateMyPosition:nil];
+}
+
 #pragma mark LeftViewInteraction 和左侧栏的交互
--(void)switchToSearchBetweenStationsMode {
-    // 0.周边搜索模式下，隐藏底部栏
-    [self.bottomView setHidden:NO];
-    
-    // 1.导航模式进入周边站点导航模式
-    self.guideMode = STATION_TO_STATION_MODE;
-    
-    // 先移除所有标注和覆盖物,再添加标注
-    [self.BaseBaiduMapView removeAnnotations:self.BaseBaiduMapView.annotations];
-    [self.BaseBaiduMapView removeOverlays:self.BaseBaiduMapView.overlays];
+-(void)heardFromGuideMode:(NSNotification*)info {
+    NSNumber* modeObject = (NSNumber*)info.object;
+    NSInteger mode = [modeObject integerValue];
+    self.previousAnnotationIndex = UNREACHABLE_INDEX;//切换模式后，要清掉上一次的索引
+    switch (mode) {
+        case STATION_TO_STATION_MODE: {
+            if (self.guideMode != STATION_TO_STATION_MODE) {
+                // 0.导航模式进入站点间导航模式
+                self.guideMode = STATION_TO_STATION_MODE;
+                // 1.站点间搜索模式下，显示
+                [self.bottomView setHidden:NO];
+                [self.nearbyStationBtn setHidden:YES];
+                // 2.路径规划按钮必须不显示
+                self.researchPathBtn.alpha = 0;
+                self.researchPathBtn.userInteractionEnabled = NO;
+                
+                // 先移除所有标注和覆盖物,再添加标注
+                [self.BaseBaiduMapView removeAnnotations:self.BaseBaiduMapView.annotations];
+                [self.BaseBaiduMapView removeOverlays:self.BaseBaiduMapView.overlays];
+            }
+        }
+            break;
+        case NEARBY_GUIDE_MODE: {
+            if (self.guideMode != NEARBY_GUIDE_MODE) {
+                self.guideMode = NEARBY_GUIDE_MODE;
+                [self.bottomView setHidden:YES];
+                [self.nearbyStationBtn setHidden:NO];
+                self.researchPathBtn.alpha = 0;
+                self.researchPathBtn.userInteractionEnabled = NO;
+                
+                [self doNearbyStationSearchActioin];
+            }
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 -(void)addNearbyStationAnnotations:(NSArray<BMKPointAnnotation *> *)stationAnnotations CircleWithRadius:(NSInteger)radius CircleWithCenter:(CLLocationCoordinate2D)center {
-    // 0.周边搜索模式下，隐藏底部栏
-    [self.bottomView setHidden:YES];
-    // 1.导航模式进入周边站点导航模式
-    self.guideMode = NEARBY_GUIDE_MODE;
-    
     // 先移除所有标注和覆盖物,再添加标注
     [self.BaseBaiduMapView removeAnnotations:self.BaseBaiduMapView.annotations];
     [self.BaseBaiduMapView removeOverlays:self.BaseBaiduMapView.overlays];
@@ -397,7 +505,7 @@
     BMKCircle* circle = [BMKCircle circleWithCenterCoordinate:center radius:radius];
     [self.BaseBaiduMapView addOverlay:circle];
     self.BaseBaiduMapView.centerCoordinate = center;
-    self.BaseBaiduMapView.zoomLevel = ZOOM_LEVEL;
+    self.BaseBaiduMapView.zoomLevel        = ZOOM_LEVEL;
     [self stopMapviewTransform];
 }
 
@@ -406,7 +514,7 @@
     [self.topView setFunctionBtnDeselectedState];
 }
 
-#pragma mark 放大缩小
+#pragma mark 交互
 - (IBAction)ZoomCtrl:(UIButton *)sender {
     if ([[sender restorationIdentifier] isEqualToString:@"zoomin"]) {
         self.BaseBaiduMapView.zoomLevel += 0.3;
@@ -414,9 +522,39 @@
         self.BaseBaiduMapView.zoomLevel -= 0.3;
     }
 }
-- (IBAction)doubleClickZoomIn:(id)sender {
-    self.BaseBaiduMapView.zoomLevel += 1;
+
+- (IBAction)reLocateMyPosition:(UIButton *)sender {
+    CLLocationCoordinate2D actualLocation = [BaiduLocationTool shareInstance].getActualLocation;
+    self.BaseBaiduMapView.centerCoordinate = actualLocation;
+    self.BaseBaiduMapView.zoomLevel        = ZOOM_LEVEL;
 }
+
+- (IBAction)researchPath:(UIButton *)sender {
+    CLLocationCoordinate2D startPoint = [[BaiduLocationTool shareInstance] getActualLocation];
+    CLLocationCoordinate2D endPoint   = self.guideEndStation.coordiate;
+    [[BaiduRouteSearchTool shareInstance] pathGuideWithStart:startPoint end:endPoint];
+}
+
+- (IBAction)searchNearbyStation:(UIButton *)sender {
+    [self doNearbyStationSearchActioin];
+}
+
+-(void)doNearbyStationSearchActioin {
+    /*
+     1. 定位到当前位置
+     2. 调用BMKGeometry，组合出所有在圆形区域内的站点数组，通过代理，连同刚刚的圆形区域，这两个覆盖物，传给主页
+     */
+    [[BaiduLocationTool shareInstance] startLocateWithBlk:^(CLLocationCoordinate2D myLacation) {
+        NSArray<BMKPointAnnotation*> *nearbyStationAnnotations = [[StationInfo shareInstance] fetchNearbyStationAnnotationWithPoint:myLacation];
+        self.guidStartStation.coordiate = myLacation;
+        self.guidStartStation.name      = @"我的位置";
+        
+        [self addNearbyStationAnnotations:nearbyStationAnnotations
+                         CircleWithRadius:NEARBY_RADIUS
+                         CircleWithCenter:myLacation];
+    }];
+}
+
 
 
 #pragma mark 测试部分
@@ -424,13 +562,6 @@
     CGPoint point = [sender locationInView:self.BaseBaiduMapView];
     CLLocationCoordinate2D coo = [self.BaseBaiduMapView convertPoint:point toCoordinateFromView:self.BaseBaiduMapView];
     NSLog(@"经纬度:%lf, %lf", coo.longitude,  coo.latitude);
-}
-
-- (IBAction)showLocation:(id)sender {
-    NSString *WEIDU  = [NSString stringWithFormat:@"%.5f",[[BaiduLocationTool shareInstance] getActualLocation].latitude];
-    NSString *JINGDU = [NSString stringWithFormat:@"%.5f",[[BaiduLocationTool shareInstance] getActualLocation].longitude];
-    self.curLatitude.text   = WEIDU;
-    self.curLongtitude.text = JINGDU;
 }
 
 

@@ -76,6 +76,7 @@ static BaiduRouteSearchTool *center = nil;//定义一个全局的静态变量，
 #pragma mark 实例方法
 - (void)pathGuideWithStart:(CLLocationCoordinate2D)startPoint end:(CLLocationCoordinate2D)endPoint {
     if ([self isSamePointWith:startPoint PointB:self.startPoint] && [self isSamePointWith:endPoint PointB:self.endPoint]) {
+        [self.mapView addOverlay:self.previousPolyLine];
         [self mapViewFitPolyLine:self.previousPolyLine];
     } else {
         self.startPoint = startPoint;
