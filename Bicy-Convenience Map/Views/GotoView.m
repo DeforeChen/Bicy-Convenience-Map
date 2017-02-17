@@ -17,11 +17,15 @@
     [super awakeFromNib];
 }
 
-+(instancetype)initMyView {
-    GotoView *view = [[NSBundle mainBundle] loadNibNamed:@"GotoView"
-                                                   owner:self
-                                                 options:nil].lastObject;
-    return view;
+-(instancetype)initMyViewWithBlk:(selectStationBlk)blk {
+    self = [super init];
+    if (self) {
+        self = [[NSBundle mainBundle] loadNibNamed:@"GotoView"
+                                             owner:self
+                                           options:nil].lastObject;
+        self.blk = blk;
+    }
+    return self;
 }
 
 - (void)rotate360DegreeWithImageView{
@@ -47,6 +51,10 @@
     UIGraphicsEndImageContext();
     
     [self.wheel.layer addAnimation:animation forKey:nil];
-
 }
+
+- (IBAction)selectCurrentStationAsTerminalStation:(id)sender {
+    self.blk();
+}
+
 @end

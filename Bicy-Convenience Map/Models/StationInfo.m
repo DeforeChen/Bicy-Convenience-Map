@@ -82,11 +82,22 @@ static StationInfo *center = nil;//定义一个全局的静态变量，满足静
 }
 
 #pragma mark 接口函数
+-(BOOL)judgeTermiStationWithinDistrict:(NSString *)districtName temirStation:(NSString *)termiStationName {
+    NSArray *stations = [self fetchDistrictStationsInfoWithName:districtName];
+    for (id<stationProtocol> station in stations) {
+        if ([termiStationName isEqualToString:[station stationName]]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 - (void)updateAllStationsInfoWithSuccessBlk:(stationSucBlk)sucBlk
                                     FailBlk:(stationFailBlk)failblk {
     [_manager GET:STATION_INFO_URL
        parameters:nil
           success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+              NSLog(@"请求数据 = %@",responseObject);
               self.districtInfo = [DistrictsInfo mj_objectWithKeyValues:responseObject
                                                                 context:nil];
               

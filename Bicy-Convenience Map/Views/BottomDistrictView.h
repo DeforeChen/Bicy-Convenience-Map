@@ -19,7 +19,13 @@ typedef void (^selStationInImageBlk)(NSUInteger imgIndex);
 -(void)selectCorrespondingAnnotation:(NSInteger)listIndex;
 
 /**
- 通知当前选中的行政区域
+ 选中当前站点为起点/终点
+ @param index 站点索引值
+ */
+-(void)selectCurrentStationAsTerminalStation:(NSInteger)index;
+
+/**
+ 通知当前选中的行政区域, 站点间搜索模式下特有
  @param districtName 行政区域名称
  */
 -(void)addOverlaysToDistrictWithName:(NSString*)districtName;
@@ -58,4 +64,10 @@ typedef void (^selStationInImageBlk)(NSUInteger imgIndex);
  @param listIndex 索引值
  */
 -(void)deselectCorrespondingCellInStationList:(NSInteger)listIndex;
+
+
+/**
+ 切换为“站点间导航模式时做的事”
+ */
+-(void)switchToStationToStationGuideMode;
 @end

@@ -45,6 +45,10 @@
 
 -(void)heardFromSelection:(NSNotification*)info {
     NSString* restorationIdentifier = (NSString*)info.object;
+    if ([restorationIdentifier isEqualToString:@"复位模式"]) {
+        [self switchToSelectedState];
+    }
+
     if (self.isSelected == YES && [restorationIdentifier isEqualToString:self.restorationIdentifier] == NO) {
         [self switchToDeselectedState];
     }

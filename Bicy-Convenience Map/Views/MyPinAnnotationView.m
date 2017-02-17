@@ -8,7 +8,7 @@
 
 #import "MyPinAnnotationView.h"
 #import "config.h"
-
+@class terminalStationAnnotation;
 @implementation MyPinAnnotationView
 -(instancetype)initWithCustomAnotation:(BMKPointAnnotation*)annotation isAnimation:(BOOL)isAnimationn {
     self = [super init];
@@ -20,5 +20,15 @@
     }
     return self;
 }
+@end
 
+@implementation terminalStationAnnotation
+-(instancetype)initWithCoordiate:(CLLocationCoordinate2D) coordiate {
+    self = [super init];
+    if (self) {
+        self = [[terminalStationAnnotation alloc] init];
+        self.coordinate = coordiate;
+    }
+    return self;
+}
 @end

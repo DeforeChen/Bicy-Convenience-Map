@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GotoView.h"
+typedef void(^selectStationBlk)();
 
 @interface StattionsTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *stationName;
@@ -18,10 +19,12 @@
 
 + (instancetype)initMyCell;
 
+
 /**
- 设置cell为选中模式
+ 设置Cell为选中模式，同时安插回调通知
+ @param blk 当选中cell中GoToView的按键
  */
--(void)makeCellUnderSelectionMode;
+-(void)makeCellUnderSelectionModeWithBlk:(selectStationBlk) blk;
 
 /**
  设置cell为非选中模式

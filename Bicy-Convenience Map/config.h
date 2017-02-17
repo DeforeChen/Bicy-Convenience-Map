@@ -13,7 +13,7 @@
 // 百度密钥
 #define BAIDU_KEY @"puAybLNI7odsDotLGGebvoDrvn6I5qQZ"
 // 七牛提供的站点URL数据
-#define STATION_INFO_URL @"http://ois7g1xk4.bkt.clouddn.com/test1.json"
+#define STATION_INFO_URL @"http://ois7g1xk4.bkt.clouddn.com/stationInfo"
 
 // 初始化时检查互联网
 #define NETWORK 0//@"联网"
@@ -25,6 +25,10 @@
 #define PERMIT_SUCCESS @"1"
 #define PERMIT_INIT    @"F"
 #define PERMIT_FAIL    @"0"
+
+// S/E 站点背景图名称
+#define S_TERMI_IMG  @"起始站点"
+#define E_TERIMI_IMG @"终点站点"
 
 /**
  屏幕尺寸相关

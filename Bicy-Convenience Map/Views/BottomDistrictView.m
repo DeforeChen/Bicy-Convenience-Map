@@ -15,6 +15,8 @@
 @property(nonatomic) BOOL isSelected;
 @property (nonatomic,strong) NSArray<id<stationProtocol>>* stationInfoArray;
 @property (nonatomic) NSInteger previousSelIndex;
+@property (weak, nonatomic) IBOutlet DistrictButton *allcityBtn;
+
 //防止底栏的列表被二次选中造成死循环
 /*
  本类中选中annotation时，会在annotation didselect代理中去选中底栏list中对应的cell.
@@ -97,8 +99,8 @@
     [self tableView:self.stationList didDeselectRowAtIndexPath:indexpath];
 }
 
--(void)hideBottomViewWithAnimation {
-    
+-(void)switchToStationToStationGuideMode {
+    [self selectRelatedDistrict:self.allcityBtn];
 }
 
 #pragma mark tableview delegate
@@ -119,9 +121,12 @@
         cell = [StattionsTableViewCell initMyCell];
     }
     
-    // 如果先选中annotation，跳转到对应的索引，此时cell是第一次创建，他的背景图也要变成选中状态
+    /* 如果先选中annotation，跳转到对应的索引，此时cell是第一次创建，他的背景图也要变成选中状态
+     blk表示GoToView的选中按钮 */
     if (indexPath.row == self.previousSelIndex) {
-        [cell makeCellUnderSelectionMode];
+        [cell makeCellUnderSelectionModeWithBlk:^{
+            [self.delegate selectCurrentStationAsTerminalStation:indexPath.row];
+        }];
     } else
         [cell makeCellUnderDeselectionMode];
     
@@ -136,12 +141,15 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.previousSelIndex = indexPath.row;
     StattionsTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    [cell makeCellUnderSelectionMode];
     if (self.noNeedToSelectAnnotation == YES) {
         self.noNeedToSelectAnnotation = NO;
     } else {
         [self.delegate selectCorrespondingAnnotation:indexPath.row];
     }
+
+    [cell makeCellUnderSelectionModeWithBlk:^{
+        [self.delegate selectCurrentStationAsTerminalStation:indexPath.row];
+    }];
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {

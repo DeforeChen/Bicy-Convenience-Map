@@ -61,6 +61,15 @@ typedef void(^stationFailBlk)(NSError *err);
 + (instancetype)shareInstance;
 
 /**
+ 判断给定的S/E站点是否在给定的区域内
+
+ @param termiStationName S/E站点名
+ @param districtName 行政区域名
+ @return 是否处于区域内
+ */
+-(BOOL)judgeTermiStationWithinDistrict:(NSString *)districtName temirStation:(NSString *)termiStationName;
+
+/**
  更新所有区域的站点信息
 
  @param sucBlk 成功时回调
@@ -75,7 +84,6 @@ typedef void(^stationFailBlk)(NSError *err);
  @return 返回对应区域的所有站点信息
  */
 - (NSArray<id<stationProtocol>>*)fetchDistrictStationsInfoWithName:(NSString*)districtName;
-
 
 /**
  根据传入的站点信息数组，获取到一个标注的数组

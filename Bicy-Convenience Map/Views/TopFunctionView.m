@@ -109,6 +109,7 @@
             break;
         case NEARBY_GUIDE_MODE: {
             self.startStation.text = @"我的位置";
+            self.endStation.text   = END_HOLD_TEXT;
             [self.resetStartStationBtn setHidden:YES];
         }
             break;

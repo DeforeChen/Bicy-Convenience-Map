@@ -12,3 +12,11 @@
 @interface MyPinAnnotationView : BMKPinAnnotationView
 -(instancetype)initWithCustomAnotation:(BMKPointAnnotation*)annotation isAnimation:(BOOL)isAnimationn;
 @end
+
+
+/**
+ 利用现有的标注，生成一个起点/终点 标注
+ */
+@interface terminalStationAnnotation : BMKPointAnnotation
+-(instancetype)initWithCoordiate:(CLLocationCoordinate2D) coordiate;
+@end

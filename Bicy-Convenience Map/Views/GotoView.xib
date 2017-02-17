@@ -24,9 +24,12 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0u-jI-pDC">
-                    <rect key="frame" x="62" y="11" width="29" height="29"/>
+                    <rect key="frame" x="57" y="11" width="40" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="起点章"/>
+                    <connections>
+                        <action selector="selectCurrentStationAsTerminalStation:" destination="DrJ-E9-YVY" eventType="touchUpInside" id="MDW-OT-s45"/>
+                    </connections>
                 </button>
             </subviews>
             <nil key="simulatedStatusBarMetrics"/>
@@ -39,7 +42,7 @@
     </objects>
     <resources>
         <image name="按键背景" width="321" height="168"/>
-        <image name="起点章" width="62" height="62"/>
+        <image name="起点章" width="86" height="62"/>
         <image name="车轮" width="141" height="141"/>
     </resources>
 </document>

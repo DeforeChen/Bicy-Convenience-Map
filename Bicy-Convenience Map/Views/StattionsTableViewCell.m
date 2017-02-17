@@ -33,7 +33,7 @@
     return cell;
 }
 
--(void)makeCellUnderSelectionMode {
+-(void)makeCellUnderSelectionModeWithBlk:(selectStationBlk)blk {
     self.bgImg.image = [UIImage imageNamed:@"cell选中背景"];
     NSLog(@"SELECT COLOR = %@",self.contentView.backgroundColor);
     BOOL hasGotoView = NO;
@@ -45,7 +45,7 @@
     }
     
     if (hasGotoView == NO) {
-        GotoView *gotoView = [GotoView initMyView];
+        GotoView *gotoView = [[GotoView alloc] initMyViewWithBlk:blk];
         gotoView.frame = CGRectMake(WIDTH, 0, 104, 52);
         [self addSubview:gotoView];
         [gotoView rotate360DegreeWithImageView];
@@ -59,7 +59,6 @@
                          }
                          completion:nil];
     }
-    
 }
 
 -(void)makeCellUnderDeselectionMode {

@@ -117,15 +117,14 @@
                         <outlet property="delegate" destination="Qwi-OJ-CkV" id="xY5-QR-jEd"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N50-ul-9WI" userLabel="列表向下">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N50-ul-9WI" userLabel="列表向下">
                     <rect key="frame" x="0.0" y="237" width="375" height="24"/>
                     <color key="backgroundColor" red="0.90473359819999999" green="0.95912879709999999" blue="0.83448916669999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="375" id="LjM-Lm-y3c"/>
                         <constraint firstAttribute="height" constant="24" id="O0J-c9-0cq"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                    <state key="normal" title="⏬"/>
+                    <state key="normal" image="向下按键"/>
                     <connections>
                         <action selector="startDownAnimation:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="c8c-1d-x3U"/>
                     </connections>
@@ -146,6 +145,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="allcityBtn" destination="7B7-be-r6P" id="ITZ-eB-YSt"/>
                 <outlet property="stationList" destination="WQS-hD-whF" id="G7p-g0-Vpp"/>
             </connections>
             <point key="canvasLocation" x="-86.5" y="-81.5"/>
@@ -155,6 +155,7 @@
         <image name="仓山区_deselect" width="107" height="107"/>
         <image name="全市_deselect" width="107" height="107"/>
         <image name="台江区_deselect" width="107" height="107"/>
+        <image name="向下按键" width="750" height="48"/>
         <image name="晋安区_deselect" width="107" height="107"/>
         <image name="马尾区_deselect" width="107" height="107"/>
         <image name="鼓楼区_deselect" width="107" height="107"/>
