@@ -96,10 +96,6 @@
 -(void)heardFromGuideMode:(NSNotification*)info {
     NSNumber* modeObject = (NSNumber*)info.object;
     NSInteger mode = [modeObject integerValue];
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        [self.initialMaskTipImg removeFromSuperview];
-    });
     switch (mode) {
         case STATION_TO_STATION_MODE: {
             self.startStation.text = START_HOLD_TEXT;

@@ -117,6 +117,9 @@
         } else {
             [self showTip];
         }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:GUIDE_MODE_RADIO
+                                                            object:[NSNumber numberWithInt:NEARBY_GUIDE_MODE]];
     };
     
     _BaseBaiduMapView.mapType            = BMKMapTypeStandard;
@@ -693,12 +696,6 @@
             [[BaiduRouteSearchTool shareInstance] pathGuideWithStart:startPoint end:endPoint];
             [self stopMapviewTransform];
             // 再添加标注
-//            NSArray *termiArray = [NSArray arrayWithObjects:[[terminalStationAnnotation alloc] initWithCoordiate:startPoint],[[terminalStationAnnotation alloc] initWithCoordiate:endPoint], nil];
-//            [self.BaseBaiduMapView addAnnotations:termiArray];
-//            BMKAnnotationView *startAnnotationView = [self.BaseBaiduMapView viewForAnnotation:termiArray[0]];
-//            startAnnotationView.image = [UIImage imageNamed:S_TERMI_IMG];
-//            BMKAnnotationView *endAnnotationView = [self.BaseBaiduMapView viewForAnnotation:termiArray[1]];
-//            endAnnotationView.image = [UIImage imageNamed:E_TERIMI_IMG];
             self.guideStartStation.isInChangedDistrict = NO;
             self.guideEndStation.isInChangedDistrict = NO;
             [self addTermiStationAnnotations];
