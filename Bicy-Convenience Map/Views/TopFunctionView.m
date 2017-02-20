@@ -59,13 +59,13 @@
 
 - (IBAction)MySettings:(UIButton *)sender {
     if (self.buttonState == bothBtnDeselected) {
-        [sender setBackgroundImage:[UIImage imageNamed:@"右取消按键"]
-                          forState:UIControlStateNormal];
-        self.buttonState = searchModeBtnSelected;
+        [sender setImage:[UIImage imageNamed:@"右取消按键"]
+                forState:UIControlStateNormal];
+        self.buttonState = settingBtnSelected;
         [self.delegate addRightSettingView];
     } else if (self.buttonState == settingBtnSelected) {
-        [sender setBackgroundImage:[UIImage imageNamed:@"设置"]
-                          forState:UIControlStateNormal];
+        [sender setImage:[UIImage imageNamed:@"设置"]
+                forState:UIControlStateNormal];
         self.buttonState = bothBtnDeselected;
         [self.delegate removeRightSettingView];
     }

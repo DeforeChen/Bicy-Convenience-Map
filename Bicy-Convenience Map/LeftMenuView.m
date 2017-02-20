@@ -38,8 +38,6 @@
         self = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class])
                                              owner:self
                                            options:nil].lastObject;
-        
-        
         UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                             action:@selector(removeCurrentLeftMenu)];
         [self.bgImgView addGestureRecognizer:gesture];

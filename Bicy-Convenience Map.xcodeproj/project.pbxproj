@@ -28,6 +28,8 @@
 		89B3E42D1E34463A00AA71DB /* BaiduRouteSearchTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 89B3E42C1E34463A00AA71DB /* BaiduRouteSearchTool.mm */; };
 		89B3E4301E34571700AA71DB /* RouteAnnotation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 89B3E42F1E34571700AA71DB /* RouteAnnotation.mm */; };
 		89B3E4331E345AC400AA71DB /* UIImage+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B3E4321E345AC400AA71DB /* UIImage+Rotate.m */; };
+		89C713D11E5839C3005D5DE3 /* RightMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89C713D01E5839C3005D5DE3 /* RightMenuView.xib */; };
+		89C713D51E5839F1005D5DE3 /* RightMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C713D41E5839F1005D5DE3 /* RightMenuView.m */; };
 		89CC884C1E0BA46000FAB40D /* StattionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CC884A1E0BA46000FAB40D /* StattionsTableViewCell.m */; };
 		89CC884D1E0BA46000FAB40D /* StattionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89CC884B1E0BA46000FAB40D /* StattionsTableViewCell.xib */; };
 		89CC88511E0BB9D600FAB40D /* StationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CC88501E0BB9D600FAB40D /* StationInfo.m */; };
@@ -74,6 +76,9 @@
 		89B3E42F1E34571700AA71DB /* RouteAnnotation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RouteAnnotation.mm; sourceTree = "<group>"; };
 		89B3E4311E345AC400AA71DB /* UIImage+Rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Rotate.h"; sourceTree = "<group>"; };
 		89B3E4321E345AC400AA71DB /* UIImage+Rotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Rotate.m"; sourceTree = "<group>"; };
+		89C713D01E5839C3005D5DE3 /* RightMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RightMenuView.xib; path = Views/RightMenuView.xib; sourceTree = "<group>"; };
+		89C713D31E5839F1005D5DE3 /* RightMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RightMenuView.h; path = Views/RightMenuView.h; sourceTree = "<group>"; };
+		89C713D41E5839F1005D5DE3 /* RightMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RightMenuView.m; path = Views/RightMenuView.m; sourceTree = "<group>"; };
 		89CC88491E0BA46000FAB40D /* StattionsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StattionsTableViewCell.h; path = Views/StattionsTableViewCell.h; sourceTree = "<group>"; };
 		89CC884A1E0BA46000FAB40D /* StattionsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StattionsTableViewCell.m; path = Views/StattionsTableViewCell.m; sourceTree = "<group>"; };
 		89CC884B1E0BA46000FAB40D /* StattionsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StattionsTableViewCell.xib; path = Views/StattionsTableViewCell.xib; sourceTree = "<group>"; };
@@ -194,6 +199,9 @@
 		8963F5731E0918EF00EBDA1A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				89C713D21E5839C7005D5DE3 /* RightView */,
+				89F0B8AA1E2DC35100DFE31B /* BottomView */,
+				89F0B8AB1E2DC36800DFE31B /* TopView */,
 				896141441E40DD5E00A11BC9 /* LeftMenuView */,
 				89446AFE1E237D5C00962BEE /* MyPinAnnotationView.h */,
 				89446AFF1E237D5C00962BEE /* MyPinAnnotationView.m */,
@@ -201,10 +209,18 @@
 				89B3E42F1E34571700AA71DB /* RouteAnnotation.mm */,
 				89B3E4311E345AC400AA71DB /* UIImage+Rotate.h */,
 				89B3E4321E345AC400AA71DB /* UIImage+Rotate.m */,
-				89F0B8AB1E2DC36800DFE31B /* TopView */,
-				89F0B8AA1E2DC35100DFE31B /* BottomView */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		89C713D21E5839C7005D5DE3 /* RightView */ = {
+			isa = PBXGroup;
+			children = (
+				89C713D01E5839C3005D5DE3 /* RightMenuView.xib */,
+				89C713D31E5839F1005D5DE3 /* RightMenuView.h */,
+				89C713D41E5839F1005D5DE3 /* RightMenuView.m */,
+			);
+			name = RightView;
 			sourceTree = "<group>";
 		};
 		89CC884E1E0BB9A600FAB40D /* Model */ = {
@@ -313,6 +329,7 @@
 				89CC884D1E0BA46000FAB40D /* StattionsTableViewCell.xib in Resources */,
 				8963F5721E0918EA00EBDA1A /* BottomDistrictView.xib in Resources */,
 				89446B2E1E277EC700962BEE /* GotoView.xib in Resources */,
+				89C713D11E5839C3005D5DE3 /* RightMenuView.xib in Resources */,
 				896141431E40DD5500A11BC9 /* LeftMenuView.xib in Resources */,
 				89F0B8AD1E2DC3EC00DFE31B /* TopFunctionView.xib in Resources */,
 				8958FDB51DFF8B9800CBAB84 /* Assets.xcassets in Resources */,
@@ -391,6 +408,7 @@
 				89F0B8A91E2DC34300DFE31B /* TopFunctionView.m in Sources */,
 				8958FDAA1DFF8B9800CBAB84 /* main.m in Sources */,
 				89CC884C1E0BA46000FAB40D /* StattionsTableViewCell.m in Sources */,
+				89C713D51E5839F1005D5DE3 /* RightMenuView.m in Sources */,
 				89B3E42D1E34463A00AA71DB /* BaiduRouteSearchTool.mm in Sources */,
 				89CC88551E0CF7FC00FAB40D /* DistrictButton.m in Sources */,
 			);

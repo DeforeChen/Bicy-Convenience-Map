@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -66,9 +66,12 @@
                                     <constraint firstAttribute="height" constant="98" id="Mr6-Nn-93V"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFN-Xk-B8i" userLabel="重新规划">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFN-Xk-B8i" userLabel="重新规划">
                                 <rect key="frame" x="295" y="97" width="80" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="J6d-hB-BkM"/>
+                                    <constraint firstAttribute="width" constant="80" id="aSF-wj-GNo"/>
+                                </constraints>
                                 <state key="normal" image="路径规划按键"/>
                                 <connections>
                                     <action selector="researchPath:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sOg-dE-HrM"/>
@@ -85,7 +88,9 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="xFN-Xk-B8i" secondAttribute="trailing" id="HVP-cR-r9J"/>
                             <constraint firstItem="WBj-FQ-V18" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="6" id="Uoa-NS-cZB"/>
+                            <constraint firstItem="xFN-Xk-B8i" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="77" id="src-Ek-HQ2"/>
                             <constraint firstItem="WBj-FQ-V18" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="290" id="z2h-VT-HGg"/>
                         </constraints>
                     </view>

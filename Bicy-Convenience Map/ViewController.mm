@@ -18,12 +18,13 @@
 #import "BottomDistrictView.h"
 #import "TopFunctionView.h"
 #import "LeftMenuView.h"
+#import "RightMenuView.h"
 
 #import "StattionsTableViewCell.h"
 #import "plistManager.h"
 #import "RouteAnnotation.h"
 
-@interface ViewController ()<BMKMapViewDelegate,BottomViewInteractionDelegate,TopViewInteractionDelegate,LeftViewInteractionDelegate>
+@interface ViewController ()<BMKMapViewDelegate,BottomViewInteractionDelegate,TopViewInteractionDelegate,LeftViewInteractionDelegate,RightViewInteractionDelegate>
 @property (weak, nonatomic) IBOutlet BMKMapView *BaseBaiduMapView;
 @property (nonatomic) BOOL isAccess;//百度授权/联网完成与否
 @property (strong,nonatomic) BottomDistrictView *bottomView;
@@ -61,15 +62,7 @@
     }
     return nil;
 }
-
-//-(void)resetTermiInfo {
-//    self.coordiate           = FUZHOU_CENTER_POINT;
-//    self.name                = nil;
-//    self.annotationIndex     = UNREACHABLE_INDEX;
-//    self.isInChangedDistrict = NO;
-//}
 @end
-
 
 @implementation ViewController
 - (void)viewDidLoad {
@@ -238,7 +231,6 @@
     BOOL isEndAnnotation = [stationName isEqualToString:self.guideEndStation.name]?YES:NO;
     return isStartAnnotation | isEndAnnotation;
 }
-
 
 /**
  移除S/E站点
@@ -517,23 +509,44 @@
 -(void)addLeftMenuView {
     LeftMenuView *leftView = [[LeftMenuView alloc] initMyView];
     leftView.delegate      = self;
-    leftView.frame = CGRectMake(-WIDTH, 72 , WIDTH, HEIGHT);
-    [self.view addSubview:leftView];
+    [self addMenuViewAnimation:YES MenuView:leftView];
+}
+
+-(void)addRightSettingView {
+    RightMenuView *rightView = [[RightMenuView alloc] initMyView];
+    rightView.delegate = self;
+    [self addMenuViewAnimation:NO MenuView:rightView];
+}
+
+-(void)addMenuViewAnimation:(BOOL) isLeft MenuView:(UIView*)view {
+    CGFloat width = (isLeft)?-WIDTH:WIDTH;
+    view.frame = CGRectMake(width, 72 , WIDTH, HEIGHT);
+    [self.view addSubview:view];
     [UIView animateWithDuration:0.5
                           delay:0
          usingSpringWithDamping:0.5
           initialSpringVelocity:0.5
                         options:UIViewAnimationOptionOverrideInheritedCurve
                      animations:^{
-                         leftView.frame = CGRectMake(0, 72, WIDTH, HEIGHT);
+                         view.frame = CGRectMake(0, 72, WIDTH, HEIGHT);
                      }
                      completion:nil];
 }
 
+-(void)removeRightSettingView {
+    [self removeMenuViewAnimation:NO];
+}
+
 -(void)removeLeftMenuView {
+    [self removeMenuViewAnimation:YES];
+}
+
+-(void)removeMenuViewAnimation:(BOOL) isLeft {
+    CGFloat width = (isLeft)?-WIDTH:WIDTH;
+    Class className = (isLeft)?[LeftMenuView class]:[RightMenuView class];
     for (UIView *view in self.view.subviews) {
-        if ([view isKindOfClass:[LeftMenuView class]]) {
-            CGRect rect = CGRectMake(-WIDTH, 60, WIDTH, HEIGHT);
+        if ([view isKindOfClass:className]) {
+            CGRect rect = CGRectMake(width, 72, WIDTH, HEIGHT);
             [UIView animateWithDuration:0.5
                                   delay:0
                  usingSpringWithDamping:1
@@ -659,13 +672,17 @@
     [self.topView setFunctionBtnDeselectedState];
 }
 
+#pragma mark LeftViewInteraction 和左侧栏的交互
+-(void)finishedRemoveRightView {
+    [self.topView setFunctionBtnDeselectedState];
+}
+
 #pragma mark 交互
 - (IBAction)ZoomCtrl:(UIButton *)sender {
     if ([[sender restorationIdentifier] isEqualToString:@"zoomin"]) {
         self.BaseBaiduMapView.zoomLevel += 0.3;
-    } else if ([[sender restorationIdentifier] isEqualToString:@"zoomout"]) {
+    } else if ([[sender restorationIdentifier] isEqualToString:@"zoomout"])
         self.BaseBaiduMapView.zoomLevel -= 0.3;
-    }
 }
 
 - (IBAction)reLocateMyPosition:(UIButton *)sender {
@@ -679,7 +696,6 @@
  当这个方法被调用时，一定是S/E都已选好
  */
 - (IBAction)researchPath:(UIButton *)sender {
-    
     switch (self.guideMode) {
         case NEARBY_GUIDE_MODE: {
             CLLocationCoordinate2D startPoint = [[BaiduLocationTool shareInstance] getActualLocation];// 周边模式下，起点为当前位置
@@ -718,8 +734,7 @@
 -(void)doNearbyStationSearchActioin {
     /*
      1. 定位到当前位置
-     2. 调用BMKGeometry，组合出所有在圆形区域内的站点数组，通过代理，连同刚刚的圆形区域，这两个覆盖物，传给主页
-     */
+     2. 调用BMKGeometry，组合出所有在圆形区域内的站点数组，通过代理，连同刚刚的圆形区域，这两个覆盖物，传给主页*/
     [[BaiduLocationTool shareInstance] startLocateWithBlk:^(CLLocationCoordinate2D myLacation) {
         if (self.guideMode == NEARBY_GUIDE_MODE) { // 加判断，防止在站点搜索模式  时，更新了位置，仍然会调用周边模式下的代码
             NSArray<BMKPointAnnotation*> *nearbyStationAnnotations = [[StationInfo shareInstance] fetchNearbyStationAnnotationWithPoint:myLacation];

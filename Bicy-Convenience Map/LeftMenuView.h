@@ -14,18 +14,6 @@
  当移除当前左侧菜单栏时的回调，通知主页的controller将TopView的按钮恢复原状
  */
 -(void)finishedRemoveLeftView;
-
-///**
-// 找出圆形区域内的所有站点并作为覆盖物添加到主页上
-// 
-// @param stationAnnotations 满足条件的站点列表
-// @param radius 半径，单位m
-// @param center 圆心(当前位置)
-// */
-//-(void)addNearbyStationAnnotations:(NSArray<BMKPointAnnotation*>*)stationAnnotations
-//                  CircleWithRadius:(NSInteger)radius
-//                  CircleWithCenter:(CLLocationCoordinate2D)center;
-
 @end
 
 //==========================================================================================
