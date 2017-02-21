@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -15,6 +15,18 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="261"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N50-ul-9WI" userLabel="列表向下">
+                    <rect key="frame" x="0.0" y="237" width="375" height="24"/>
+                    <color key="backgroundColor" red="0.90473359819999999" green="0.95912879709999999" blue="0.83448916669999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="375" id="LjM-Lm-y3c"/>
+                        <constraint firstAttribute="height" constant="24" id="O0J-c9-0cq"/>
+                    </constraints>
+                    <state key="normal" image="向下按键"/>
+                    <connections>
+                        <action selector="startDownAnimation:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="c8c-1d-x3U"/>
+                    </connections>
+                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnu-nV-8F4" userLabel="底部选项栏">
                     <rect key="frame" x="27" y="0.0" width="320" height="54"/>
                     <subviews>
@@ -117,18 +129,6 @@
                         <outlet property="delegate" destination="Qwi-OJ-CkV" id="xY5-QR-jEd"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N50-ul-9WI" userLabel="列表向下">
-                    <rect key="frame" x="0.0" y="237" width="375" height="24"/>
-                    <color key="backgroundColor" red="0.90473359819999999" green="0.95912879709999999" blue="0.83448916669999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="375" id="LjM-Lm-y3c"/>
-                        <constraint firstAttribute="height" constant="24" id="O0J-c9-0cq"/>
-                    </constraints>
-                    <state key="normal" image="向下按键"/>
-                    <connections>
-                        <action selector="startDownAnimation:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="c8c-1d-x3U"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>

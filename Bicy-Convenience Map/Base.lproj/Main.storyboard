@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,11 +18,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NHI-b8-WvN" customClass="BMKMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.7202400565" green="0.91335034370000001" blue="0.5260005593" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
@@ -31,7 +31,7 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WBj-FQ-V18" userLabel="ZoomView">
-                                <rect key="frame" x="6" y="310" width="38" height="98"/>
+                                <rect key="frame" x="6" y="260" width="38" height="98"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="缩放" translatesAutoresizingMaskIntoConstraints="NO" id="Hd9-nU-qU7">
                                         <rect key="frame" x="0.0" y="0.0" width="38" height="98"/>
@@ -67,7 +67,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFN-Xk-B8i" userLabel="重新规划">
-                                <rect key="frame" x="295" y="97" width="80" height="80"/>
+                                <rect key="frame" x="334" y="97" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="J6d-hB-BkM"/>
                                     <constraint firstAttribute="width" constant="80" id="aSF-wj-GNo"/>
@@ -78,7 +78,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="siK-bN-8hY">
-                                <rect key="frame" x="6" y="416" width="38" height="38"/>
+                                <rect key="frame" x="6" y="366" width="38" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="周边站点"/>
                                 <connections>
@@ -86,12 +86,12 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="xFN-Xk-B8i" secondAttribute="trailing" id="HVP-cR-r9J"/>
                             <constraint firstItem="WBj-FQ-V18" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="6" id="Uoa-NS-cZB"/>
                             <constraint firstItem="xFN-Xk-B8i" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="77" id="src-Ek-HQ2"/>
-                            <constraint firstItem="WBj-FQ-V18" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="290" id="z2h-VT-HGg"/>
+                            <constraint firstItem="WBj-FQ-V18" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="240" id="z2h-VT-HGg"/>
                         </constraints>
                     </view>
                     <connections>
@@ -107,7 +107,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="244" y="162.3688155922039"/>
+            <point key="canvasLocation" x="243.47826086956525" y="162.22826086956522"/>
         </scene>
     </scenes>
     <resources>

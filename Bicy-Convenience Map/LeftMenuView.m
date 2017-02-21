@@ -46,7 +46,7 @@
 }
 
 -(void)removeCurrentLeftMenu {
-    CGRect rect = CGRectMake(-WIDTH, 60, WIDTH, HEIGHT);
+    CGRect rect = CGRectMake(-WIDTH, TOP_OFFSET+TOP_HEIGHT, WIDTH, HEIGHT);
     [UIView animateWithDuration:0.5
                           delay:0
          usingSpringWithDamping:1

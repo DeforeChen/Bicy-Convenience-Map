@@ -38,17 +38,22 @@
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 
 // 底栏按键高度
-#define BOTTOM_RECT_HEIGHT 261 //底部栏的选项按钮凸起的高度
-#define BTN_WIDTH 53.5
+#define BOTTOM_RECT_HEIGHT (1-0.618)*HEIGHT //底部栏的选项按钮凸起的高度,黄金分割
+#define BTN_WIDTH 54
 #define BTN_HEIGHT 42
 #define BTN_TOP_HEIGHT BTN_WIDTH
 //#define BTN_SEL_RECT   CGRectMake(self.frame.origin.x, -6, BTN_WIDTH, BTN_HEIGHT+6)
 //#define BTN_DESEL_RECT CGRectMake(self.frame.origin.x, 0, BTN_WIDTH, BTN_HEIGHT)
 
-#define SHOW_BOTTOM_RECT              CGRectMake(0, HEIGHT-BOTTOM_RECT_HEIGHT, WIDTH, BOTTOM_RECT_HEIGHT)
-#define SHOW_BOTTOM_ONLY_OPTION_RECT  CGRectMake(0, HEIGHT-BTN_TOP_HEIGHT, WIDTH, BOTTOM_RECT_HEIGHT)
-#define SHOW_SHORT_MAPVIEW            CGRectMake(0, 0, WIDTH, HEIGHT-BOTTOM_RECT_HEIGHT+BTN_TOP_HEIGHT)
+#define SHOW_BOTTOM_RECT              CGRectMake(0, HEIGHT*0.618, WIDTH, BOTTOM_RECT_HEIGHT)
+#define SHOW_BOTTOM_ONLY_OPTION_RECT  CGRectMake(0, HEIGHT-BTN_TOP_HEIGHT, WIDTH, BTN_TOP_HEIGHT)
+#define SHOW_SHORT_MAPVIEW            CGRectMake(0, 0, WIDTH, HEIGHT*0.618 + BTN_TOP_HEIGHT)
 #define SCREEN_RECT                   [UIScreen mainScreen].bounds
+
+// 顶栏距离相关
+#define TOP_OFFSET  25
+#define TOP_HEIGHT  52
+#define SHOW_TOP_RECT                 CGRectMake(0, TOP_OFFSET, WIDTH, TOP_HEIGHT)
 
 #define UNREACHABLE_INDEX   10000
 // 标注背景图片的大小
@@ -113,6 +118,6 @@ typedef enum {
 #define PLIST_NAME @"districtOutlineInfo.plist"
 
 #define ANIMATION_TIME 0.4
-#define ZOOM_LEVEL 16.5 // 选中一个站点时的放大等级
+#define ZOOM_LEVEL 16 // 选中一个站点时的放大等级
 
 #endif /* config_h */

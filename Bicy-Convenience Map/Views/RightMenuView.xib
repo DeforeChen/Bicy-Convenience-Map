@@ -15,36 +15,62 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="右侧背景" translatesAutoresizingMaskIntoConstraints="NO" id="B44-E9-0gR">
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="右侧背景" translatesAutoresizingMaskIntoConstraints="NO" id="B44-E9-0gR">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <gestureRecognizers/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3PO-A2-qAb">
-                    <rect key="frame" x="239" y="95" width="120" height="33"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="右菜单" translatesAutoresizingMaskIntoConstraints="NO" id="tkN-Oo-4jx">
+                    <rect key="frame" x="187" y="0.0" width="188" height="146"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="188" id="8vw-GJ-Wzv"/>
+                        <constraint firstAttribute="height" constant="146" id="Ml6-el-Tza"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3PO-A2-qAb">
+                    <rect key="frame" x="239" y="96" width="120" height="33"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="Q3R-yM-jAE"/>
+                        <constraint firstAttribute="height" constant="33" id="Yqe-rS-KJs"/>
+                    </constraints>
                     <state key="normal" image="关于"/>
                     <connections>
                         <action selector="aboutMyApp:" destination="iN0-l3-epB" eventType="touchUpInside" id="ttq-HJ-5kR"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZz-fq-SPb">
-                    <rect key="frame" x="239" y="41" width="120" height="33"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZz-fq-SPb">
+                    <rect key="frame" x="239" y="46" width="120" height="33"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="0Pn-bq-NQD"/>
+                        <constraint firstAttribute="height" constant="33" id="MOK-Oe-RWA"/>
+                    </constraints>
                     <state key="normal" image="更新数据"/>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="3PO-A2-qAb" secondAttribute="trailing" constant="16" id="Dwu-1R-EZ1"/>
+                <constraint firstItem="tkN-Oo-4jx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Dxk-h9-7Zg"/>
+                <constraint firstAttribute="trailing" secondItem="B44-E9-0gR" secondAttribute="trailing" id="XZy-si-RCa"/>
+                <constraint firstAttribute="bottom" secondItem="B44-E9-0gR" secondAttribute="bottom" id="YlG-bJ-DSt"/>
+                <constraint firstItem="B44-E9-0gR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="eI3-aY-3Yh"/>
+                <constraint firstItem="jZz-fq-SPb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="46" id="f2L-Ki-jGL"/>
+                <constraint firstAttribute="trailing" secondItem="tkN-Oo-4jx" secondAttribute="trailing" id="jck-fo-c3j"/>
+                <constraint firstAttribute="trailing" secondItem="jZz-fq-SPb" secondAttribute="trailing" constant="16" id="mBq-BL-dzs"/>
+                <constraint firstItem="3PO-A2-qAb" firstAttribute="top" secondItem="jZz-fq-SPb" secondAttribute="bottom" constant="17" id="w7H-da-VPb"/>
+                <constraint firstItem="B44-E9-0gR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wra-Gb-Oet"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="bgImgView" destination="B44-E9-0gR" id="9pZ-Sr-ZaK"/>
             </connections>
+            <point key="canvasLocation" x="24.5" y="52.5"/>
         </view>
     </objects>
     <resources>
         <image name="关于" width="240" height="66"/>
-        <image name="右侧背景" width="750" height="1214"/>
+        <image name="右侧背景" width="375" height="607"/>
+        <image name="右菜单" width="376" height="292"/>
         <image name="更新数据" width="240" height="66"/>
     </resources>
 </document>

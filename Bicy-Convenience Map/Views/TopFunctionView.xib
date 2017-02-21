@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,71 +11,86 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YcP-Cb-b89" userLabel="TopView" customClass="TopFunctionView">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="Qwi-OJ-CkV" customClass="TopFunctionView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="顶栏" translatesAutoresizingMaskIntoConstraints="NO" id="eGp-o3-o3B">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PSM-Zn-tFA" userLabel="搜索模式">
-                    <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="搜索模式"/>
-                    <connections>
-                        <action selector="SelectSearchMode:" destination="YcP-Cb-b89" eventType="touchUpInside" id="UxD-wH-afQ"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1G-MR-0kR" userLabel="设置">
-                    <rect key="frame" x="323" y="0.0" width="52" height="52"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="设置"/>
-                    <connections>
-                        <action selector="MySettings:" destination="YcP-Cb-b89" eventType="touchUpInside" id="bCy-Q3-a9v"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="开发区管委会站（江滨）" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnZ-pm-b70">
-                    <rect key="frame" x="79" y="0.0" width="234" height="27"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="终点" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DoF-NH-e9k">
-                    <rect key="frame" x="79" y="26" width="234" height="27"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EbX-l7-BQY">
-                    <rect key="frame" x="291" y="3" width="22" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="撤销"/>
-                    <connections>
-                        <action selector="resetStartStation:" destination="YcP-Cb-b89" eventType="touchUpInside" id="oJ4-tG-RQz"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qV6-kN-KU3">
-                    <rect key="frame" x="291" y="28" width="22" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="撤销"/>
-                    <connections>
-                        <action selector="resetEndStation:" destination="YcP-Cb-b89" eventType="touchUpInside" id="2Y2-lC-lrs"/>
-                    </connections>
-                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnu-nV-8F4" userLabel="底部选项栏">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="顶栏" translatesAutoresizingMaskIntoConstraints="NO" id="H5y-vX-bgF">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mcg-oA-Ja9" userLabel="搜索模式">
+                            <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="搜索模式"/>
+                            <connections>
+                                <action selector="SelectSearchMode:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="dpc-jR-Mei"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cX-He-JNM" userLabel="设置">
+                            <rect key="frame" x="268" y="0.0" width="52" height="52"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="设置"/>
+                            <connections>
+                                <action selector="MySettings:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="7lx-1C-BL0"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="开发区管委会站（江滨）" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wy5-HF-KWS">
+                            <rect key="frame" x="67" y="0.0" width="200" height="27"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="终点" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7s-Z4-qOO">
+                            <rect key="frame" x="67" y="25" width="179" height="27"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeK-k1-ux9" userLabel="clear Start">
+                            <rect key="frame" x="247" y="2" width="22" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="撤销"/>
+                            <connections>
+                                <action selector="resetStartStation:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="TCI-JF-PKP"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6i9-xj-bWo" userLabel="clear end">
+                            <rect key="frame" x="247" y="28" width="22" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="撤销"/>
+                            <connections>
+                                <action selector="resetEndStation:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="Msg-St-blb"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="52" id="RKg-lP-Ie3"/>
+                        <constraint firstAttribute="width" constant="320" id="RxA-Uj-H9E"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="fnu-nV-8F4" firstAttribute="top" secondItem="Qwi-OJ-CkV" secondAttribute="top" id="GXn-Jq-VCg"/>
+                <constraint firstItem="fnu-nV-8F4" firstAttribute="centerX" secondItem="Qwi-OJ-CkV" secondAttribute="centerX" id="YL9-l1-JgT"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="endStation" destination="DoF-NH-e9k" id="6Rd-BD-fHP"/>
-                <outlet property="resetStartStationBtn" destination="EbX-l7-BQY" id="foz-aV-LTB"/>
-                <outlet property="searchButton" destination="PSM-Zn-tFA" id="7DN-hl-rk7"/>
-                <outlet property="settingButton" destination="p1G-MR-0kR" id="FhR-SQ-ihA"/>
-                <outlet property="startStation" destination="bnZ-pm-b70" id="6Uh-Fw-eDB"/>
+                <outlet property="endStation" destination="K7s-Z4-qOO" id="B4L-VC-XXv"/>
+                <outlet property="resetStartStationBtn" destination="oeK-k1-ux9" id="vM2-he-dCJ"/>
+                <outlet property="searchButton" destination="Mcg-oA-Ja9" id="do2-ZJ-5MJ"/>
+                <outlet property="settingButton" destination="8cX-He-JNM" id="Gz2-67-pQw"/>
+                <outlet property="startStation" destination="wy5-HF-KWS" id="sHf-gp-FPj"/>
             </connections>
-            <point key="canvasLocation" x="60.5" y="312"/>
+            <point key="canvasLocation" x="-86.5" y="-82"/>
         </view>
     </objects>
     <resources>

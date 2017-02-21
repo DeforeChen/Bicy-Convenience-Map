@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -15,22 +15,34 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="左侧背景" translatesAutoresizingMaskIntoConstraints="NO" id="98w-xv-wXJ">
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="左侧背景" translatesAutoresizingMaskIntoConstraints="NO" id="98w-xv-wXJ">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <gestureRecognizers/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHq-6f-Y0O">
-                    <rect key="frame" x="54" y="42" width="120" height="33"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="左菜单" translatesAutoresizingMaskIntoConstraints="NO" id="LbI-xl-0aM">
+                    <rect key="frame" x="0.0" y="0.0" width="188" height="146"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="146" id="6vU-rZ-nie"/>
+                        <constraint firstAttribute="width" constant="188" id="mFb-SQ-Hod"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHq-6f-Y0O">
+                    <rect key="frame" x="46" y="41" width="120" height="33"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="LT5-bt-0r3"/>
+                        <constraint firstAttribute="height" constant="33" id="fvd-GE-f48"/>
+                    </constraints>
                     <state key="normal" image="区域搜索"/>
                     <connections>
                         <action selector="stationToStationSearchMode:" destination="iN0-l3-epB" eventType="touchUpInside" id="Cbe-k8-ohs"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4a-qH-E94">
-                    <rect key="frame" x="54" y="93" width="120" height="33"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4a-qH-E94">
+                    <rect key="frame" x="46" y="94" width="120" height="33"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="33" id="PNs-BV-Z60"/>
+                        <constraint firstAttribute="width" constant="120" id="Zc8-VU-ssR"/>
+                    </constraints>
                     <state key="normal" image="周边搜索"/>
                     <connections>
                         <action selector="nearbySearchMode:" destination="iN0-l3-epB" eventType="touchUpInside" id="Cg4-4Q-CHg"/>
@@ -39,6 +51,18 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="LbI-xl-0aM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6hI-dy-l69"/>
+                <constraint firstAttribute="bottom" secondItem="98w-xv-wXJ" secondAttribute="bottom" id="9Cj-0v-X1T"/>
+                <constraint firstItem="98w-xv-wXJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Js2-6A-dAQ"/>
+                <constraint firstItem="m4a-qH-E94" firstAttribute="top" secondItem="uHq-6f-Y0O" secondAttribute="bottom" constant="20" id="TNd-2f-ALP"/>
+                <constraint firstItem="m4a-qH-E94" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="46" id="Wte-rC-WJl"/>
+                <constraint firstItem="uHq-6f-Y0O" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="41" id="ZPr-13-CsI"/>
+                <constraint firstItem="98w-xv-wXJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gHE-g9-Ggl"/>
+                <constraint firstItem="LbI-xl-0aM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ga6-He-mLa"/>
+                <constraint firstAttribute="trailing" secondItem="98w-xv-wXJ" secondAttribute="trailing" id="ko3-nr-69q"/>
+                <constraint firstItem="uHq-6f-Y0O" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="46" id="lxo-08-ZIg"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -50,6 +74,7 @@
     <resources>
         <image name="区域搜索" width="240" height="66"/>
         <image name="周边搜索" width="240" height="66"/>
-        <image name="左侧背景" width="750" height="1214"/>
+        <image name="左侧背景" width="375" height="607"/>
+        <image name="左菜单" width="376" height="292"/>
     </resources>
 </document>

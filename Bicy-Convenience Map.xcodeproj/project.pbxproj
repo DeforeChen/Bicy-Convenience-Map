@@ -39,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8912FC051E5B05AE00253EC6 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		89446AFE1E237D5C00962BEE /* MyPinAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyPinAnnotationView.h; path = Views/MyPinAnnotationView.h; sourceTree = "<group>"; };
 		89446AFF1E237D5C00962BEE /* MyPinAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyPinAnnotationView.m; path = Views/MyPinAnnotationView.m; sourceTree = "<group>"; };
 		89446B011E24CDD100962BEE /* StationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationProtocol.h; path = Models/StationProtocol.h; sourceTree = "<group>"; };
@@ -69,7 +70,6 @@
 		8963F56E1E0918EA00EBDA1A /* BottomDistrictView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BottomDistrictView.h; path = Views/BottomDistrictView.h; sourceTree = "<group>"; };
 		8963F56F1E0918EA00EBDA1A /* BottomDistrictView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BottomDistrictView.m; path = Views/BottomDistrictView.m; sourceTree = "<group>"; };
 		8963F5701E0918EA00EBDA1A /* BottomDistrictView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BottomDistrictView.xib; path = Views/BottomDistrictView.xib; sourceTree = "<group>"; };
-		8963F5741E092B0600EBDA1A /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		89B3E42B1E34463A00AA71DB /* BaiduRouteSearchTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaiduRouteSearchTool.h; path = BaiduMap_Singleton_Tool/BaiduRouteSearchTool.h; sourceTree = "<group>"; };
 		89B3E42C1E34463A00AA71DB /* BaiduRouteSearchTool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BaiduRouteSearchTool.mm; path = BaiduMap_Singleton_Tool/BaiduRouteSearchTool.mm; sourceTree = "<group>"; };
 		89B3E42E1E34571700AA71DB /* RouteAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteAnnotation.h; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 		72C2128FE0636EE29B53A0F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8963F5741E092B0600EBDA1A /* Reveal.framework */,
+				8912FC051E5B05AE00253EC6 /* Reveal.framework */,
 				DCB7FDB9298BA8C8DF991882 /* libPods-Bicy-Convenience Map.a */,
 			);
 			name = Frameworks;
@@ -199,10 +199,10 @@
 		8963F5731E0918EF00EBDA1A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				896141441E40DD5E00A11BC9 /* LeftMenuView */,
 				89C713D21E5839C7005D5DE3 /* RightView */,
 				89F0B8AA1E2DC35100DFE31B /* BottomView */,
 				89F0B8AB1E2DC36800DFE31B /* TopView */,
-				896141441E40DD5E00A11BC9 /* LeftMenuView */,
 				89446AFE1E237D5C00962BEE /* MyPinAnnotationView.h */,
 				89446AFF1E237D5C00962BEE /* MyPinAnnotationView.m */,
 				89B3E42E1E34571700AA71DB /* RouteAnnotation.h */,

@@ -127,7 +127,7 @@
     
     //3. 添加顶部的功能栏，用于定位及搜索提示
     self.topView = [TopFunctionView initMyView];
-    self.topView.frame = CGRectMake(0, 20, self.topView.bounds.size.width, self.topView.bounds.size.height);
+    self.topView.frame = SHOW_TOP_RECT;
     self.topView.delegate = self;
     [self.view addSubview:self.topView];
     
@@ -520,7 +520,7 @@
 
 -(void)addMenuViewAnimation:(BOOL) isLeft MenuView:(UIView*)view {
     CGFloat width = (isLeft)?-WIDTH:WIDTH;
-    view.frame = CGRectMake(width, 72 , WIDTH, HEIGHT);
+    view.frame = CGRectMake(width, TOP_OFFSET+TOP_HEIGHT, WIDTH, HEIGHT);
     [self.view addSubview:view];
     [UIView animateWithDuration:0.5
                           delay:0
@@ -528,7 +528,7 @@
           initialSpringVelocity:0.5
                         options:UIViewAnimationOptionOverrideInheritedCurve
                      animations:^{
-                         view.frame = CGRectMake(0, 72, WIDTH, HEIGHT);
+                         view.frame = CGRectMake(0, TOP_OFFSET+TOP_HEIGHT, WIDTH, HEIGHT);
                      }
                      completion:nil];
 }
@@ -546,7 +546,7 @@
     Class className = (isLeft)?[LeftMenuView class]:[RightMenuView class];
     for (UIView *view in self.view.subviews) {
         if ([view isKindOfClass:className]) {
-            CGRect rect = CGRectMake(width, 72, WIDTH, HEIGHT);
+            CGRect rect = CGRectMake(width, TOP_OFFSET+TOP_HEIGHT, WIDTH, HEIGHT);
             [UIView animateWithDuration:0.5
                                   delay:0
                  usingSpringWithDamping:1
