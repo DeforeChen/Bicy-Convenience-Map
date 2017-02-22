@@ -16,6 +16,8 @@
 @implementation RightMenuView
 #pragma mark Interaction
 - (IBAction)aboutMyApp:(UIButton *)sender {
+    [self removeCurrentRightMenu];
+    [self.delegate insertAboutView];
 }
 
 

@@ -690,9 +690,24 @@
     [self.topView setFunctionBtnDeselectedState];
 }
 
-#pragma mark LeftViewInteraction 和左侧栏的交互
+#pragma mark LeftViewInteraction 和右侧栏的交互
 -(void)finishedRemoveRightView {
     [self.topView setFunctionBtnDeselectedState];
+}
+
+-(void)insertAboutView {
+    AboutView *aboutView = [[AboutView alloc] initMyView];
+    aboutView.frame = CGRectMake(WIDTH, 0, WIDTH, HEIGHT);
+    [self.view addSubview:aboutView];
+    [UIView animateWithDuration:ANIMATION_TIME
+                          delay:0.0
+         usingSpringWithDamping:0.5
+          initialSpringVelocity:15.0
+                        options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         aboutView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
+                     }
+                     completion:nil];
 }
 
 #pragma mark 交互

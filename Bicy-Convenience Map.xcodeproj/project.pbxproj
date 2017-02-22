@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6A1DAEE2978C6BF51F156B47 /* libPods-Bicy-Convenience Map.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB7FDB9298BA8C8DF991882 /* libPods-Bicy-Convenience Map.a */; };
+		8912FC311E5D3FDE00253EC6 /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8912FC301E5D3FDE00253EC6 /* AboutView.m */; };
+		8912FC331E5D404C00253EC6 /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8912FC321E5D404C00253EC6 /* AboutView.xib */; };
 		89446B001E237D5C00962BEE /* MyPinAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89446AFF1E237D5C00962BEE /* MyPinAnnotationView.m */; };
 		89446B2C1E277C7C00962BEE /* GotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89446B2B1E277C7C00962BEE /* GotoView.m */; };
 		89446B2E1E277EC700962BEE /* GotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89446B2D1E277EC700962BEE /* GotoView.xib */; };
@@ -40,6 +42,9 @@
 
 /* Begin PBXFileReference section */
 		8912FC051E5B05AE00253EC6 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		8912FC2F1E5D3FDE00253EC6 /* AboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutView.h; sourceTree = "<group>"; };
+		8912FC301E5D3FDE00253EC6 /* AboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutView.m; sourceTree = "<group>"; };
+		8912FC321E5D404C00253EC6 /* AboutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
 		89446AFE1E237D5C00962BEE /* MyPinAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyPinAnnotationView.h; path = Views/MyPinAnnotationView.h; sourceTree = "<group>"; };
 		89446AFF1E237D5C00962BEE /* MyPinAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyPinAnnotationView.m; path = Views/MyPinAnnotationView.m; sourceTree = "<group>"; };
 		89446B011E24CDD100962BEE /* StationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationProtocol.h; path = Models/StationProtocol.h; sourceTree = "<group>"; };
@@ -216,9 +221,12 @@
 		89C713D21E5839C7005D5DE3 /* RightView */ = {
 			isa = PBXGroup;
 			children = (
-				89C713D01E5839C3005D5DE3 /* RightMenuView.xib */,
+				8912FC2F1E5D3FDE00253EC6 /* AboutView.h */,
+				8912FC301E5D3FDE00253EC6 /* AboutView.m */,
+				8912FC321E5D404C00253EC6 /* AboutView.xib */,
 				89C713D31E5839F1005D5DE3 /* RightMenuView.h */,
 				89C713D41E5839F1005D5DE3 /* RightMenuView.m */,
+				89C713D01E5839C3005D5DE3 /* RightMenuView.xib */,
 			);
 			name = RightView;
 			sourceTree = "<group>";
@@ -325,6 +333,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8912FC331E5D404C00253EC6 /* AboutView.xib in Resources */,
 				8958FDB81DFF8B9800CBAB84 /* LaunchScreen.storyboard in Resources */,
 				89CC884D1E0BA46000FAB40D /* StattionsTableViewCell.xib in Resources */,
 				8963F5721E0918EA00EBDA1A /* BottomDistrictView.xib in Resources */,
@@ -404,6 +413,7 @@
 				89CC88511E0BB9D600FAB40D /* StationInfo.m in Sources */,
 				8958FDAD1DFF8B9800CBAB84 /* AppDelegate.mm in Sources */,
 				89446B2C1E277C7C00962BEE /* GotoView.m in Sources */,
+				8912FC311E5D3FDE00253EC6 /* AboutView.m in Sources */,
 				8958FDC21E03959A00CBAB84 /* BaiduLocationTool.m in Sources */,
 				89F0B8A91E2DC34300DFE31B /* TopFunctionView.m in Sources */,
 				8958FDAA1DFF8B9800CBAB84 /* main.m in Sources */,
