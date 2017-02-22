@@ -9,11 +9,21 @@
 #import "TopFunctionView.h"
 #define START_HOLD_TEXT @"选中标注为起点"
 #define END_HOLD_TEXT @"选中标注为终点"
+#define START_IMG_SELECT   [UIImage imageNamed:@"起点地址选中"]
+#define START_IMG_DESELECT [UIImage imageNamed:@"起点地址未选"]
+#define END_IMG_SELECT     [UIImage imageNamed:@"终点地址选中"]
+#define END_IMG_DESELECT   [UIImage imageNamed:@"终点地址未选"]
+
 @interface TopFunctionView()
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
 @property (weak, nonatomic) IBOutlet UIButton *settingButton;
 @property (weak, nonatomic) IBOutlet UIButton *resetStartStationBtn;
-@property (weak, nonatomic) IBOutlet UIImageView *initialMaskTipImg;//初始启动时的遮挡图片，在选中搜索模式后移除
+
+
+@property (weak, nonatomic) IBOutlet UIButton *startLocBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *startBG_ImgView;
+@property (weak, nonatomic) IBOutlet UIButton *endLocBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *endBG_ImgView;
 
 @end
 
@@ -71,13 +81,17 @@
     }
 }
 
+- (IBAction)locateStation:(UIButton *)sender {
+    [self.delegate locateWithStationID:[sender restorationIdentifier]];
+}
 
 /**
  清空起始站点信息
  */
 - (IBAction)resetStartStation:(id)sender {
-    if (self.buttonState == bothBtnDeselected && ![self.startStation.text isEqualToString:START_HOLD_TEXT]) {
-        self.startStation.text = START_HOLD_TEXT;
+    if (self.buttonState == bothBtnDeselected && ![self.startLocBtn.currentTitle isEqualToString:START_HOLD_TEXT]) {
+        [self.startLocBtn setTitle:START_HOLD_TEXT forState:UIControlStateNormal];
+        self.startBG_ImgView.image = START_IMG_DESELECT;
         [self.delegate resetStartStationInfo];
     }
 }
@@ -86,8 +100,9 @@
  清空终点站点信息
  */
 - (IBAction)resetEndStation:(UIButton *)sender {
-    if (self.buttonState == bothBtnDeselected && ![self.endStation.text isEqualToString:END_HOLD_TEXT]) {
-        self.endStation.text = END_HOLD_TEXT;
+    if (self.buttonState == bothBtnDeselected && ![self.endLocBtn.currentTitle isEqualToString:END_HOLD_TEXT]) {
+        [self.endLocBtn setTitle:END_HOLD_TEXT forState:UIControlStateNormal];
+        self.endBG_ImgView.image = END_IMG_DESELECT;
         [self.delegate resetEndStationInfo];
     }
 }
@@ -96,16 +111,17 @@
 -(void)heardFromGuideMode:(NSNotification*)info {
     NSNumber* modeObject = (NSNumber*)info.object;
     NSInteger mode = [modeObject integerValue];
+    self.startBG_ImgView.image       = START_IMG_DESELECT;
+    self.endBG_ImgView.image         = END_IMG_DESELECT;
+    [self.endLocBtn setTitle:END_HOLD_TEXT forState:UIControlStateNormal];
     switch (mode) {
         case STATION_TO_STATION_MODE: {
-            self.startStation.text = START_HOLD_TEXT;
-            self.endStation.text   = END_HOLD_TEXT;
+            [self.startLocBtn setTitle:START_HOLD_TEXT forState:UIControlStateNormal];
             [self.resetStartStationBtn setHidden:NO];
         }
             break;
         case NEARBY_GUIDE_MODE: {
-            self.startStation.text = @"我的位置";
-            self.endStation.text   = END_HOLD_TEXT;
+            [self.startLocBtn setTitle:@"我的位置" forState:UIControlStateNormal];
             [self.resetStartStationBtn setHidden:YES];
         }
             break;
@@ -113,4 +129,16 @@
             break;
     }
 }
+
+#pragma 接口函数
+-(void)setStartLocText:(NSString *)startName {
+    [self.startLocBtn setTitle:startName forState:UIControlStateNormal];
+    self.startBG_ImgView.image = START_IMG_SELECT;
+}
+
+-(void)setEndLocText:(NSString *)endName {
+    [self.endLocBtn setTitle:endName forState:UIControlStateNormal];
+    self.endBG_ImgView.image = END_IMG_SELECT;
+}
+
 @end

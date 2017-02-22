@@ -22,6 +22,14 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="起点地址未选" translatesAutoresizingMaskIntoConstraints="NO" id="n7V-am-bey" userLabel="起点地址背景">
+                            <rect key="frame" x="52" y="0.0" width="217" height="27"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="终点地址未选" translatesAutoresizingMaskIntoConstraints="NO" id="E2X-DQ-lgW" userLabel="终点地址背景">
+                            <rect key="frame" x="52" y="26" width="217" height="27"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mcg-oA-Ja9" userLabel="搜索模式">
                             <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -38,22 +46,8 @@
                                 <action selector="MySettings:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="7lx-1C-BL0"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="开发区管委会站（江滨）" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wy5-HF-KWS">
-                            <rect key="frame" x="67" y="0.0" width="200" height="27"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="终点" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7s-Z4-qOO">
-                            <rect key="frame" x="67" y="25" width="179" height="27"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeK-k1-ux9" userLabel="clear Start">
-                            <rect key="frame" x="247" y="2" width="22" height="22"/>
+                            <rect key="frame" x="247" y="3" width="22" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="撤销"/>
                             <connections>
@@ -61,18 +55,50 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6i9-xj-bWo" userLabel="clear end">
-                            <rect key="frame" x="247" y="28" width="22" height="22"/>
+                            <rect key="frame" x="247" y="29" width="22" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="撤销"/>
                             <connections>
                                 <action selector="resetEndStation:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="Msg-St-blb"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="endBtn" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BK3-r8-SMz">
+                            <rect key="frame" x="69" y="26" width="178" height="26"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="26" id="9O5-Qe-nB4"/>
+                                <constraint firstAttribute="width" constant="178" id="FFk-yz-an4"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="17"/>
+                            <state key="normal" title="终点">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="locateStation:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="mGz-dT-eN0"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="startBtn" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="reL-aM-u58">
+                            <rect key="frame" x="69" y="0.0" width="178" height="26"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="26" id="RV3-XZ-5xJ"/>
+                                <constraint firstAttribute="width" constant="178" id="wYi-UZ-W2H"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="17"/>
+                            <state key="normal" title="开发区管委会站(江滨)">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="locateStation:" destination="Qwi-OJ-CkV" eventType="touchUpInside" id="FUG-wU-xhs"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="reL-aM-u58" firstAttribute="centerX" secondItem="fnu-nV-8F4" secondAttribute="centerX" constant="-2" id="3dU-7b-ry0"/>
+                        <constraint firstAttribute="bottom" secondItem="BK3-r8-SMz" secondAttribute="bottom" id="Oss-8Z-XgY"/>
                         <constraint firstAttribute="height" constant="52" id="RKg-lP-Ie3"/>
                         <constraint firstAttribute="width" constant="320" id="RxA-Uj-H9E"/>
+                        <constraint firstItem="reL-aM-u58" firstAttribute="top" secondItem="fnu-nV-8F4" secondAttribute="top" id="jFz-s1-GFC"/>
+                        <constraint firstItem="BK3-r8-SMz" firstAttribute="centerX" secondItem="fnu-nV-8F4" secondAttribute="centerX" constant="-2" id="raR-ng-2Wl"/>
                     </constraints>
                 </view>
             </subviews>
@@ -84,19 +110,23 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="endStation" destination="K7s-Z4-qOO" id="B4L-VC-XXv"/>
+                <outlet property="endBG_ImgView" destination="E2X-DQ-lgW" id="H7q-er-93Q"/>
+                <outlet property="endLocBtn" destination="BK3-r8-SMz" id="1XK-eE-1nP"/>
                 <outlet property="resetStartStationBtn" destination="oeK-k1-ux9" id="vM2-he-dCJ"/>
                 <outlet property="searchButton" destination="Mcg-oA-Ja9" id="do2-ZJ-5MJ"/>
                 <outlet property="settingButton" destination="8cX-He-JNM" id="Gz2-67-pQw"/>
-                <outlet property="startStation" destination="wy5-HF-KWS" id="sHf-gp-FPj"/>
+                <outlet property="startBG_ImgView" destination="n7V-am-bey" id="2ac-64-Ve6"/>
+                <outlet property="startLocBtn" destination="reL-aM-u58" id="la9-of-ISm"/>
             </connections>
-            <point key="canvasLocation" x="-86.5" y="-82"/>
+            <point key="canvasLocation" x="-87" y="-82"/>
         </view>
     </objects>
     <resources>
         <image name="搜索模式" width="100" height="100"/>
         <image name="撤销" width="44" height="44"/>
+        <image name="终点地址未选" width="512" height="56"/>
         <image name="设置" width="100" height="100"/>
-        <image name="顶栏" width="750" height="106"/>
+        <image name="起点地址未选" width="512" height="56"/>
+        <image name="顶栏" width="375" height="52"/>
     </resources>
 </document>

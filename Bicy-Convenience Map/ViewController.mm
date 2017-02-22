@@ -50,7 +50,7 @@
     self.name            = [annotation title];
     self.annotationIndex = index;
     self.isInChangedDistrict = YES; //当写入值时，也就意味着当前S/E一定是处于区域内
-//    self.annotation = [[terminalStationAnnotation alloc] initWithCoordiate:self.coordiate];
+    //    self.annotation = [[terminalStationAnnotation alloc] initWithCoordiate:self.coordiate];
 }
 
 -(terminalStationAnnotation *)generateTermiStationAnnotation {
@@ -74,7 +74,7 @@
     self.BaseBaiduMapView.zoomLevel        = ZOOM_LEVEL;
     self.guideMode                         = NON_SELECT_MODE;
     self.previousAnnotationIndex           = UNREACHABLE_INDEX;
-
+    
     BMKLocationViewDisplayParam *displayParam = [[BMKLocationViewDisplayParam alloc]init];
     displayParam.isRotateAngleValid = true;//跟随态旋转角度是否生效
     displayParam.isAccuracyCircleShow = false;//精度圈是否显示
@@ -311,7 +311,7 @@
             if ([view isKindOfClass:[MyPinAnnotationView class]]) {
                 view.image = [UIImage imageNamed:@"站点_selected"];
                 [self.guideEndStation writeInDataFromAnnotation:view.annotation annotationIndex:UNREACHABLE_INDEX];//周边模式，不需要关注索引
-                self.topView.endStation.text   = self.guideEndStation.name;
+                [self.topView setEndLocText:self.guideEndStation.name];
                 self.previousAnnotationIndex   = [self.BaseBaiduMapView.annotations indexOfObject:view.annotation];
             }
         }
@@ -423,9 +423,9 @@
 #pragma mark SVProgressHUD
 -(void)showTip{
     [SVProgressHUD showErrorWithStatus:@"尝试数据请求，请检查你的网络"];
-//    [self performSelector:@selector(dismiss)
-//               withObject:nil
-//               afterDelay:2.0];
+    //    [self performSelector:@selector(dismiss)
+    //               withObject:nil
+    //               afterDelay:2.0];
 }
 
 -(void)dismissTip{
@@ -486,12 +486,12 @@
     // 如果起点/终点未写入值，且另一个起点/终点与要写入的值不相等，则写入
     if (self.guideStartStation.name == nil && ([self.guideEndStation.name isEqualToString:annotation.title] == NO)) {
         [self.guideStartStation writeInDataFromAnnotation:annotation annotationIndex:index];
-        self.topView.startStation.text = self.guideStartStation.name;
+        [self.topView setStartLocText:self.guideStartStation.name];
         MyPinAnnotationView *annotationView = (MyPinAnnotationView*)[self.BaseBaiduMapView viewForAnnotation:annotation];
         annotationView.image = [UIImage imageNamed:S_TERMI_IMG];
     } else if(self.guideEndStation.name == nil && ([self.guideStartStation.name isEqualToString:annotation.title] == NO)) {
         [self.guideEndStation writeInDataFromAnnotation:annotation annotationIndex:index];
-        self.topView.endStation.text = self.guideEndStation.name;
+        [self.topView setEndLocText:self.guideEndStation.name];
         MyPinAnnotationView *annotationView = (MyPinAnnotationView*)[self.BaseBaiduMapView viewForAnnotation:annotation];
         annotationView.image = [UIImage imageNamed:E_TERIMI_IMG];
     }
@@ -573,6 +573,24 @@
     [self removeTermiStation:self.guideEndStation];
     if (self.guideStartStation.name != nil) {
         [self doResetGuidePath];
+    }
+}
+
+-(void)locateWithStationID:(NSString *)name {
+    if (self.guideEndStation.name != nil && [name isEqualToString:@"endBtn"])
+        self.BaseBaiduMapView.centerCoordinate = self.guideEndStation.coordiate;
+    switch (self.guideMode) {
+        case NEARBY_GUIDE_MODE: {
+            if (self.guideStartStation.name != nil && [name isEqualToString:@"startBtn"])
+                [self reLocateMyPosition:nil];
+        }
+            break;
+        case STATION_TO_STATION_MODE:{
+            if (self.guideStartStation.name != nil && [name isEqualToString:@"startBtn"])
+                self.BaseBaiduMapView.centerCoordinate = self.guideStartStation.coordiate;
+        }
+        default:
+            break;
     }
 }
 
@@ -715,7 +733,7 @@
             self.guideStartStation.isInChangedDistrict = NO;
             self.guideEndStation.isInChangedDistrict = NO;
             [self addTermiStationAnnotations];
-
+            
             // 通知底栏复位模式，让底栏显示出来的时候所有按键是未选中的状态,方便下次切换到站点搜索模式
             [[NSNotificationCenter defaultCenter] postNotificationName:DISTRICT_BTN_SEL_RADIO
                                                                 object:@"复位模式"];

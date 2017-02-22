@@ -15,12 +15,15 @@
 -(void)addRightSettingView;     //添加右侧设置栏
 -(void)removeRightSettingView;  //移除右侧设置栏
 
-
 /**
  下面两个函数，用于通知主页清空所持有的起止站点信息
  */
 -(void)resetStartStationInfo;
 -(void)resetEndStationInfo;
+/**
+ 用于通知主页定位到S/E站点位置
+ */
+-(void)locateWithStationID:(NSString*)name;
 @end
 
 typedef enum : NSUInteger {
@@ -32,8 +35,7 @@ typedef enum : NSUInteger {
 @interface TopFunctionView : UIView
 @property(nonatomic,weak) id<TopViewInteractionDelegate>delegate;
 @property(nonatomic) topButtonState buttonState;
-@property (weak, nonatomic) IBOutlet UILabel *startStation;
-@property (weak, nonatomic) IBOutlet UILabel *endStation;
+
 
 +(instancetype)initMyView;
 
@@ -41,4 +43,7 @@ typedef enum : NSUInteger {
  让顶栏的功能键全部处于未选中状态
  */
 -(void)setFunctionBtnDeselectedState;
+
+-(void)setStartLocText:(NSString*)startName;
+-(void)setEndLocText:(NSString*)endName;
 @end
