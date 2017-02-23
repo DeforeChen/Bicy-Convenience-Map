@@ -6,5 +6,6 @@ target 'Bicy-Convenience Map' do
   pod 'SVProgressHUD'
   pod 'AFNetworking','~>2.1.0'
   pod 'MJExtension','~>3.0.10'
+  pod 'RealReachability'
 #   pod 'Reveal-iOS-SDK'
 end

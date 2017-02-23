@@ -7,6 +7,9 @@
 //
 
 #import "TopFunctionView.h"
+#import <SVProgressHUD/SVProgressHUD.h>
+#import <RealReachability.h>
+
 #define START_HOLD_TEXT @"选中标注为起点"
 #define END_HOLD_TEXT @"选中标注为终点"
 #define START_IMG_SELECT   [UIImage imageNamed:@"起点地址选中"]
@@ -24,22 +27,23 @@
 @property (weak, nonatomic) IBOutlet UIImageView *startBG_ImgView;
 @property (weak, nonatomic) IBOutlet UIButton *endLocBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *endBG_ImgView;
-
+@property (nonatomic) BOOL netAvailable;
 @end
 
 @implementation TopFunctionView
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-
 +(instancetype)initMyView {
     TopFunctionView *view = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class])
                                                           owner:self
                                                         options:nil].lastObject;
-    view.buttonState = bothBtnDeselected;
+    view.buttonState  = bothBtnDeselected;
+    view.netAvailable = YES;
     [[NSNotificationCenter defaultCenter] addObserver:view
                                              selector:@selector(heardFromGuideMode:)
                                                  name:GUIDE_MODE_RADIO
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:view
+                                             selector:@selector(networkChange:)
+                                                 name:kRealReachabilityChangedNotification
                                                object:nil];
     return view;
 }
@@ -52,18 +56,47 @@
     self.buttonState = bothBtnDeselected;
 }
 
+-(void)networkChange:(NSNotification*)notification{
+    RealReachability *reachability = (RealReachability *)notification.object;
+    ReachabilityStatus status = [reachability currentReachabilityStatus];
+    switch (status) {
+            
+        case RealStatusUnknown:
+        case RealStatusNotReachable:
+            self.netAvailable = NO;
+            if (self.buttonState == searchModeBtnSelected) {
+                [self.searchButton setImage:[UIImage imageNamed:@"搜索模式"]
+                                   forState:UIControlStateNormal];
+                self.buttonState = bothBtnDeselected;
+                [self.delegate removeLeftMenuView];
+            }
+            HUD_NET_WARNING;
+            break;
+        case RealStatusViaWiFi:
+        case RealStatusViaWWAN:
+            self.netAvailable = YES;
+            break;
+        default:
+            break;
+    }
+}
+
 #pragma mark Interaction
 - (IBAction)SelectSearchMode:(UIButton *)sender {
-    if (self.buttonState == bothBtnDeselected) {
-        [sender setImage:[UIImage imageNamed:@"左取消按键"]
-                forState:UIControlStateNormal];
-        self.buttonState = searchModeBtnSelected;
-        [self.delegate addLeftMenuView];
-    } else if (self.buttonState == searchModeBtnSelected) {
-        [sender setImage:[UIImage imageNamed:@"搜索模式"]
-                forState:UIControlStateNormal];
-        self.buttonState = bothBtnDeselected;
-        [self.delegate removeLeftMenuView];
+    if (self.netAvailable == NO) {
+        HUD_NET_WARNING;
+    } else {
+        if (self.buttonState == bothBtnDeselected) {
+            [sender setImage:[UIImage imageNamed:@"左取消按键"]
+                    forState:UIControlStateNormal];
+            self.buttonState = searchModeBtnSelected;
+            [self.delegate addLeftMenuView];
+        } else if (self.buttonState == searchModeBtnSelected) {
+            [sender setImage:[UIImage imageNamed:@"搜索模式"]
+                    forState:UIControlStateNormal];
+            self.buttonState = bothBtnDeselected;
+            [self.delegate removeLeftMenuView];
+        }
     }
 }
 

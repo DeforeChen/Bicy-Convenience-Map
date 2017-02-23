@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <RealReachability.h>
+
 @interface AppDelegate () {
     BMKMapManager* _mapManager;
     UINavigationController *navigationController;
@@ -28,6 +30,7 @@
               options:NSKeyValueObservingOptionNew
               context:NULL];
     
+    [GLobalRealReachability startNotifier];// 开始发送网络状态变化的广播
     [self.window addSubview:navigationController.view];
     [self.window makeKeyAndVisible];
     return YES;

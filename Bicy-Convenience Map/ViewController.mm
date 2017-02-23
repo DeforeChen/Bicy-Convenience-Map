@@ -434,7 +434,8 @@
 
 #pragma mark BottomViewInteractionDelegate 和底栏View的交互
 -(void)startMapviewTransform {
-    if (self.bottomView.frame.origin.y == HEIGHT-BTN_TOP_HEIGHT) {
+    int height = (int)(HEIGHT-BTN_TOP_HEIGHT);
+    if ((int)self.bottomView.frame.origin.y == height) {
         [UIView animateWithDuration:ANIMATION_TIME
                               delay:0.0
              usingSpringWithDamping:0.5
@@ -449,7 +450,8 @@
 }
 
 -(void)stopMapviewTransform {
-    if (self.bottomView.frame.origin.y == HEIGHT-BOTTOM_RECT_HEIGHT) {
+    float height = HEIGHT-BOTTOM_RECT_HEIGHT;
+    if ((int)self.bottomView.frame.origin.y == (int)height) {
         [UIView animateWithDuration:ANIMATION_TIME
                               delay:0.0
              usingSpringWithDamping:0.5
@@ -757,7 +759,6 @@
         default:
             break;
     }
-    
 }
 
 - (IBAction)searchNearbyStation:(UIButton *)sender {

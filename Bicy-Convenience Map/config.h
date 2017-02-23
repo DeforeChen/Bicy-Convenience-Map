@@ -46,7 +46,7 @@
 //#define BTN_DESEL_RECT CGRectMake(self.frame.origin.x, 0, BTN_WIDTH, BTN_HEIGHT)
 
 #define SHOW_BOTTOM_RECT              CGRectMake(0, HEIGHT*0.618, WIDTH, BOTTOM_RECT_HEIGHT)
-#define SHOW_BOTTOM_ONLY_OPTION_RECT  CGRectMake(0, HEIGHT-BTN_TOP_HEIGHT, WIDTH, BTN_TOP_HEIGHT)
+#define SHOW_BOTTOM_ONLY_OPTION_RECT  CGRectMake(0, HEIGHT-BTN_TOP_HEIGHT, WIDTH, BOTTOM_RECT_HEIGHT)
 #define SHOW_SHORT_MAPVIEW            CGRectMake(0, 0, WIDTH, HEIGHT*0.618 + BTN_TOP_HEIGHT)
 #define SCREEN_RECT                   [UIScreen mainScreen].bounds
 
@@ -116,6 +116,9 @@ typedef enum {
 
 //保存行政区域边界的plist文件名
 #define PLIST_NAME @"districtOutlineInfo.plist"
+
+// ------------------- HUD ---------------------
+#define HUD_NET_WARNING [SVProgressHUD showErrorWithStatus:@"网络连接失败，请检查您的网络"]
 
 #define ANIMATION_TIME 0.4
 #define ZOOM_LEVEL 16 // 选中一个站点时的放大等级
