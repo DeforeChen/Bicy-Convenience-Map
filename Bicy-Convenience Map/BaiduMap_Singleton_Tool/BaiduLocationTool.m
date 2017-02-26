@@ -84,7 +84,7 @@ static BaiduLocationTool *center = nil;//定义一个全局的静态变量，满
  *在地图View将要启动定位时，会调用此函数
  */
 - (void)willStartLocatingUser {
-    NSLog(@"start locate");
+    XLog(@"start locate");
 }
 
 /**
@@ -93,7 +93,7 @@ static BaiduLocationTool *center = nil;//定义一个全局的静态变量，满
  */
 - (void)didUpdateUserHeading:(BMKUserLocation *)userLocation {
     [self.mapView updateLocationData:userLocation];
-//    NSLog(@"heading is %@",userLocation.heading);
+//    XLog(@"heading is %@",userLocation.heading);
 }
 
 /**
@@ -101,7 +101,7 @@ static BaiduLocationTool *center = nil;//定义一个全局的静态变量，满
  *@param userLocation 新的用户位置
  */
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation {
-//        NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+//        XLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
     [self.mapView updateLocationData:userLocation];
     if (_beginLocation == YES) {
         _beginLocation = NO;
@@ -113,7 +113,7 @@ static BaiduLocationTool *center = nil;//定义一个全局的静态变量，满
             BOOL insideArea = BMKCircleContainsCoordinate(self.currentLocation, userLocation.location.coordinate, UPDATAE_DISTANCE);
             if (!insideArea) {
                 self.currentLocation = userLocation.location.coordinate;
-                NSLog(@"大于500m后的更新位置 = %f,%f",self.currentLocation.latitude,self.currentLocation.longitude);
+                XLog(@"大于500m后的更新位置 = %f,%f",self.currentLocation.latitude,self.currentLocation.longitude);
                 if (self.sendMyLocBlk) {
                     self.sendMyLocBlk(self.currentLocation);
                 }
@@ -127,7 +127,7 @@ static BaiduLocationTool *center = nil;//定义一个全局的静态变量，满
  *在地图View停止定位后，会调用此函数
  */
 - (void)didStopLocatingUser {
-    NSLog(@"stop locate");
+    XLog(@"stop locate");
 }
 
 /**
@@ -135,7 +135,7 @@ static BaiduLocationTool *center = nil;//定义一个全局的静态变量，满
  *@param error 错误号，参考CLError.h中定义的错误号
  */
 - (void)didFailToLocateUserWithError:(NSError *)error {
-    NSLog(@"location error");
+    XLog(@"location error");
 }
 
 #pragma mark TEST
@@ -146,7 +146,7 @@ static BaiduLocationTool *center = nil;//定义一个全局的静态变量，满
 #pragma mark 广播接收释放/设置代理
 -(void)LocationDelegateSwitch:(NSNotification*)delegateSwitch {
     NSString *switchInfo = (NSString*)delegateSwitch.object;
-    NSLog(@"位置功能 = %@",switchInfo);
+    XLog(@"位置功能 = %@",switchInfo);
     if ([switchInfo isEqualToString:DELEGATE_ON]) {
         self.locService.delegate = self;
 //        self.mapView.delegate    = self;

@@ -92,9 +92,9 @@ static BaiduRouteSearchTool *center = nil;//定义一个全局的静态变量，
         walkingRouteSearchOption.to = end;
         BOOL flag = [_routeSearch walkingSearch:walkingRouteSearchOption];
         if(flag)
-            NSLog(@"walk检索发送成功");
+            XLog(@"walk检索发送成功");
         else
-            NSLog(@"walk检索发送失败");
+            XLog(@"walk检索发送失败");
     }
 }
 
@@ -198,7 +198,7 @@ static BaiduRouteSearchTool *center = nil;//定义一个全局的静态变量，
 #pragma mark 广播接收释放/设置代理
 -(void)LocationDelegateSwitch:(NSNotification*)delegateSwitch {
     NSString *switchInfo = (NSString*)delegateSwitch.object;
-    NSLog(@"导航功能 = %@",switchInfo);
+    XLog(@"导航功能 = %@",switchInfo);
     if ([switchInfo isEqualToString:DELEGATE_ON]) {
         self.routeSearch.delegate = self;
         //        self.mapView.delegate    = self;

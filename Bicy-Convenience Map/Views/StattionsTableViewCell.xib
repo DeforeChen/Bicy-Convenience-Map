@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cell未选中背景" translatesAutoresizingMaskIntoConstraints="NO" id="h7M-rh-B3g" userLabel="背景图">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="健康路，新店医院对面，健康佳园前" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g67-h2-lng">
                         <rect key="frame" x="84" y="17" width="183" height="37"/>
@@ -46,7 +46,6 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="鼓楼区logo" translatesAutoresizingMaskIntoConstraints="NO" id="onT-rS-YXO">
                         <rect key="frame" x="0.0" y="2" width="78" height="52"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="52" id="GDY-Jo-boO"/>
                             <constraint firstAttribute="width" constant="78" id="IOX-QC-u0i"/>
                         </constraints>
                     </imageView>

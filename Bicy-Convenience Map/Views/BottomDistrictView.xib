@@ -120,7 +120,7 @@
                         <constraint firstItem="JI9-sd-9CR" firstAttribute="top" secondItem="fnu-nV-8F4" secondAttribute="top" id="ydR-qk-fSU"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WQS-hD-whF" userLabel="站点列表">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" style="plain" separatorStyle="none" rowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WQS-hD-whF" userLabel="站点列表">
                     <rect key="frame" x="0.0" y="54" width="375" height="183"/>
                     <color key="backgroundColor" red="0.92023962736129761" green="1" blue="0.84158670902252197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>

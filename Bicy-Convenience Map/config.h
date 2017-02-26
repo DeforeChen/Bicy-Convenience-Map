@@ -12,6 +12,14 @@
 typedef void(^SucBlk)();
 typedef void(^FailBlk)(NSError *err);
 
+#define IsLogShow 0
+
+#if IsLogShow
+#define XLog(format, ...) NSLog((format), ##__VA_ARGS__)
+#else
+#define XLog(format, ...)
+#endif
+
 // 百度密钥
 #define BAIDU_KEY @"puAybLNI7odsDotLGGebvoDrvn6I5qQZ"
 // 七牛提供的站点URL数据
@@ -93,7 +101,7 @@ typedef enum {
 /**
  自定义CELL相关
  */
-#define CELL_HEIGHT 55
+#define CELL_HEIGHT 54
 //#define CELL_SEL_COLOR   [UIColor colorWithRed:255/255.0 green:249/255.0 blue:214/255.0 alpha:1.0]
 //#define CELL_DESEL_COLOR [UIColor colorWithRed:184/255.0 green:233/255.0 blue:134/255.0 alpha:1.0]
 

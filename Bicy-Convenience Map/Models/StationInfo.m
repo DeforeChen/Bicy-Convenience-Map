@@ -76,7 +76,7 @@ static StationInfo *center = nil;//定义一个全局的静态变量，满足静
         
         NSArray *annotations = [self fetchDistrictStationAnnotationWithArray:nearbyStations];
         _nearbyStationAnnotations = [NSArray arrayWithArray:annotations];
-        NSLog(@"生成的周围站点的标注数组 = %@",_nearbyStationAnnotations);
+        XLog(@"生成的周围站点的标注数组 = %@",_nearbyStationAnnotations);
     }
     return _nearbyStationAnnotations;
 }
@@ -97,7 +97,7 @@ static StationInfo *center = nil;//定义一个全局的静态变量，满足静
     [_manager GET:STATION_INFO_URL
        parameters:nil
           success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-              NSLog(@"请求数据 = %@",responseObject);
+              XLog(@"请求数据 = %@",responseObject);
               self.districtInfo = [DistrictsInfo mj_objectWithKeyValues:responseObject
                                                                 context:nil];
               
@@ -135,10 +135,10 @@ static StationInfo *center = nil;//定义一个全局的静态变量，满足静
     for (id<stationProtocol> station in districtStationArray) {
         BMKPointAnnotation* annotation = [[BMKPointAnnotation alloc]init];
         CLLocationCoordinate2D coor;
-        NSLog(@"json站点经纬度 = %@,%@",station.latitude,station.longtitude);
+        XLog(@"json站点经纬度 = %@,%@",station.latitude,station.longtitude);
         coor.latitude = [station.latitude floatValue];
         coor.longitude = [station.longtitude floatValue];
-        NSLog(@"float转化后站点经纬度 = %f,%f",coor.latitude,coor.longitude);
+        XLog(@"float转化后站点经纬度 = %f,%f",coor.latitude,coor.longitude);
         annotation.coordinate   = coor;
         annotation.title        = station.stationName;
         annotation.subtitle     = station.district;

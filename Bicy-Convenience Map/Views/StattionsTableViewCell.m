@@ -35,7 +35,7 @@
 
 -(void)makeCellUnderSelectionModeWithBlk:(selectStationBlk)blk {
     self.bgImg.image = [UIImage imageNamed:@"cell选中背景"];
-    NSLog(@"SELECT COLOR = %@",self.contentView.backgroundColor);
+    XLog(@"SELECT COLOR = %@",self.contentView.backgroundColor);
     BOOL hasGotoView = NO;
     for (UIView *view in self.subviews) {
         if ([view isKindOfClass:[GotoView class]]) {

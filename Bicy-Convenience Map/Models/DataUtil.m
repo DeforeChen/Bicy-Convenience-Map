@@ -59,7 +59,7 @@ static DataUtil *center = nil;//定义一个全局的静态变量，满足静态
         [[BaiduDistrictTool shareInstance] updateDistrictPlistWithSuccessBlk:^{
             //调试用,读plist
             NSDictionary *dict = [manager readPlist];
-            NSLog(@"空的plist重新获取数据后，读到的plist = %@",dict);
+            XLog(@"空的plist重新获取数据后，读到的plist = %@",dict);
 
             // 2.1 到这一步，说明已读到正确的信息，继续请求站点信息
             [[StationInfo shareInstance] updateAllStationsInfoWithSuccessBlk:sucBlk
@@ -91,7 +91,7 @@ static DataUtil *center = nil;//定义一个全局的静态变量，满足静态
         NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:self.filePath];
         return dict;
     } else {
-        NSLog(@"file not exist");
+        XLog(@"file not exist");
         return nil;
     }
 }

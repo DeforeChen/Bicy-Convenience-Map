@@ -30,15 +30,27 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gk-re-9kD">
+                                <rect key="frame" x="159.5" y="597" width="56" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="5SF-fG-voe"/>
+                                    <constraint firstAttribute="height" constant="21" id="EZg-36-9Xd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="5cz-MP-9tL"/>
                             <constraint firstAttribute="trailing" secondItem="SzX-Fj-cvS" secondAttribute="trailing" id="HjE-Wy-tFX"/>
+                            <constraint firstItem="3gk-re-9kD" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="N3N-Af-fio"/>
                             <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" symbolic="YES" id="SfN-ll-jLj"/>
                             <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="Y44-ml-fuU"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="SzX-Fj-cvS" secondAttribute="bottom" id="aUZ-UG-b5g"/>
                             <constraint firstItem="SzX-Fj-cvS" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="bqr-ED-1Fy"/>
+                            <constraint firstItem="obG-Y5-kRd" firstAttribute="top" secondItem="3gk-re-9kD" secondAttribute="bottom" constant="8" id="cRL-75-Tk3"/>
                             <constraint firstItem="SzX-Fj-cvS" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="gnI-xG-BXM"/>
                         </constraints>
                     </view>

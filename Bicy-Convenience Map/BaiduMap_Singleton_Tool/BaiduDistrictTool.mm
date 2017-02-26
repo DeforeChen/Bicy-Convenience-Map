@@ -119,7 +119,7 @@ static BaiduDistrictTool *center = nil;//定义一个全局的静态变量，满
     plistManager *manager = [[plistManager alloc] initWithPlistName:PLIST_NAME];
     NSDictionary *districtOutlineDict = [manager readPlist];
     if (districtOutlineDict == nil) {
-        NSLog(@"读取到了错误的plist信息错误");
+        XLog(@"读取到了错误的plist信息错误");
     } else {
         NSArray *districtNameArray           = [districtOutlineDict allKeys];
         NSMutableArray *districtPolyganArray = [NSMutableArray new];
@@ -140,7 +140,7 @@ static BaiduDistrictTool *center = nil;//定义一个全局的静态变量，满
         
         [self.districtPolyganDict setValue:districtPolyganArray forKey:ALL_CITY];
         [self.districtPolyganDict setValue:[self transferPathStringToPolygon:polyganStr] forKey:ALL_CITY_POLYGAN_FIT];
-        NSLog(@"转换后的字典 = %@",self.districtPolyganDict);
+        XLog(@"转换后的字典 = %@",self.districtPolyganDict);
     }
 }
 
@@ -170,16 +170,16 @@ static BaiduDistrictTool *center = nil;//定义一个全局的静态变量，满
 - (void)onGetDistrictResult:(BMKDistrictSearch *)searcher result:(BMKDistrictResult *)result errorCode:(BMKSearchErrorCode)error {
     //从区域名数组中将目前已搜到的区域remove，然后将数组中剩下的区域名取出，进行下一步搜索
     [self.districtNameArray removeObject:result.name];
-    NSLog(@"区域数组内容=%@,当前搜索区域名=%@,调用次数 = %d",self.districtNameArray,result.name,self.searchDistrictTimes);
+    XLog(@"区域数组内容=%@,当前搜索区域名=%@,调用次数 = %d",self.districtNameArray,result.name,self.searchDistrictTimes);
 
     self.searchDistrictTimes++;
     if (self.districtNameArray.count != 0) {
         [self searchDistrictOuntlineWithName:self.districtNameArray.lastObject];
     }
     
-    NSLog(@"onGetDistrictResult error: %d", error);
+    XLog(@"onGetDistrictResult error: %d", error);
     if (error == BMK_SEARCH_NO_ERROR) {
-        NSLog(@"\nname:%@\ncode:%d\ncenter latlon:%lf,%lf", result.name, (int)result.code, result.center.latitude, result.center.longitude);
+        XLog(@"\nname:%@\ncode:%d\ncenter latlon:%lf,%lf", result.name, (int)result.code, result.center.latitude, result.center.longitude);
         //将当前拿到的区域边界的坐标，存入字典
         [self.districtOutlineInfoDict setObject:result.paths.lastObject forKey:result.name];
     }
@@ -189,7 +189,7 @@ static BaiduDistrictTool *center = nil;//定义一个全局的静态变量，满
         if (self.districtOutlineInfoDict.count == DISTRICT_NUM) {
             //更新沙盒数据，存入plist
             NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
-            NSLog(@"写入路径%@", path);
+            XLog(@"写入路径%@", path);
             NSString *fileName = [path stringByAppendingPathComponent:@"districtOutlineInfo.plist"];
             if ([self.districtOutlineInfoDict writeToFile:fileName atomically:YES]) {
                 self.successBlk();
@@ -268,7 +268,7 @@ static BaiduDistrictTool *center = nil;//定义一个全局的静态变量，满
 #pragma mark 释放/创建代理开关
 -(void)DistrictDelegateSwitch:(NSNotification*)delegateSwitch {
     NSString *switchInfo = (NSString*)delegateSwitch.object;
-    NSLog(@"区域功能 = %@",switchInfo);
+    XLog(@"区域功能 = %@",switchInfo);
     if ([switchInfo isEqualToString:DELEGATE_ON]) {
         self.districtSearch.delegate = self;
     } else if ([switchInfo isEqualToString:DELEGATE_OFF]) {

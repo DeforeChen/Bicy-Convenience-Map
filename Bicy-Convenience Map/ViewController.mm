@@ -94,7 +94,7 @@
                                                                     object:[NSNumber numberWithInt:NEARBY_GUIDE_MODE]];
                 [self dismissTip];
             } failBlk:^(NSError *err) {
-                NSLog(@"信息请求失败，错误信息 = %@",err.domain);
+                XLog(@"信息请求失败，错误信息 = %@",err.domain);
                 [self dismissTip];
                 HUD_DATA_WARNING;
             }];
@@ -143,7 +143,7 @@
     if ([keyPath isEqualToString:@"name"]) {
         if (object == self.guideStartStation || object == self.guideEndStation) {
             if (self.guideEndStation.name != nil && self.guideStartStation.name != nil) {
-                NSLog(@" ---- 显示路径规划按键 ----！！！！");
+                XLog(@" ---- 显示路径规划按键 ----！！！！");
                 //显示路径规划按键
                 [self animationForresearchPathBtn:YES];
             }
@@ -455,7 +455,7 @@
                                                                                                  temirStation:self.guideStartStation.name];
     self.guideEndStation.isInChangedDistrict = [[StationInfo shareInstance] judgeTermiStationWithinDistrict:districtName
                                                                                                temirStation:self.guideEndStation.name];
-    NSLog(@"添加覆盖物后的 起点IN = %d, 终点IN = %d",self.guideStartStation.isInChangedDistrict,self.guideEndStation.isInChangedDistrict);
+    XLog(@"添加覆盖物后的 起点IN = %d, 终点IN = %d",self.guideStartStation.isInChangedDistrict,self.guideEndStation.isInChangedDistrict);
 }
 
 -(void)selectCorrespondingAnnotation:(NSInteger)listIndex {
@@ -483,7 +483,7 @@
 
 -(void)addAnnotationPointInDistrict:(NSArray<BMKPointAnnotation*>*)annotationArray {
     [self.BaseBaiduMapView removeAnnotations:self.BaseBaiduMapView.annotations];
-    NSLog(@"移走标注否 = %@",self.BaseBaiduMapView.annotations);
+    XLog(@"移走标注否 = %@",self.BaseBaiduMapView.annotations);
     // 按键那边传过来当前区域，我们从字典中取出相应的annotation数组，添加到当前的页面上。
     [self.BaseBaiduMapView addAnnotations:annotationArray];
     [self addTermiStationAnnotations];
@@ -582,7 +582,7 @@
 }
 
 -(void)doResetGuidePath {
-    NSLog(@"移除路线规划按键");
+    XLog(@"移除路线规划按键");
     //如果路径已规划好并显示，也需要一并移除
     for (id<BMKOverlay> overlay in self.BaseBaiduMapView.overlays) {
         if ([overlay isKindOfClass:[BMKPolyline class]]) {
@@ -785,6 +785,6 @@
 - (IBAction)fetchPoitCoordiate:(UITapGestureRecognizer *)sender {
     CGPoint point = [sender locationInView:self.BaseBaiduMapView];
     CLLocationCoordinate2D coo = [self.BaseBaiduMapView convertPoint:point toCoordinateFromView:self.BaseBaiduMapView];
-    NSLog(@"经纬度:%lf, %lf", coo.longitude,  coo.latitude);
+    XLog(@"经纬度:%lf, %lf", coo.longitude,  coo.latitude);
 }
 @end

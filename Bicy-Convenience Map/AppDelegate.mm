@@ -22,7 +22,7 @@
     // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
     BOOL ret = [_mapManager start:BAIDU_KEY generalDelegate:self];
     if (!ret) {
-        NSLog(@"manager start failed!");
+        XLog(@"manager start failed!");
     }
     // Add the navigation controller's view to the window and display.
     [self addObserver:self
@@ -52,7 +52,7 @@
     if ([keyPath isEqualToString:@"accessFinished"] && (self.accessFinished != nil)) {
         // 当授权和联网同时完成的情况下，通知根视图，退出HUD并开启百度相关功能操作
         if ([self.accessFinished[NETWORK] isEqualToString:NET_SUCCESS] && [self.accessFinished[PERMISSION] isEqualToString:PERMIT_SUCCESS]) {
-            NSLog(@"鉴权 & 联网成功");
+            XLog(@"鉴权 & 联网成功");
             self.accessCompleteBlk(YES);
             [self removeObserver:self forKeyPath:@"accessFinished" context:nil];
         } else if([self.accessFinished[NETWORK] isEqualToString:NET_FAIL] && [self.accessFinished[PERMISSION] isEqualToString:PERMIT_FAIL]){
@@ -89,12 +89,12 @@
 
 #pragma mark 百度地图代理
 - (void)onGetNetworkState:(int)iError {
-    NSLog(@"--------初始化状态下的网络请求--------");
+    XLog(@"--------初始化状态下的网络请求--------");
     if (0 == iError){
-        NSLog(@"联网成功");
+        XLog(@"联网成功");
         [[self mutableArrayValueForKey:@"accessFinished"] setObject:NET_SUCCESS atIndexedSubscript:NETWORK];
     } else {
-        NSLog(@"onGetNetworkState %d",iError);
+        XLog(@"onGetNetworkState %d",iError);
 //        if ([self.accessFinished[NETWORK] isEqualToString:NET_INIT]) {
             [[self mutableArrayValueForKey:@"accessFinished"] setObject:NET_FAIL atIndexedSubscript:NETWORK];
 //        }
@@ -102,12 +102,12 @@
 }
 
 - (void)onGetPermissionState:(int)iError {
-    NSLog(@"--------初始化状态下的鉴权请求--------");
+    XLog(@"--------初始化状态下的鉴权请求--------");
     if (0 == iError){
-        NSLog(@"授权成功");
+        XLog(@"授权成功");
         [[self mutableArrayValueForKey:@"accessFinished"] setObject:@"1" atIndexedSubscript:PERMISSION];
     } else {
-        NSLog(@"onGetNetworkState %d",iError);
+        XLog(@"onGetNetworkState %d",iError);
         if ([self.accessFinished[PERMISSION] isEqualToString:PERMIT_INIT]) {
             [[self mutableArrayValueForKey:@"accessFinished"] setObject:PERMIT_FAIL atIndexedSubscript:PERMISSION];
         }

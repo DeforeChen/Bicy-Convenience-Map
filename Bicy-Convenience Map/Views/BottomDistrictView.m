@@ -42,7 +42,7 @@
 //    [[StationInfo shareInstance]updateAllStationsInfoWithSuccessBlk:^{
 //        
 //    } FailBlk:^(NSError *err) {
-//        NSLog(@"错误信息 = %@",err.description);
+//        XLog(@"错误信息 = %@",err.description);
 //        [SVProgressHUD showErrorWithStatus:@"数据请求失败，请检查网络，并在设置中重试'更新数据'"];
 //    }];
 }
@@ -54,7 +54,7 @@
         NSString *districtName = [sender restorationIdentifier];
         
         self.stationInfoArray    = [[StationInfo shareInstance] fetchDistrictStationsInfoWithName:districtName];
-        NSLog(@"%@ 的数组 %@",districtName,self.stationInfoArray);
+        XLog(@"%@ 的数组 %@",districtName,self.stationInfoArray);
         NSArray *annotationArray = [[StationInfo shareInstance] fetchDistrictStationAnnotationWithArray:self.stationInfoArray];
         self.previousSelIndex    = UNREACHABLE_INDEX;
         [self.stationList reloadData];
@@ -83,7 +83,7 @@
 -(void)selectCorrespondingCellInStationList:(NSInteger)listIndex {
     self.noNeedToSelectAnnotation = YES;
     self.previousSelIndex         = listIndex;
-    NSLog(@"test 1.图标选中对应的cell索引 = %lu",(long)listIndex);
+    XLog(@"test 1.图标选中对应的cell索引 = %lu",(long)listIndex);
     NSIndexPath *indexpath = [NSIndexPath indexPathForRow:listIndex
                                                 inSection:0];
     [self.stationList scrollToRowAtIndexPath:indexpath
@@ -115,7 +115,7 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"创建cell,索引值 = %lu,上一个索引值 = %lu",(long)indexPath.row,self.previousSelIndex);
+    XLog(@"创建cell,索引值 = %lu,上一个索引值 = %lu",(long)indexPath.row,self.previousSelIndex);
     static  NSString *const OptionTableReuseID = @"reuseID";        //设立reuse池的标签名（或者说池子的名称）
     //表示从现有的池子（标签已指定）取出排在队列最前面的那个 cell
     StattionsTableViewCell* cell = (StattionsTableViewCell*)[tableView dequeueReusableCellWithIdentifier:OptionTableReuseID];
