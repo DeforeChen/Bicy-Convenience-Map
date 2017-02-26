@@ -14,6 +14,7 @@
 #import <BaiduMapAPI_Search/BMKDistrictSearch.h>
 
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <RealReachability.h>
 // 上下左右四个view
 #import "BottomDistrictView.h"
 #import "TopFunctionView.h"
@@ -21,12 +22,11 @@
 #import "RightMenuView.h"
 
 #import "StattionsTableViewCell.h"
-#import "plistManager.h"
 #import "RouteAnnotation.h"
+#import "DataUtil.h"
 
 @interface ViewController ()<BMKMapViewDelegate,BottomViewInteractionDelegate,TopViewInteractionDelegate,LeftViewInteractionDelegate,RightViewInteractionDelegate>
 @property (weak, nonatomic) IBOutlet BMKMapView *BaseBaiduMapView;
-@property (nonatomic) BOOL isAccess;//百度授权/联网完成与否
 @property (strong,nonatomic) BottomDistrictView *bottomView;
 @property (strong,nonatomic) TopFunctionView *topView;
 //防止底栏的列表被二次选中造成死循环
@@ -50,7 +50,6 @@
     self.name            = [annotation title];
     self.annotationIndex = index;
     self.isInChangedDistrict = YES; //当写入值时，也就意味着当前S/E一定是处于区域内
-    //    self.annotation = [[terminalStationAnnotation alloc] initWithCoordiate:self.coordiate];
 }
 
 -(terminalStationAnnotation *)generateTermiStationAnnotation {
@@ -71,6 +70,7 @@
     self.noNeedToSelectStationList         = NO;
     self.BaseBaiduMapView.logoPosition     = BMKLogoPositionLeftTop;
     self.BaseBaiduMapView.centerCoordinate = FUZHOU_CENTER_POINT;
+    self.BaseBaiduMapView.compassPosition  = CGPointMake(6, 220);
     self.BaseBaiduMapView.zoomLevel        = ZOOM_LEVEL;
     self.guideMode                         = NON_SELECT_MODE;
     self.previousAnnotationIndex           = UNREACHABLE_INDEX;
@@ -80,39 +80,28 @@
     displayParam.isAccuracyCircleShow = false;//精度圈是否显示
     [self.BaseBaiduMapView updateLocationViewWithParam:displayParam];
     
+    [SVProgressHUD showWithStatus:@"获取数据"];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     //1. 初次启动，等待百度的授权和联网完成，否则在viewdidappear中持续放HUD
     AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
     app.accessCompleteBlk = ^(BOOL result){
-        self.isAccess = result;
         if (result == YES) {
             [self setBaiduRelatedDelegate];
-            plistManager *manager = [[plistManager alloc] initWithPlistName:PLIST_NAME];
-            //1.1.从沙盒中取出行政区域边界信息plist用于绘制。如果plist不存在，就创建一个
-            if ([manager ifPlistExist] == NO)
-                [manager createPlist];
-            
-            //1.2读取这个plist文件
-            NSDictionary *dict = [manager readPlist];
-            if (dict.count == 0) {
-                [[BaiduDistrictTool shareInstance] updateDistrictPlistWithSuccessBlk:^{
-                    //调试用,读plist
-                    NSDictionary *dict = [manager readPlist];
-                    NSLog(@"空的plist重新获取数据后，读到的plist = %@",dict);
-                    
-                    [[BaiduDistrictTool shareInstance] generateOverlaysFromPlist];
-                } FailBlk:^(NSError *err) {
-                    NSLog(@"空的plist重新获取数据后，错误信息 = %@",err.domain);
-                }];
-            } else {// 3.2 已经读到正确的信息，就将这组数据转换为覆盖物
+            [[DataUtil managerCenter] updateAllInfoWithSucBlk:^{
                 [[BaiduDistrictTool shareInstance] generateOverlaysFromPlist];
-            }
-            [self dismissTip];
+                self.isAccess = YES;
+                [[NSNotificationCenter defaultCenter] postNotificationName:GUIDE_MODE_RADIO
+                                                                    object:[NSNumber numberWithInt:NEARBY_GUIDE_MODE]];
+                [self dismissTip];
+            } failBlk:^(NSError *err) {
+                NSLog(@"信息请求失败，错误信息 = %@",err.domain);
+                [self dismissTip];
+                HUD_DATA_WARNING;
+            }];
         } else {
-            [self showTip];
+            [self dismissTip];
+            HUD_ACCESS_WARNING;
         }
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:GUIDE_MODE_RADIO
-                                                            object:[NSNumber numberWithInt:NEARBY_GUIDE_MODE]];
     };
     
     _BaseBaiduMapView.mapType            = BMKMapTypeStandard;
@@ -421,13 +410,6 @@
 }
 
 #pragma mark SVProgressHUD
--(void)showTip{
-    [SVProgressHUD showErrorWithStatus:@"尝试数据请求，请检查你的网络"];
-    //    [self performSelector:@selector(dismiss)
-    //               withObject:nil
-    //               afterDelay:2.0];
-}
-
 -(void)dismissTip{
     [SVProgressHUD dismiss];
 }
@@ -509,9 +491,12 @@
 
 #pragma mark TopViewInteractionDelegate 和顶部栏的交互
 -(void)addLeftMenuView {
-    LeftMenuView *leftView = [[LeftMenuView alloc] initMyView];
-    leftView.delegate      = self;
-    [self addMenuViewAnimation:YES MenuView:leftView];
+    if (self.isAccess) {
+        LeftMenuView *leftView = [[LeftMenuView alloc] initMyView];
+        leftView.delegate      = self;
+        [self addMenuViewAnimation:YES MenuView:leftView];
+    } else
+        HUD_NET_WARNING;
 }
 
 -(void)addRightSettingView {
@@ -726,39 +711,53 @@
     self.BaseBaiduMapView.zoomLevel        = ZOOM_LEVEL;
 }
 
-
 /**
  当这个方法被调用时，一定是S/E都已选好
  */
 - (IBAction)researchPath:(UIButton *)sender {
-    switch (self.guideMode) {
-        case NEARBY_GUIDE_MODE: {
-            CLLocationCoordinate2D startPoint = [[BaiduLocationTool shareInstance] getActualLocation];// 周边模式下，起点为当前位置
-            CLLocationCoordinate2D endPoint   = self.guideEndStation.coordiate;
-            [[BaiduRouteSearchTool shareInstance] pathGuideWithStart:startPoint end:endPoint];
+    [GLobalRealReachability reachabilityWithBlock:^(ReachabilityStatus status) {
+        switch (status) {
+            case RealStatusUnknown:
+            case RealStatusNotReachable:
+                [SVProgressHUD showErrorWithStatus:@"路径规划失败，请检查您的网络"];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [SVProgressHUD dismiss];
+                });
+                break;
+            case RealStatusViaWiFi:
+            case RealStatusViaWWAN://仅当有网络时，允许路径规划的相关操作，否则弹出提示
+                switch (self.guideMode) {
+                    case NEARBY_GUIDE_MODE: {
+                        CLLocationCoordinate2D startPoint = [[BaiduLocationTool shareInstance] getActualLocation];// 周边模式下，起点为当前位置
+                        CLLocationCoordinate2D endPoint   = self.guideEndStation.coordiate;
+                        [[BaiduRouteSearchTool shareInstance] pathGuideWithStart:startPoint end:endPoint];
+                    }
+                        break;
+                    case STATION_TO_STATION_MODE: {
+                        // 先去掉所有的标注和覆盖物，规划路径
+                        [self.BaseBaiduMapView removeAnnotations:self.BaseBaiduMapView.annotations];
+                        [self.BaseBaiduMapView removeOverlays:self.BaseBaiduMapView.overlays];
+                        CLLocationCoordinate2D startPoint = self.guideStartStation.coordiate;
+                        CLLocationCoordinate2D endPoint   = self.guideEndStation.coordiate;
+                        [[BaiduRouteSearchTool shareInstance] pathGuideWithStart:startPoint end:endPoint];
+                        [self stopMapviewTransform];
+                        // 再添加标注
+                        self.guideStartStation.isInChangedDistrict = NO;
+                        self.guideEndStation.isInChangedDistrict = NO;
+                        [self addTermiStationAnnotations];
+                        
+                        // 通知底栏复位模式，让底栏显示出来的时候所有按键是未选中的状态,方便下次切换到站点搜索模式
+                        [[NSNotificationCenter defaultCenter] postNotificationName:DISTRICT_BTN_SEL_RADIO object:@"复位模式"];
+                    }
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
+                break;
         }
-            break;
-        case STATION_TO_STATION_MODE: {
-            // 先去掉所有的标注和覆盖物，规划路径
-            [self.BaseBaiduMapView removeAnnotations:self.BaseBaiduMapView.annotations];
-            [self.BaseBaiduMapView removeOverlays:self.BaseBaiduMapView.overlays];
-            CLLocationCoordinate2D startPoint = self.guideStartStation.coordiate;
-            CLLocationCoordinate2D endPoint   = self.guideEndStation.coordiate;
-            [[BaiduRouteSearchTool shareInstance] pathGuideWithStart:startPoint end:endPoint];
-            [self stopMapviewTransform];
-            // 再添加标注
-            self.guideStartStation.isInChangedDistrict = NO;
-            self.guideEndStation.isInChangedDistrict = NO;
-            [self addTermiStationAnnotations];
-            
-            // 通知底栏复位模式，让底栏显示出来的时候所有按键是未选中的状态,方便下次切换到站点搜索模式
-            [[NSNotificationCenter defaultCenter] postNotificationName:DISTRICT_BTN_SEL_RADIO
-                                                                object:@"复位模式"];
-        }
-            break;
-        default:
-            break;
-    }
+    }];
 }
 
 - (IBAction)searchNearbyStation:(UIButton *)sender {
@@ -788,6 +787,4 @@
     CLLocationCoordinate2D coo = [self.BaseBaiduMapView convertPoint:point toCoordinateFromView:self.BaseBaiduMapView];
     NSLog(@"经纬度:%lf, %lf", coo.longitude,  coo.latitude);
 }
-
-
 @end

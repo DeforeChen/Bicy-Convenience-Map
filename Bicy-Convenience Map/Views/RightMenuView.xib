@@ -44,6 +44,9 @@
                         <constraint firstAttribute="height" constant="33" id="MOK-Oe-RWA"/>
                     </constraints>
                     <state key="normal" image="更新数据"/>
+                    <connections>
+                        <action selector="updateData:" destination="iN0-l3-epB" eventType="touchUpInside" id="Dtq-xT-CBz"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

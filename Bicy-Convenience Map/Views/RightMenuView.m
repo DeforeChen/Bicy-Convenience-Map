@@ -8,6 +8,9 @@
 
 #import "RightMenuView.h"
 #import "config.h"
+#import "DataUtil.h"
+#import <SVProgressHUD/SVProgressHUD.h>
+
 @interface RightMenuView()
 @property (weak, nonatomic) IBOutlet UIImageView *bgImgView;
 @end
@@ -21,6 +24,24 @@
 }
 
 
+/**
+ 升级站点信息
+ @param sender 按键
+ */
+- (IBAction)updateData:(UIButton *)sender {
+    [SVProgressHUD showWithStatus:@"数据更新中"];
+    [[DataUtil managerCenter] updateAllInfoWithSucBlk:^{
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showSuccessWithStatus:@"数据更新成功"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+        });
+    }
+                                              failBlk:^(NSError *err) {
+                                                  [SVProgressHUD dismiss];
+                                                  [SVProgressHUD showErrorWithStatus:@"数据更新失败，请检查网络后充实"];
+                                              }];
+}
 
 #pragma mark instance
 -(instancetype)initMyView {

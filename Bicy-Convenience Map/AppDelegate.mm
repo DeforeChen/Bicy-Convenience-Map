@@ -18,7 +18,7 @@
 
 @implementation AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    _mapManager = [[BMKMapManager alloc]init];
+    _mapManager   = [[BMKMapManager alloc]init];
     // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
     BOOL ret = [_mapManager start:BAIDU_KEY generalDelegate:self];
     if (!ret) {
@@ -30,7 +30,10 @@
               options:NSKeyValueObservingOptionNew
               context:NULL];
     
+    // 必须监测权限后才开启广播
     [GLobalRealReachability startNotifier];// 开始发送网络状态变化的广播
+    
+    
     [self.window addSubview:navigationController.view];
     [self.window makeKeyAndVisible];
     return YES;

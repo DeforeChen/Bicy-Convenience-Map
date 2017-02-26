@@ -8,18 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		6A1DAEE2978C6BF51F156B47 /* libPods-Bicy-Convenience Map.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB7FDB9298BA8C8DF991882 /* libPods-Bicy-Convenience Map.a */; };
+		891145521E628FDC000D9C21 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 891145511E628FDC000D9C21 /* Launch Screen.storyboard */; };
 		8912FC311E5D3FDE00253EC6 /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8912FC301E5D3FDE00253EC6 /* AboutView.m */; };
 		8912FC331E5D404C00253EC6 /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8912FC321E5D404C00253EC6 /* AboutView.xib */; };
+		89414B001E5EDA380097640F /* DataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 89414AFF1E5EDA380097640F /* DataUtil.m */; };
 		89446B001E237D5C00962BEE /* MyPinAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89446AFF1E237D5C00962BEE /* MyPinAnnotationView.m */; };
 		89446B2C1E277C7C00962BEE /* GotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89446B2B1E277C7C00962BEE /* GotoView.m */; };
 		89446B2E1E277EC700962BEE /* GotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89446B2D1E277EC700962BEE /* GotoView.xib */; };
-		89586C681E1F367800122F52 /* plistManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89586C671E1F367800122F52 /* plistManager.m */; };
 		8958FDAA1DFF8B9800CBAB84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDA91DFF8B9800CBAB84 /* main.m */; };
 		8958FDAD1DFF8B9800CBAB84 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDAC1DFF8B9800CBAB84 /* AppDelegate.mm */; };
 		8958FDB01DFF8B9800CBAB84 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDAF1DFF8B9800CBAB84 /* ViewController.mm */; };
 		8958FDB31DFF8B9800CBAB84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8958FDB11DFF8B9800CBAB84 /* Main.storyboard */; };
 		8958FDB51DFF8B9800CBAB84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8958FDB41DFF8B9800CBAB84 /* Assets.xcassets */; };
-		8958FDB81DFF8B9800CBAB84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8958FDB61DFF8B9800CBAB84 /* LaunchScreen.storyboard */; };
 		8958FDC21E03959A00CBAB84 /* BaiduLocationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDC11E03959A00CBAB84 /* BaiduLocationTool.m */; };
 		8958FDC61E03C2F400CBAB84 /* BaiduMapTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDC51E03C2F400CBAB84 /* BaiduMapTool.m */; };
 		8958FDC91E03C97600CBAB84 /* BaiduDistrictTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8958FDC81E03C97600CBAB84 /* BaiduDistrictTool.mm */; };
@@ -41,18 +41,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		891145511E628FDC000D9C21 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		8912FC051E5B05AE00253EC6 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		8912FC2F1E5D3FDE00253EC6 /* AboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutView.h; sourceTree = "<group>"; };
 		8912FC301E5D3FDE00253EC6 /* AboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutView.m; sourceTree = "<group>"; };
 		8912FC321E5D404C00253EC6 /* AboutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
+		89414AFE1E5EDA380097640F /* DataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataUtil.h; path = Models/DataUtil.h; sourceTree = "<group>"; };
+		89414AFF1E5EDA380097640F /* DataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataUtil.m; path = Models/DataUtil.m; sourceTree = "<group>"; };
 		89446AFE1E237D5C00962BEE /* MyPinAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyPinAnnotationView.h; path = Views/MyPinAnnotationView.h; sourceTree = "<group>"; };
 		89446AFF1E237D5C00962BEE /* MyPinAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyPinAnnotationView.m; path = Views/MyPinAnnotationView.m; sourceTree = "<group>"; };
 		89446B011E24CDD100962BEE /* StationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationProtocol.h; path = Models/StationProtocol.h; sourceTree = "<group>"; };
 		89446B2A1E277C7C00962BEE /* GotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GotoView.h; path = Views/GotoView.h; sourceTree = "<group>"; };
 		89446B2B1E277C7C00962BEE /* GotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GotoView.m; path = Views/GotoView.m; sourceTree = "<group>"; };
 		89446B2D1E277EC700962BEE /* GotoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GotoView.xib; path = Views/GotoView.xib; sourceTree = "<group>"; };
-		89586C661E1F367800122F52 /* plistManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = plistManager.h; path = Models/plistManager.h; sourceTree = "<group>"; };
-		89586C671E1F367800122F52 /* plistManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = plistManager.m; path = Models/plistManager.m; sourceTree = "<group>"; };
 		8958FDA51DFF8B9800CBAB84 /* Bicy-Convenience Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bicy-Convenience Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8958FDA91DFF8B9800CBAB84 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8958FDAB1DFF8B9800CBAB84 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -61,7 +62,6 @@
 		8958FDAF1DFF8B9800CBAB84 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		8958FDB21DFF8B9800CBAB84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8958FDB41DFF8B9800CBAB84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8958FDB71DFF8B9800CBAB84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8958FDB91DFF8B9800CBAB84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8958FDC01E03959A00CBAB84 /* BaiduLocationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaiduLocationTool.h; path = BaiduMap_Singleton_Tool/BaiduLocationTool.h; sourceTree = "<group>"; };
 		8958FDC11E03959A00CBAB84 /* BaiduLocationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaiduLocationTool.m; path = BaiduMap_Singleton_Tool/BaiduLocationTool.m; sourceTree = "<group>"; };
@@ -160,8 +160,8 @@
 				8963F5731E0918EF00EBDA1A /* Views */,
 				8958FDC31E03959E00CBAB84 /* 百度地图工具单例 */,
 				8958FDB11DFF8B9800CBAB84 /* Main.storyboard */,
+				891145511E628FDC000D9C21 /* Launch Screen.storyboard */,
 				8958FDB41DFF8B9800CBAB84 /* Assets.xcassets */,
-				8958FDB61DFF8B9800CBAB84 /* LaunchScreen.storyboard */,
 				8958FDB91DFF8B9800CBAB84 /* Info.plist */,
 				8958FDA81DFF8B9800CBAB84 /* Supporting Files */,
 			);
@@ -234,8 +234,8 @@
 		89CC884E1E0BB9A600FAB40D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				89586C661E1F367800122F52 /* plistManager.h */,
-				89586C671E1F367800122F52 /* plistManager.m */,
+				89414AFE1E5EDA380097640F /* DataUtil.h */,
+				89414AFF1E5EDA380097640F /* DataUtil.m */,
 				89446B011E24CDD100962BEE /* StationProtocol.h */,
 				89CC884F1E0BB9D600FAB40D /* StationInfo.h */,
 				89CC88501E0BB9D600FAB40D /* StationInfo.m */,
@@ -334,7 +334,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8912FC331E5D404C00253EC6 /* AboutView.xib in Resources */,
-				8958FDB81DFF8B9800CBAB84 /* LaunchScreen.storyboard in Resources */,
 				89CC884D1E0BA46000FAB40D /* StattionsTableViewCell.xib in Resources */,
 				8963F5721E0918EA00EBDA1A /* BottomDistrictView.xib in Resources */,
 				89446B2E1E277EC700962BEE /* GotoView.xib in Resources */,
@@ -342,6 +341,7 @@
 				896141431E40DD5500A11BC9 /* LeftMenuView.xib in Resources */,
 				89F0B8AD1E2DC3EC00DFE31B /* TopFunctionView.xib in Resources */,
 				8958FDB51DFF8B9800CBAB84 /* Assets.xcassets in Resources */,
+				891145521E628FDC000D9C21 /* Launch Screen.storyboard in Resources */,
 				8958FDB31DFF8B9800CBAB84 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,7 +403,6 @@
 			files = (
 				896141471E418A7100A11BC9 /* LeftMenuView.m in Sources */,
 				8958FDB01DFF8B9800CBAB84 /* ViewController.mm in Sources */,
-				89586C681E1F367800122F52 /* plistManager.m in Sources */,
 				8963F5711E0918EA00EBDA1A /* BottomDistrictView.m in Sources */,
 				89446B001E237D5C00962BEE /* MyPinAnnotationView.m in Sources */,
 				89B3E4331E345AC400AA71DB /* UIImage+Rotate.m in Sources */,
@@ -416,6 +415,7 @@
 				8912FC311E5D3FDE00253EC6 /* AboutView.m in Sources */,
 				8958FDC21E03959A00CBAB84 /* BaiduLocationTool.m in Sources */,
 				89F0B8A91E2DC34300DFE31B /* TopFunctionView.m in Sources */,
+				89414B001E5EDA380097640F /* DataUtil.m in Sources */,
 				8958FDAA1DFF8B9800CBAB84 /* main.m in Sources */,
 				89CC884C1E0BA46000FAB40D /* StattionsTableViewCell.m in Sources */,
 				89C713D51E5839F1005D5DE3 /* RightMenuView.m in Sources */,
@@ -433,14 +433,6 @@
 				8958FDB21DFF8B9800CBAB84 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		8958FDB61DFF8B9800CBAB84 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8958FDB71DFF8B9800CBAB84 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -549,6 +541,7 @@
 				INFOPLIST_FILE = "Bicy-Convenience Map/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -606,6 +599,7 @@
 				INFOPLIST_FILE = "Bicy-Convenience Map/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

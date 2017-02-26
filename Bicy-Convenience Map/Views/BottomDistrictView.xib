@@ -19,7 +19,6 @@
                     <rect key="frame" x="0.0" y="237" width="375" height="24"/>
                     <color key="backgroundColor" red="0.90473359819999999" green="0.95912879709999999" blue="0.83448916669999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="375" id="LjM-Lm-y3c"/>
                         <constraint firstAttribute="height" constant="24" id="O0J-c9-0cq"/>
                     </constraints>
                     <state key="normal" image="向下按键"/>

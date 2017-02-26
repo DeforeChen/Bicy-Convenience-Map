@@ -9,11 +9,13 @@
 
 #ifndef config_h
 #define config_h
+typedef void(^SucBlk)();
+typedef void(^FailBlk)(NSError *err);
 
 // 百度密钥
 #define BAIDU_KEY @"puAybLNI7odsDotLGGebvoDrvn6I5qQZ"
 // 七牛提供的站点URL数据
-#define STATION_INFO_URL @"http://ois7g1xk4.bkt.clouddn.com/stationInfo"
+#define STATION_INFO_URL @"http://ois7g1xk4.bkt.clouddn.com/bicycleMapInfo.json"
 
 // 初始化时检查互联网
 #define NETWORK 0//@"联网"
@@ -118,9 +120,11 @@ typedef enum {
 #define PLIST_NAME @"districtOutlineInfo.plist"
 
 // ------------------- HUD ---------------------
-#define HUD_NET_WARNING [SVProgressHUD showErrorWithStatus:@"网络连接失败，请检查您的网络"]
+#define HUD_NET_WARNING    [SVProgressHUD showErrorWithStatus:@"网络连接失败，请检查您的网络"]
+#define HUD_ACCESS_WARNING [SVProgressHUD showErrorWithStatus:@"获取地图数据失败，请检查您的网络"] // 鉴权失败
+#define HUD_DATA_WARNING   [SVProgressHUD showErrorWithStatus:@"数据请求失败，请检查您的网络"]
 
 #define ANIMATION_TIME 0.4
-#define ZOOM_LEVEL 16 // 选中一个站点时的放大等级
+#define ZOOM_LEVEL 17 // 选中一个站点时的放大等级
 
 #endif /* config_h */

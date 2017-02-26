@@ -18,6 +18,7 @@
 @property (nonatomic) BICYCLE_GUIDE_MODE guideMode; // 导航模式，周边站点导航或
 @property (nonatomic,strong) termiStation *guideStartStation;
 @property (nonatomic,strong) termiStation *guideEndStation;
+@property (nonatomic) BOOL isAccess;//百度授权/联网完成与否
 @end
 
 // --------------------------------------------------------------------------
@@ -46,10 +47,6 @@
  */
 -(terminalStationAnnotation*)generateTermiStationAnnotation;
 
-///**
-// 复位数据
-// */
-//-(void)resetTermiInfo;
 @end
 
 

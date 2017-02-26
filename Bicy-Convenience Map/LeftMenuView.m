@@ -59,7 +59,6 @@
                      completion:^(BOOL finished) {
                          self.delegate = nil;//其实delegat的属性是weak可以不用写了
                          [self removeFromSuperview];
-                         NSLog(@"如果已经移除当前的view了，还会执行吗？");
                      }];
 }
 

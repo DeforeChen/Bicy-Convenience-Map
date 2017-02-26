@@ -12,8 +12,8 @@
 #import "StationProtocol.h"
 #import "MyPinAnnotationView.h"
 
-typedef void(^stationSucBlk)();
-typedef void(^stationFailBlk)(NSError *err);
+typedef void(^SucBlk)();
+typedef void(^FailBlk)(NSError *err);
 
 #pragma mark models
 @interface BaseInfo :NSObject<stationProtocol>
@@ -75,8 +75,8 @@ typedef void(^stationFailBlk)(NSError *err);
  @param sucBlk 成功时回调
  @param failblk 失败时回调
  */
-- (void)updateAllStationsInfoWithSuccessBlk:(stationSucBlk)sucBlk
-                                    FailBlk:(stationFailBlk)failblk;
+- (void)updateAllStationsInfoWithSuccessBlk:(SucBlk)sucBlk
+                                    FailBlk:(FailBlk)failblk;
 /**
  传入行政区域的名字，返回对应行政区域站点信息的model
 

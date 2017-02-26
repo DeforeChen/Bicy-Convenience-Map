@@ -92,8 +92,8 @@ static StationInfo *center = nil;//定义一个全局的静态变量，满足静
     return NO;
 }
 
-- (void)updateAllStationsInfoWithSuccessBlk:(stationSucBlk)sucBlk
-                                    FailBlk:(stationFailBlk)failblk {
+- (void)updateAllStationsInfoWithSuccessBlk:(SucBlk)sucBlk
+                                    FailBlk:(FailBlk)failblk {
     [_manager GET:STATION_INFO_URL
        parameters:nil
           success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {

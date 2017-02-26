@@ -7,7 +7,7 @@
 //
 
 #import "BaiduDistrictTool.h"
-#import "plistManager.h"
+#import "DataUtil.h"
 #define SELFCLASS_NAME BaiduDistrictTool
 #define SELFCLASS_NAME_STR @"BaiduDistrictTool"
 
@@ -19,8 +19,8 @@ static BaiduDistrictTool *center = nil;//定义一个全局的静态变量，满
 @property (nonatomic,strong) NSMutableArray *districtNameArray;
 //更新行政区域边界时用。比如发起5次搜索，在代理回调中判断写入的次数是否和他对等。如果不对等或有其他错误，那么block返回失败
 @property (nonatomic) int searchDistrictTimes;
-@property (nonatomic,strong) districtSucBlk successBlk;
-@property (nonatomic,strong) districtFailBlk failBlk;
+@property (nonatomic,strong) SucBlk successBlk;
+@property (nonatomic,strong) FailBlk failBlk;
 @end
 
 @implementation BaiduDistrictTool
@@ -101,8 +101,8 @@ static BaiduDistrictTool *center = nil;//定义一个全局的静态变量，满
     }
 }
 
-- (void)updateDistrictPlistWithSuccessBlk:(districtSucBlk)sucBlk
-                                  FailBlk:(districtFailBlk)failBlk {
+- (void)updateDistrictPlistWithSuccessBlk:(SucBlk)sucBlk
+                                  FailBlk:(FailBlk)failBlk {
     [self resetDistrictParams];
     //放入通知
     self.successBlk = sucBlk;

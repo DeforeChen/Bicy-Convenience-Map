@@ -101,7 +101,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="HYk-re-9FH">
+                <tapGestureRecognizer enabled="NO" id="HYk-re-9FH">
                     <connections>
                         <action selector="fetchPoitCoordiate:" destination="BYZ-38-t0r" id="5dQ-4U-2pr"/>
                     </connections>
