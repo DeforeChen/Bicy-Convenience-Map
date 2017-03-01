@@ -1,22 +1,19 @@
 PODS:
-  - AFNetworking (2.1.0):
-    - AFNetworking/NSURLConnection (= 2.1.0)
-    - AFNetworking/NSURLSession (= 2.1.0)
-    - AFNetworking/Reachability (= 2.1.0)
-    - AFNetworking/Security (= 2.1.0)
-    - AFNetworking/Serialization (= 2.1.0)
-    - AFNetworking/UIKit (= 2.1.0)
-  - AFNetworking/NSURLConnection (2.1.0):
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.1.0):
-    - AFNetworking/NSURLConnection
-  - AFNetworking/Reachability (2.1.0)
-  - AFNetworking/Security (2.1.0)
-  - AFNetworking/Serialization (2.1.0)
-  - AFNetworking/UIKit (2.1.0):
-    - AFNetworking/NSURLConnection
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
   - BaiduMapKit (3.1.0)
   - MJExtension (3.0.13)
   - RealReachability (1.1.8):
@@ -27,19 +24,19 @@ PODS:
   - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
-  - AFNetworking (~> 2.1.0)
+  - AFNetworking
   - BaiduMapKit (~> 3.1.0)
   - MJExtension (~> 3.0.10)
   - RealReachability
   - SVProgressHUD
 
 SPEC CHECKSUMS:
-  AFNetworking: d397c9a76a60c670cbcd33f3ff2c5f961f724cbc
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   BaiduMapKit: 4cfaedb118cff7e157e9771859a4bf65a261b2a1
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   RealReachability: e6c8a2bbffa316006e8c282efc1ee2567d61a920
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: 2de2e6c4e70d4507c49a90617866c659929be2de
+PODFILE CHECKSUM: dba6bde3598bd4b81bc1f7124483f10234d2f8a2
 
 COCOAPODS: 1.1.1

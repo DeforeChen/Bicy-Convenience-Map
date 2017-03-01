@@ -533,6 +533,7 @@
 			baseConfigurationReference = DF827DDC4A88B00C467046DE /* Pods-Bicy-Convenience Map.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = C76TLF45XF;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -577,10 +578,6 @@
 					"\"Security\"",
 					"-framework",
 					"\"SystemConfiguration\"",
-					"-ObjC",
-					"-lz",
-					"-framework",
-					Reveal,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Newland.Bicy-Convenience-Map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -592,6 +589,7 @@
 			baseConfigurationReference = E5CE48AC9D6BBF1AC33708D9 /* Pods-Bicy-Convenience Map.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = C76TLF45XF;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -636,10 +634,6 @@
 					"\"Security\"",
 					"-framework",
 					"\"SystemConfiguration\"",
-					"-ObjC",
-					"-lz",
-					"-framework",
-					Reveal,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Newland.Bicy-Convenience-Map";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -9,6 +9,7 @@
 #import "BaiduRouteSearchTool.h"
 #import "RouteAnnotation.h"
 #import <BaiduMapAPI_Utils/BMKUtilsComponent.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 #define SELFCLASS_NAME BaiduRouteSearchTool
 #define SELFCLASS_NAME_STR @"BaiduRouteSearchTool"
@@ -78,6 +79,7 @@ static BaiduRouteSearchTool *center = nil;//定义一个全局的静态变量，
     if ([self isSamePointWith:startPoint PointB:self.startPoint] && [self isSamePointWith:endPoint PointB:self.endPoint]) {
         [self.mapView addOverlay:self.previousPolyLine];
         [self mapViewFitPolyLine:self.previousPolyLine];
+        [SVProgressHUD dismiss];
     } else {
         self.startPoint = startPoint;
         self.endPoint   = endPoint;
@@ -161,6 +163,7 @@ static BaiduRouteSearchTool *center = nil;//定义一个全局的静态变量，
         [self.mapView addOverlay:self.previousPolyLine]; // 添加路线overlay
         delete []temppoints;
         [self mapViewFitPolyLine:self.previousPolyLine];
+        [SVProgressHUD dismiss];// 表示路径规划成功了
     }
 }
 

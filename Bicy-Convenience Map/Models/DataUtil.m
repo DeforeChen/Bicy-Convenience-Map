@@ -69,7 +69,6 @@ static DataUtil *center = nil;//定义一个全局的静态变量，满足静态
         [[StationInfo shareInstance] updateAllStationsInfoWithSuccessBlk:sucBlk
                                                                  FailBlk:failBlk];
     }
-
 }
 
 

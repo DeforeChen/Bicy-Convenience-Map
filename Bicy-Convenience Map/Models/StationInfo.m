@@ -21,7 +21,7 @@ static StationInfo *center = nil;//定义一个全局的静态变量，满足静
 
 @interface StationInfo()
 @property(nonatomic,strong) DistrictsInfo* districtInfo;
-@property(nonatomic,strong) AFHTTPRequestOperationManager *manager;
+@property(nonatomic,strong) AFHTTPSessionManager *manager;
 @property(nonatomic) CLLocationCoordinate2D centerLocation;
 @property(nonatomic,strong) NSArray<BMKPointAnnotation*> *nearbyStationAnnotations;
 @end
@@ -34,7 +34,7 @@ static StationInfo *center = nil;//定义一个全局的静态变量，满足静
     dispatch_once(&predicate, ^{
         center                = (SELFCLASS_NAME *)SELFCLASS_NAME_STR;
         center                = [[SELFCLASS_NAME alloc] init];
-        center.manager        = [AFHTTPRequestOperationManager manager];
+        center.manager        = [AFHTTPSessionManager manager];
         center.centerLocation = FUZHOU_CENTER_POINT;
     });
     
@@ -94,16 +94,19 @@ static StationInfo *center = nil;//定义一个全局的静态变量，满足静
 
 - (void)updateAllStationsInfoWithSuccessBlk:(SucBlk)sucBlk
                                     FailBlk:(FailBlk)failblk {
+    
     [_manager GET:STATION_INFO_URL
        parameters:nil
-          success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-              XLog(@"请求数据 = %@",responseObject);
-              self.districtInfo = [DistrictsInfo mj_objectWithKeyValues:responseObject
-                                                                context:nil];
-              
-              sucBlk();
+         progress:^(NSProgress * _Nonnull downloadProgress) {
+         }
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            XLog(@"请求数据 = %@",responseObject);
+            self.districtInfo = [DistrictsInfo mj_objectWithKeyValues:responseObject
+                                                              context:nil];
+
+            sucBlk();
           }
-          failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+          failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
               failblk(error);
           }];
 }

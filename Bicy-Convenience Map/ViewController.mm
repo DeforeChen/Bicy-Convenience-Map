@@ -726,6 +726,7 @@
                 break;
             case RealStatusViaWiFi:
             case RealStatusViaWWAN://仅当有网络时，允许路径规划的相关操作，否则弹出提示
+                [SVProgressHUD showWithStatus:@"路径规划中，请稍候..."];
                 switch (self.guideMode) {
                     case NEARBY_GUIDE_MODE: {
                         CLLocationCoordinate2D startPoint = [[BaiduLocationTool shareInstance] getActualLocation];// 周边模式下，起点为当前位置
@@ -770,6 +771,10 @@
      2. 调用BMKGeometry，组合出所有在圆形区域内的站点数组，通过代理，连同刚刚的圆形区域，这两个覆盖物，传给主页*/
     [[BaiduLocationTool shareInstance] startLocateWithBlk:^(CLLocationCoordinate2D myLacation) {
         if (self.guideMode == NEARBY_GUIDE_MODE) { // 加判断，防止在站点搜索模式  时，更新了位置，仍然会调用周边模式下的代码
+            if (self.researchPathBtn.alpha == 1) {
+                [self resetEndStationInfo];// 避免当位置移动时，显示出的所有站点变化，而顶栏中还存在着起点和终点，这时候点击“路径规划”会crash
+            }
+            
             NSArray<BMKPointAnnotation*> *nearbyStationAnnotations = [[StationInfo shareInstance] fetchNearbyStationAnnotationWithPoint:myLacation];
             self.guideStartStation.coordiate = myLacation;
             self.guideStartStation.name      = @"我的位置";
