@@ -129,14 +129,16 @@ static BaiduDistrictTool *center = nil;//定义一个全局的静态变量，满
             [self.districtPolyganDict setValue:polygan forKey:name];
             [districtPolyganArray addObject:polygan];
         }
-        
+
         // 2.2将所有的边界坐标拼成一个长的字符串，并转换成多边形，用于“全市显示”时的屏幕适配
-        NSMutableString *polyganStr = [NSMutableString new];
-        for (int i; i<DISTRICT_NUM; i++) {
-            NSString *str = [NSString stringWithFormat:@"%@,",[[districtOutlineDict allValues] objectAtIndex:i]];
+        NSMutableString *polyganStr = [[NSMutableString alloc] init];
+        for (NSString *str in [districtOutlineDict allValues]) {
             [polyganStr appendString:str];
+            [polyganStr appendString:@","];
         }
+
         [polyganStr deleteCharactersInRange:NSMakeRange(polyganStr.length-1, 1)];//去掉最后一个逗号
+        XLog(@"多边形数组 = %@",polyganStr);
         
         [self.districtPolyganDict setValue:districtPolyganArray forKey:ALL_CITY];
         [self.districtPolyganDict setValue:[self transferPathStringToPolygon:polyganStr] forKey:ALL_CITY_POLYGAN_FIT];
