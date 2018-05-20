@@ -18,9 +18,9 @@ static BaiduDistrictTool *center = nil;//定义一个全局的静态变量，满
 @property (nonatomic,strong) NSMutableDictionary *districtOutlineInfoDict;
 @property (nonatomic,strong) NSMutableArray *districtNameArray;
 //更新行政区域边界时用。比如发起5次搜索，在代理回调中判断写入的次数是否和他对等。如果不对等或有其他错误，那么block返回失败
-@property (nonatomic) int searchDistrictTimes;
-@property (nonatomic,strong) SucBlk successBlk;
-@property (nonatomic,strong) FailBlk failBlk;
+@property (nonatomic,assign) int searchDistrictTimes;
+@property (nonatomic,copy) SucBlk successBlk;
+@property (nonatomic,copy) FailBlk failBlk;
 @end
 
 @implementation BaiduDistrictTool
@@ -192,7 +192,7 @@ static BaiduDistrictTool *center = nil;//定义一个全局的静态变量，满
             //更新沙盒数据，存入plist
             NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
             XLog(@"写入路径%@", path);
-            NSString *fileName = [path stringByAppendingPathComponent:@"districtOutlineInfo.plist"];
+            NSString *fileName = [path stringByAppendingPathComponent:PLIST_NAME];
             if ([self.districtOutlineInfoDict writeToFile:fileName atomically:YES]) {
                 self.successBlk();
             } else{

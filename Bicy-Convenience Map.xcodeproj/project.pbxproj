@@ -11,6 +11,8 @@
 		891145521E628FDC000D9C21 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 891145511E628FDC000D9C21 /* Launch Screen.storyboard */; };
 		8912FC311E5D3FDE00253EC6 /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8912FC301E5D3FDE00253EC6 /* AboutView.m */; };
 		8912FC331E5D404C00253EC6 /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8912FC321E5D404C00253EC6 /* AboutView.xib */; };
+		8928399920B1B619003E259A /* NLTransLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 8928399820B1B619003E259A /* NLTransLib.m */; };
+		8928399C20B1B85C003E259A /* t-des.c in Sources */ = {isa = PBXBuildFile; fileRef = 8928399B20B1B85C003E259A /* t-des.c */; };
 		89414B001E5EDA380097640F /* DataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 89414AFF1E5EDA380097640F /* DataUtil.m */; };
 		89446B001E237D5C00962BEE /* MyPinAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89446AFF1E237D5C00962BEE /* MyPinAnnotationView.m */; };
 		89446B2C1E277C7C00962BEE /* GotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89446B2B1E277C7C00962BEE /* GotoView.m */; };
@@ -46,6 +48,10 @@
 		8912FC2F1E5D3FDE00253EC6 /* AboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutView.h; sourceTree = "<group>"; };
 		8912FC301E5D3FDE00253EC6 /* AboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutView.m; sourceTree = "<group>"; };
 		8912FC321E5D404C00253EC6 /* AboutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
+		8928399720B1B619003E259A /* NLTransLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NLTransLib.h; path = Models/NLTransLib.h; sourceTree = "<group>"; };
+		8928399820B1B619003E259A /* NLTransLib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NLTransLib.m; path = Models/NLTransLib.m; sourceTree = "<group>"; };
+		8928399A20B1B85C003E259A /* t-des.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "t-des.h"; path = "Models/t-des.h"; sourceTree = "<group>"; };
+		8928399B20B1B85C003E259A /* t-des.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "t-des.c"; path = "Models/t-des.c"; sourceTree = "<group>"; };
 		89414AFE1E5EDA380097640F /* DataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataUtil.h; path = Models/DataUtil.h; sourceTree = "<group>"; };
 		89414AFF1E5EDA380097640F /* DataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataUtil.m; path = Models/DataUtil.m; sourceTree = "<group>"; };
 		89446AFE1E237D5C00962BEE /* MyPinAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyPinAnnotationView.h; path = Views/MyPinAnnotationView.h; sourceTree = "<group>"; };
@@ -239,6 +245,10 @@
 				89446B011E24CDD100962BEE /* StationProtocol.h */,
 				89CC884F1E0BB9D600FAB40D /* StationInfo.h */,
 				89CC88501E0BB9D600FAB40D /* StationInfo.m */,
+				8928399B20B1B85C003E259A /* t-des.c */,
+				8928399A20B1B85C003E259A /* t-des.h */,
+				8928399720B1B619003E259A /* NLTransLib.h */,
+				8928399820B1B619003E259A /* NLTransLib.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -300,7 +310,7 @@
 		8958FD9D1DFF8B9800CBAB84 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Chen Defore";
 				TargetAttributes = {
 					8958FDA41DFF8B9800CBAB84 = {
@@ -401,12 +411,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8928399920B1B619003E259A /* NLTransLib.m in Sources */,
 				896141471E418A7100A11BC9 /* LeftMenuView.m in Sources */,
 				8958FDB01DFF8B9800CBAB84 /* ViewController.mm in Sources */,
 				8963F5711E0918EA00EBDA1A /* BottomDistrictView.m in Sources */,
 				89446B001E237D5C00962BEE /* MyPinAnnotationView.m in Sources */,
 				89B3E4331E345AC400AA71DB /* UIImage+Rotate.m in Sources */,
 				89B3E4301E34571700AA71DB /* RouteAnnotation.mm in Sources */,
+				8928399C20B1B85C003E259A /* t-des.c in Sources */,
 				8958FDC91E03C97600CBAB84 /* BaiduDistrictTool.mm in Sources */,
 				8958FDC61E03C2F400CBAB84 /* BaiduMapTool.m in Sources */,
 				89CC88511E0BB9D600FAB40D /* StationInfo.m in Sources */,
@@ -447,15 +459,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -495,15 +515,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;

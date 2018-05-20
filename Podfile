@@ -7,5 +7,5 @@ target 'Bicy-Convenience Map' do
   pod 'AFNetworking'
   pod 'MJExtension','~>3.0.10'
   pod 'RealReachability'
-#   pod 'Reveal-iOS-SDK'
+  pod 'Reveal-SDK', '4', :configurations => ['Debug']
 end

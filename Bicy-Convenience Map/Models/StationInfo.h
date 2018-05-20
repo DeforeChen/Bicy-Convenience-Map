@@ -12,7 +12,7 @@
 #import "StationProtocol.h"
 #import "MyPinAnnotationView.h"
 
-typedef void(^SucBlk)();
+typedef void(^SucBlk)(void);
 typedef void(^FailBlk)(NSError *err);
 
 #pragma mark models

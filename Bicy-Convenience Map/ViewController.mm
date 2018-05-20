@@ -37,8 +37,8 @@
  底栏通过代理将索引传给本类，本类选中annotation，在annotaion didselect代理中会再去回选底栏的列表，造成死循环。
  这里通过一个标志位，如果是底栏发起的选中annotation，那么在annotation didselect代理中就不再去选中底栏。
  */
-@property (nonatomic) BOOL noNeedToSelectStationList;
-@property (nonatomic) NSInteger previousAnnotationIndex;
+@property (nonatomic,assign) BOOL noNeedToSelectStationList;
+@property (nonatomic,assign) NSInteger previousAnnotationIndex;
 @property (weak, nonatomic) IBOutlet UIButton *researchPathBtn;
 @property (weak, nonatomic) IBOutlet UIButton *nearbyStationBtn;
 

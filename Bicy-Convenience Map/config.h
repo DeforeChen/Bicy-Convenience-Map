@@ -9,7 +9,7 @@
 
 #ifndef config_h
 #define config_h
-typedef void(^SucBlk)();
+typedef void(^SucBlk)(void);
 typedef void(^FailBlk)(NSError *err);
 
 #define IsLogShow 0
